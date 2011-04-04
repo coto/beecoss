@@ -9,13 +9,26 @@
     <link type="text/css" rel="stylesheet" href="Protoboard.css">
 
     <title>Protoboard</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
     
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4/jquery.min.js"></script>
+
+	<script src="js/zrssfeed-101/jquery.zrssfeed.min.js" type="text/javascript"></script>
+	<!--script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script-->
+	<script src="js/twitter-widget.js" type="text/javascript"></script>
+
     <!--                                           -->
-    <!-- This script loads your compiled module.   -->
-    <!-- If you add any GWT meta tags, they must   -->
-    <!-- be added before this line.                -->
+    <!-- This script loads the compiled module.    -->
+    <!-- any GWT meta tags, must be added before   -->
     <!--                                           -->
     <script type="text/javascript" language="javascript" src="protoboard/protoboard.nocache.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+				$('#blog-section').rssfeed('http://feeds.feedburner.com/CotoBlog', {
+					limit: 5
+				});
+			});
+	</script>
   </head>
   <body>
 
@@ -29,74 +42,238 @@
         in order for this application to display correctly.
       </div>
     </noscript>
-    <img src="images/protoboard.png" />
-
-	<h1>Protoboard, coming soon</h1>
-	<div id="stockList"></div>
-	<div class="projects-on-protoboard">
-		<h2>Projects on Protoboard</h2>
-		<ul>
-		<li>
-			<a href="http://github.com/coto/code-jam">code-jam</a>
-			<span class="tech tech-python">Python</span>
-			<span>
-				Practicing for The Google Code Jam Contest.
-			</span>
-		</li>
-		<li>
-			<a href="http://github.com/coto/fast-easy-server-install">fast-easy-server-install</a>
-			<span class="tech tech-bash">Bash</span>
-			<span>
-				Fast and Easy Web Server Installation in main Linux distributions.
-			</span>
-		</li>
-		<li>
-			<a href="http://github.com/coto/Mail-Chrome-Apps">Mail-Chrome-Apps</a>
-			<span class="tech tech-chrome">Chrome API</span>
-			<span>
-				Chrome Apps.
-			</span>
-		</li>
-		<li>
-			<a href="http://github.com/coto/bmanager">Building Manager</a>
-			<span class="tech tech-wordpress tech-buddypress tech-php tech-mysql">WordPress with BuddyPress Plugin (PHP - mySql) and cameras</span>
-			<span>
-				Tool for managing buildings.
-			</span>
-		</li>
-		<li>
-			<a href="http://github.com/coto/myoutgo">My OutGo</a>
-			<span class="tech tech-android tech-appengine tech-java tech-python">Android SDK / Google App Engine (java - python)</span>
-			<span>
-				Personal Finance app for Android and web.
-			</span>
-			<a href="http://myoutgo.protoboard.cl" class="test-uri">Test URI</a>
-		</li>
-
-		<li>
-			<a href="http://github.com/coto/trac-theme">Trac theme</a>
-			<span class="tech tech-trac tech-genshi">Trac - Genshi</span>
-			<span>
-				Personal Design for TRAC Environment
-			</span>
-		</li>
-
-		<li>
-			<a href="http://github.com/coto/fontsizer">Fontsizer jQuery Plugin</a>
-			<span class="tech tech-javascript tech-jquery">jQuery</span>
-			<span>
-				jQuery Plugin to increase or decrease easily font size.
-			</span>
-			<a href="http://protoboard.cl/projects/fontsizer" class="test-uri">Test URI</a>
-		</li>
-		<li>
-			<a href="http://jquery.cl">jQuery in Your Language</a>
-			<span class="tech tech-jquery tech-java">jQuery</span>
-			<span>
-				Project to translate jQuery Documentation to any language around the world.
-			</span>
-			<a href="http://jquery.cl" class="test-uri">Test URI</a>
-		</li>
+    <div id="container" class="main">
+    <header>
+    	<h1>
+    		<a href="/"><img alt="protoboard" src="images/protoboard.png" /></a>
+   		</h1>
+   		<menu>
+   			<li class="selected"><a>Home</a></li>
+   			<li><a href="http://www.google.com/profiles/rodrigo.augosto/contactme?continue=http%3A%2F%2Fwww.google.com%2Fprofiles%2Frodrigo.augosto" target="blank">Contact</a></li>
+   			<li class="what"><a>What's Protoboard?</a></li>
+   		</menu>
+	</header>
+	
+	<section>
+		
+	<!--div id="stockList"></div-->
+	<aside>
+	<div id="twitter-section">
+		<script>
+			new TWTR.Widget({
+ 			 version: 2,
+  			type: 'profile',
+  			rpp: 4,
+  			interval: 6000,
+  			width: 250,
+  			height: 300,
+  			theme: {
+    			shell: {
+			      background: '#a3c739',
+			      color: '#ffffff'
+    			},
+			    tweets: {
+			      background: '#f9f9f9',
+			      color: '#444444',
+			      links: '#3f8cd9'
+    			}
+  			},
+  			features: {
+    			scrollbar: false,
+			    loop: false,
+    			live: true,
+    			hashtags: true,
+  			  timestamp: true,
+    			avatars: true,
+    			behavior: 'all'
+			  }
+			}).render().setUser('coto').start();
+		</script>
 	</div>
+<ul class="links">
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=cl.linkedin.com">
+		<a class="url" href="http://cl.linkedin.com/in/rodrigoaugosto" rel="me">Linkedin</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=github.com">
+		<a class="url" href="http://github.com/coto">GitHub</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=twitter.com">
+		<a class="url" href="http://twitter.com/coto" rel="me">Twitter</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=www.google.com">
+		<a class="url" href="http://www.google.com/reader/shared/14005336358439783739" rel="me">Google Reader</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=www.flickr.com">
+		<a class="url" href="http://www.flickr.com/photos/flickr_coto/" rel="me">Flickr</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=www.youtube.com">
+		<a class="url" href="http://www.youtube.com/user/cotonosco" rel="me">Youtube</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=delicious.com">
+		<a class="url" href="http://delicious.com/coto" rel="me">Delicious</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=www.plurk.com">
+		<a class="url" href="http://www.plurk.com/coto">My Plurk</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=coto.pip.verisignlabs.com">
+		<a class="url" href="https://coto.pip.verisignlabs.com/">Verisign Identity</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=www.blogger.com">
+		<a class="url" href="http://www.blogger.com/profile/02588878180951176141" rel="me">Blogger (Profile)</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=ecoto.blogspot.com">
+		<a class="url" href="http://ecoto.blogspot.com/" rel="me">Blogger (Blogspot) - ecoto</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=www.google.com">
+		<a class="url" href="http://www.google.com/sidewiki/feeds/entries/author/115559728179813066497/default" rel="me">Google Sidewiki</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=dailybooth.com">
+		<a class="url" href="http://dailybooth.com/ijustine">Dailybooth</a>
+	</li>
+	<li><img alt="" src="http://www.google.com/profiles/c/favicons?domain=picasaweb.google.com">
+		<a class="url" href="http://picasaweb.google.com/rodrigo.augosto" rel="me">Picasa Web Albums</a>
+	</li>
+</ul>	
+	</aside>
+	
+	<div id="content">
+
+<!--object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="VideoCast Latex Beamer">
+  <param name="movie" value="media/videocast_latex_beamer.swf" />
+  <param name="quality" value="high" />
+  <embed src="media/videocast_latex_beamer.swf" width="800" height="500" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+</object-->
+
+		<h2>Projects on Protoboard</h2>
+			
+		<hr class="out" />
+	
+		<div class="g-section callouts">
+          <div class="callout">
+            <a href="http://www.jquery.cl"><img alt="Source" src="/images/opensourceproject.gif"></a>
+            <h3>
+              <a href="http://www.jquery.cl/">jQuery in Your Language</a>
+            </h3>
+            <p>
+              Project to translate jQuery Documentation to any language around the world.
+            </p>
+            <p>
+              <a href="http://www.jquery.cl/">Project Home »</a>
+            </p>
+          </div>
+          <div class="callout">
+            <a href="http://myoutgo.protoboard.cl/"><img alt="Tools for developers" src="/images/bash_icon.gif"></a>
+            <h3>
+              <a href="http://myoutgo.protoboard.cl/">My OutGo</a>
+            </h3>
+            <p>
+              Personal Finance App for Android and web.
+            </p>
+            <p>
+              <a href="http://github.com/coto/myoutgo/">Source code »</a>
+            </p>
+          </div>
+          <div class="callout last">
+            <img alt="Android Market" src="/images/market.gif">
+            <h3>
+              WordPress Easy Install
+            </h3>
+            <p>
+              Fast and Easy Web Server Installation for WordPress in main Linux distributions.
+            </p>
+            <p>
+              <a href="http://github.com/coto/wordpress-easy-install">Source code »</a>
+            </p>
+          </div>
+        </div>
+		
+		<hr class="out" />
+        
+        <div class="g-section callouts">
+          <div class="callout">
+            <img alt="Source" src="/images/opensourceproject.gif">
+            <h3>
+              Condominium Manager
+            </h3>
+            <p>
+              Condo Manager helps to manage all functions for multiple associations.
+            </p>
+            <p>
+              <a href="http://github.com/coto/condo-manager/">Learn more »</a>
+            </p>
+          </div>
+          <div class="callout">
+            <img alt="Tools for developers" src="/images/developers.gif">
+            <h3>
+              Trac Theme
+            </h3>
+            <p>
+              Personal Design for TRAC Environment.
+            </p>
+            <p>
+              <a href="http://github.com/coto/trac-theme/">Source code »</a>
+            </p>
+          </div>
+          <div class="callout last">
+            <a href="/sandbox/fontsizer/sample.html"><img alt="Android Market" src="/images/market.gif"></a>
+            <h3>
+              <a href="/sandbox/fontsizer/sample.html">jQuery Font-Sizer</a>
+            </h3>
+            <p>
+              jQuery Plugin to increase or decrease easily font size.
+            </p>
+            <p>
+              <a href="http://github.com/coto/fontsizer/">Source code »</a>
+            </p>
+          </div>
+        </div>
+		
+		<hr class="out" />    
+        
+        <div class="g-section callouts">
+          <div class="callout">
+            <img alt="Source" src="/images/opensourceproject.gif">
+            <h3>
+              Chrome Apps
+            </h3>
+            <p>
+              Apps to Google Chrome Browser.
+            </p>
+            <p>
+              <a href="http://github.com/coto/Mail-Chrome-Apps">Source code »</a>
+            </p>
+          </div>
+          <div class="callout">
+            <img alt="Tools for developers" src="/images/developers.gif">
+            <h3>
+              Google Code Jam
+            </h3>
+            <p>
+              I have been just playing around with some practices posted on Google Code Jam.
+            </p>
+            <p>
+              <a href="http://github.com/coto/code-jam">Source code »</a>
+            </p>
+          </div>
+
+        </div> 
+       
+       	<hr class="out" />
+       
+	
+		<div id="blog-section">
+		</div>
+	
+	
+	
+	</div><!-- end of #content -->
+	
+	</section>
+	
+	<footer>
+	Design inspired in <a href="android.com">android.com</a>
+	</footer>
+	
+	</div><!-- end of #container-->
   </body>
 </html>
