@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.protoboard.site.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>com.google.gwt.protoboard.site.server.GreetingServiceImpl</servlet-class>
   </servlet>
   
   <servlet-mapping>
