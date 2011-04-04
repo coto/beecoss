@@ -1,0 +1,51 @@
+{% extends "../templates/base.html" %}
+
+{% block title %}Poll{% endblock %}
+
+{% block media %}
+	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+	    <script type="text/javascript">
+	      google.load("visualization", "1", {packages:["corechart"]});
+	      google.setOnLoadCallback(drawChart);
+	      function drawChart() {
+	        var data = new google.visualization.DataTable();
+	        data.addColumn('string', 'Task');
+	        data.addColumn('number', 'Hours per Day');
+	        data.addRows(5);
+	        data.setValue(0, 0, 'Work');
+	        data.setValue(0, 1, 11);
+	        data.setValue(1, 0, 'Eat');
+	        data.setValue(1, 1, 2);
+	        data.setValue(2, 0, 'Commute');
+	        data.setValue(2, 1, 2);
+	        data.setValue(3, 0, 'Watch TV');
+	        data.setValue(3, 1, 2);
+	        data.setValue(4, 0, 'Sleep');
+	        data.setValue(4, 1, 7);
+
+	        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+	        chart.draw(data, {width: 450, height: 300, title: 'My Daily Activities'});
+	      }
+	    </script>
+{% endblock %}
+
+{% block content %}
+	{% block program %}{% endblock %}
+	
+<h1>Qué nombre encuentras más adecuado para una gran conferencia a realizar en Chile?</h1>
+
+{% for vote in votes %}
+<div><input type="">{{vote.message}}</div>
+{% endfor %}
+
+<form action="" method="post" accept-charset="utf-8">
+	<p><input type="text" name="message" value="" /></p>
+	<p><input type="submit" value="Votar" /></p>
+</form>
+<div id="chart_div"></div>
+	
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

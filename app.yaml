@@ -1,0 +1,32 @@
+application: breadboard-site
+version: 6
+runtime: python
+api_version: 1
+
+handlers:
+
+ 
+- url: /media
+  static_dir: media
+  
+- url: /sandbox
+  static_dir: sandbox
+
+- url: /mobile_views
+  static_dir: mobile_views
+  
+- url: /poll
+  script: poll.py
+
+- url: /
+  script: main.py
+  
+- url: /contact
+  script: main.py
+  
+- url: /author
+  script: main.py 
+  
+- url: /test/.*
+  script: test.py
+  login: admin

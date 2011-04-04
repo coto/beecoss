@@ -1,0 +1,88 @@
+{% extends "../templates/base.html" %}
+
+{% block title %}jQuery Mobile{% endblock %}
+
+{% block media %}
+	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
+	
+	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+	<script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+{% endblock %}
+
+{% block content %}
+	{% block program %}{% endblock %}
+		<div data-role="page" data-theme="b" id="jqm-home"> 
+		<div data-role="content"> 
+
+				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
+					<li data-role="list-divider">Overview</li> 
+					<li><a href="docs/about/features.html">Features</a></li> 
+					<li><a href="docs/about/accessibility.html">Accessibility</a></li> 
+					<li><a href="docs/about/platforms.html">Supported platforms</a></li> 
+				</ul> 
+
+				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
+					<li data-role="list-divider">API</li> 
+					<li><a href="docs/api/globalconfig.html">Configuring defaults</a></li> 
+					<li><a href="docs/api/events.html">Events</a></li> 
+					<li><a href="docs/api/methods.html">Methods &amp; Utilities</a></li> 
+					<li><a href="docs/api/mediahelpers.html">Responsive Layout</a></li> 
+					<li><a href="docs/api/themes.html">Theme framework</a></li> 
+				</ul> 
+
+				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
+					<li data-role="list-divider">Components</li> 
+					<li><a href="docs/pages/index.html">Pages &amp; dialogs</a></li> 
+					<li><a href="docs/toolbars/index.html">Toolbars</a></li> 
+					<li><a href="docs/buttons/index.html">Buttons</a></li> 
+					<li><a href="docs/content/index.html">Content formatting</a></li> 
+					<li><a href="docs/forms/index.html">Form elements</a></li> 
+					<li><a href="docs/lists/index.html">List views</a></li> 
+				</ul> 
+
+				<ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
+					<li data-role="list-divider">Demos</li> 
+					<li><a href="experiments/api-viewer/index.html">jQuery API browser</a></li> 
+				</ul> 
+
+
+			</div>
+		</div>
+		<header> 
+		<h1> 
+		<a href="/"><img alt="protoboard" src="media/protoboard.png" /></a> 
+		</h1> 
+		<menu> 
+		<li class="selected"><a>Home</a></li> 
+		<li><a href="http://www.google.com/profiles/rodrigo.augosto/contactme?continue=http%3A%2F%2Fwww.google.com%2Fprofiles%2Frodrigo.augosto" target="blank">Contact</a></li> 
+		<li class="what"><a>What's Protoboard?</a></li> 
+		</menu> 
+		</header>
+
+		<nav>
+			<a href="default.asp">Home</a>
+			<a href="tag_meter.asp">Previous</a>
+			<a href="tag_noscript.asp">Next</a>
+		</nav>
+
+		<section> 
+		<article>
+			article
+		</article>
+		</section> 
+
+
+		<aside>
+
+		</aside>
+
+		<footer> 
+		Design inspired in <a href="android.com">android.com</a> 
+		</footer>
+	
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}

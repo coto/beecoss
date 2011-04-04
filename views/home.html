@@ -1,0 +1,231 @@
+{% extends "../templates/base.html" %}
+
+{% block title %}Protoboard{% endblock %}
+
+{% block media %}
+	<link type="text/css" rel="stylesheet" href="media/desktop/css/Protoboard.css">
+
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+
+	<script src="media/desktop/js/zrssfeed-101/jquery.zrssfeed.min.js" type="text/javascript"></script>
+	<!--script src="http://widgets.twimg.com/j/2/widget.js" type="text/javascript"></script-->
+	<script src="media/desktop/js/twitter-widget.js" type="text/javascript"></script>
+
+	<script type="text/javascript" language="javascript" src="media/desktop/js/protoboard.nocache.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+				$('#blog-section').rssfeed('http://feeds.feedburner.com/CotoBlog', {
+					limit: 5
+				});
+			});
+	</script>
+{% endblock %}
+
+{% block content %}
+	{% block program %}{% endblock %}
+
+	<div id="container" class="main">
+	<header>
+		<h1>
+			<a href="/"><img alt="protoboard" src="/media/desktop/images/protoboard.png" /></a>
+		</h1>
+		{% include "../templates/menu.html" %}
+	</header>
+
+	<section>
+
+	<!--div id="stockList"></div-->
+	<aside>
+	<div id="twitter-section">
+	<script>
+		new TWTR.Widget({
+		 version: 2,
+		type: 'profile',
+		rpp: 4,
+		interval: 6000,
+		width: 250,
+		height: 300,
+		theme: {
+				shell: {
+		      background: '#a3c739',
+		      color: '#ffffff'
+				},
+		    tweets: {
+		      background: '#f9f9f9',
+		      color: '#444444',
+		      links: '#3f8cd9'
+				}
+		},
+		features: {
+				scrollbar: false,
+		    loop: false,
+				live: true,
+				hashtags: true,
+		  timestamp: true,
+				avatars: true,
+				behavior: 'all'
+		  }
+		}).render().setUser('coto').start();
+	</script>
+	</div>
+	
+	{% include "../templates/mylinks.html" %}
+	
+	</aside>
+
+	<div id="content">
+
+	<!--object classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,19,0" title="VideoCast Latex Beamer">
+	<param name="movie" value="media/videocast_latex_beamer.swf" />
+	<param name="quality" value="high" />
+	<embed src="media/videocast_latex_beamer.swf" width="800" height="500" quality="high" pluginspage="http://www.macromedia.com/go/getflashplayer" type="application/x-shockwave-flash"></embed>
+	</object-->
+
+	<h2>Projects on Protoboard</h2>
+	
+	<hr class="out" />
+
+	<div class="g-section callouts">
+	      <div class="callout">
+	        <a href="http://www.jquery.cl"><img alt="Source" src="/media/desktop/images/opensourceproject.gif"></a>
+	        <h3>
+	          <a href="http://www.jquery.cl/">jQuery in Your Language</a>
+	        </h3>
+	        <p>
+	          Project to translate jQuery Documentation to any language around the world.
+	        </p>
+	        <p>
+	          <a href="http://www.jquery.cl/">Project Home »</a>
+	        </p>
+	      </div>
+	      <div class="callout">
+	        <a href="http://myoutgo.protoboard.cl/"><img alt="Tools for developers" src="/media/desktop/images/bash_icon.gif"></a>
+	        <h3>
+	          My OutGo
+	        </h3>
+	        <p>
+	          Personal Finance App for Android and web.
+	        </p>
+	        <p>
+	          <a href="http://github.com/coto/myoutgo/">Source code »</a>
+	        </p>
+	      </div>
+	      <div class="callout last">
+	        <img alt="Android Market" src="/media/desktop/images/market.gif">
+	        <h3>
+	          WordPress Easy Install
+	        </h3>
+	        <p>
+	          Fast and Easy Web Server Installation for WordPress in main Linux distributions.
+	        </p>
+	        <p>
+	          <a href="http://github.com/coto/wordpress-easy-install">Source code »</a>
+	        </p>
+	      </div>
+	    </div>
+
+	<hr class="out" />
+    
+	    <div class="g-section callouts">
+	      <div class="callout">
+	        <img alt="Source" src="/media/desktop/images/opensourceproject.gif">
+	        <h3>
+	          Condominium Manager
+	        </h3>
+	        <p>
+	          Condo Manager helps to manage all functions for multiple associations.
+	        </p>
+	        <p>
+	          <a href="http://github.com/coto/condo-manager/">Learn more »</a>
+	        </p>
+	      </div>
+	      <div class="callout">
+	        <img alt="Tools for developers" src="/media/desktop/images/developers.gif">
+	        <h3>
+	          Trac Theme
+	        </h3>
+	        <p>
+	          Personal Design for TRAC Environment.
+	        </p>
+	        <p>
+	          <a href="http://github.com/coto/trac-theme/">Source code »</a>
+	        </p>
+	      </div>
+	      <div class="callout last">
+	        <a href="/sandbox/fontsizer/sample.html"><img alt="Android Market" src="/media/desktop/images/market.gif"></a>
+	        <h3>
+	          <a href="/sandbox/fontsizer/sample.html">jQuery Font-Sizer</a>
+	        </h3>
+	        <p>
+	          jQuery Plugin to increase or decrease easily font size.
+	        </p>
+	        <p>
+	          <a href="http://github.com/coto/fontsizer/">Source code »</a>
+	        </p>
+	      </div>
+	    </div>
+
+	<hr class="out" />    
+    
+	    <div class="g-section callouts">
+	      <div class="callout">
+	        <img alt="Source" src="/media/desktop/images/opensourceproject.gif">
+	        <h3>
+	          Chrome Apps
+	        </h3>
+	        <p>
+	          Apps to Google Chrome Browser.
+	        </p>
+	        <p>
+	          <a href="http://github.com/coto/Mail-Chrome-Apps">Source code »</a>
+	        </p>
+	      </div>
+	      <div class="callout">
+	        <img alt="Tools for developers" src="/media/desktop/images/developers.gif">
+	        <h3>
+	          Google Code Jam
+	        </h3>
+	        <p>
+	          I have been just playing around with some practices posted on Google Code Jam.
+	        </p>
+	        <p>
+	          <a href="http://github.com/coto/code-jam">Source code »</a>
+	        </p>
+	      </div>
+	      <div class="callout last">
+	        <img alt="Tools for developers" src="/media/desktop/images/developers.gif">
+	        <h3>
+	          <a href="/sandbox/benchmark-closure-vs-prototype.html">Closure vs Prototype</a>
+	        </h3>
+	        <p>
+	          This's a benchmark to identify what is better, closure or prototype implementations.
+	        </p>
+	        <p>
+	          <a href="https://gist.github.com/720759">Source code »</a>
+	        </p>
+	      </div>
+
+	    </div> 
+   
+	   	<hr class="out" />
+   
+
+	<div id="blog-section">
+	</div>
+
+
+
+	</div><!-- end of #content -->
+
+	</section>
+
+		<footer>
+		Design inspired in <a href="android.com">android.com</a>
+		</footer>
+
+	</div><!-- end of #container-->
+{% endblock %}
+
+{% block footer %}
+
+{% endblock %}
