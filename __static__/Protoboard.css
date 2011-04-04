@@ -2,101 +2,244 @@
 
 /* Formatting specific to the StockWatcher application */
 
-body {
-	padding: 10px;
+a{
+	color: #3F8CD9;
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
 }
 
-/* stock list header row */
+
+/*** Layout */
+body {
+	padding: 0;
+	margin:0;
+	background-color: #ccc;
+	font-family: Arial;
+	font-size: 13px;
+}
+#container{
+	padding: 40px;
+	padding-top: 0;
+}
+section{
+	padding: 20px 10px;
+	background-color: white;
+	
+}
+footer {
+	border-top: 1px solid #ddd;
+	font-size: 70%;
+	color: gray;
+	background-color: white;
+	padding: 5px 20px;
+	clear: both;
+}
+
+aside{
+	width: 270px;
+	overflow: hidden;
+	float: left;
+}
+div#content{
+	padding-left: 270px;
+}
+
+/*** header */
+header{
+	height: 62px;
+	background: url('protoboard/head-background.gif') left top repeat-x;
+	overflow: hidden;
+}
+	header h1{
+		float: left;
+		width: 180px;
+		padding-left: 20px;
+		height: 60px;
+		margin: 0;
+		overflow: hidden;
+	}
+	menu{
+		float: left;
+		display: block;
+		margin: 21px 0 0;
+	}
+		menu li{
+			display: inline;
+		}
+		menu li a{
+			display: block;
+			font-weight: bold;
+			border: 1px solid #DDD;
+			border-top-left-radius: 8px;
+			border-top-right-radius: 8px;
+			float: left;
+			margin: 0 5px 0 0;
+			border-bottom: 1px solid #ddd;
+			width: 154px;
+			height: 39px;
+			line-height: 41px;
+			text-align: center;
+			cursor: auto;
+			/* Mozilla: */
+			background: -moz-linear-gradient(top, #ccc, #fff);
+			/* Chrome, Safari:*/
+			background: -webkit-gradient(linear,
+		                left top, left bottom, from(#ccc), to(#fff));
+		}
+		menu li.what a{
+			width: 190px;
+		}
+		menu li.selected a{
+			border-bottom: 1px solid white;
+			color: black;
+			text-decoration: none;
+		}
+
+/**** watchList: Stocks list  */
 .watchListHeader {
 	background-color: #2062B8;
 	color: white;
 	font-style: italic;
 }
-
-/* stock list flex table */
-.watchList {
-	border: 1px solid silver;
-	padding: 2px;
-	margin-bottom:6px;
-	width: 100%;
+	
+	/* stock list flex table */
+	.watchList {
+		border: 1px solid silver;
+		padding: 2px;
+		margin-bottom:6px;
+		width: 100%;
+	}
+	
+	/* stock list Price and Change fields */
+	.watchListNumericColumn {
+		text-align: right;
+		width:8em;
+	}
+	
+	/* stock list Remove column */
+	.watchListRemoveColumn {
+		text-align: center;
+	}
+	
+	/* Add Stock panel */
+	.addPanel {
+	  margin: 10px 0px 15px 0px;
+	}
+	
+	/* stock list, the Remove button */
+	.gwt-Button-remove {
+	  width: 50px;
+	}
+	/* Dynamic color changes for the Change field */
+	.noChange {
+	  color: black;
+	}
+	
+	.positiveChange {
+	  color: green;
+	}
+	
+	.negativeChange {
+	  color: red;
+	}
+	
+/*** Links profile */
+ul.links{
+	margin-top: 20px;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	padding: 0 0 0 10px;
 }
 
-/* stock list Price and Change fields */
-.watchListNumericColumn {
-	text-align: right;
-	width:8em;
-}
 
-/* stock list Remove column */
-.watchListRemoveColumn {
-	text-align: center;
-}
-
-/* Add Stock panel */
-.addPanel {
-  margin: 10px 0px 15px 0px;
-}
-
-/* stock list, the Remove button */
-.gwt-Button-remove {
-  width: 50px;
-}
-/* Dynamic color changes for the Change field */
-.noChange {
-  color: black;
-}
-
-.positiveChange {
-  color: green;
-}
-
-.negativeChange {
-  color: red;
-}
-
-
-
-/** Projects on protoboard */
-div.projects-on-protoboard li{
+/*** Projects on protoboard */
+div.projects-on-protoboard ul{
 	font-weight: bold;
+	list-style-image: none;
+	list-style-position: outside;
+	list-style-type: none;
+	padding: 0;
+	border-top: 1px solid #ccc;
+}	
+
+	
+/*** Blog section */
+.rssFeed
+{
+	margin: 10px 0;
+	clear: both;
+	
 }
-	div.projects-on-protoboard li span{
-		font-weight: normal;
-		display: block;
-	}	
-	div.projects-on-protoboard li a.test-uri{
-		font-weight: normal;
-		display: block;
+	.rssHeader { 
+		padding: 0.2em 0; 
+	}
+	.rssHeader a{
+		color: #333;
+		font-size: 36px;
+		font-weight: bold;
 	}
 
-/** Example rules used by the template application (remove for your app) */
-h1 {
-	font-size: 2em;
-	font-weight: bold;
-	color: #777777;
-	margin: 40px 0px 70px;
-	text-align: center;
-}
+	.rssBody { border: 1px solid #999; }
+	.rssBody ul { list-style: none; }
+	.rssBody ul, .rssRow, .rssRow h4, .rssRow p
+	{
+		margin: 0;
+		padding: 0;
+	}
 
-.sendButton {
-	display: block;
-	font-size: 16pt;
-}
+	.rssRow { padding: 0.8em; }
+	.rssRow h4 { font-size: 1.1em; }
+	.rssRow div
+	{
+		font-size: 90%;
+		color: #666;
+		margin: 0.2em 0 0.4em 0;
+	}
 
-/** Most GWT widgets already have a style name defined */
-.gwt-DialogBox {
-  width: 400px;
-}
+	.odd { background-color: #f3f3f3; }
+	.even { background-color: #fbfbfb; }
 
-.dialogVPanel {
-  margin: 5px;
-}
+/** Callout */
 
-.serverResponseLabelError {
-  color: red;
+div.main div.callouts {
+	background-color: blue;
 }
-
-/** Set ids using widget.getElement().setId("idOfElement") */
-#closeButton {
-  margin: 15px 6px 6px;
-}
+	div.main div.callout {		
+		border-right: 1px solid #ccc;
+		width: 31%;
+		float: left;
+		min-height: 160px;
+		margin-right: 25px;
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+	div.main div.callout.last {
+		border-right: 0;
+		margin-right: 0;
+	}
+	div.main div.callout.last p {
+		padding-right: 0;
+	}
+	div.main div.callout h3 {
+		font-size: 17px;
+		margin: 0;
+	}
+	div.main div.callout p {
+		padding: 0 20px 0 0;
+	}
+	div.main div.callout img {
+		float: left;
+		margin: 0 20px 20px 0;
+	}
+	div.main div.callout a {
+		font-weight: bold;
+	}
+	hr.out{
+		border: 1px solid #ccc;
+		display: block;
+		margin: 0;
+		width: 100%;
+	}
