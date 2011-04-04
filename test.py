@@ -13,7 +13,7 @@ from google.appengine.ext.webapp \
 class MobileHandler(webapp.RequestHandler):
     def get(self):
 
-        path = os.path.join(os.path.dirname(__file__), 'views/mobile.html')
+        path = os.path.join(os.path.dirname(__file__), 'views/main.html')
         self.response.out.write(template.render(path, {}))
 
 class jQMobileHandler(webapp.RequestHandler):

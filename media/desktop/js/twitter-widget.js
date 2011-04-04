@@ -5,6 +5,7 @@
  *
  * V 2.2.3 Twitter search/profile/faves/list widget
  * http://twitter.com/widgets
+ * url: http://widgets.twimg.com/j/2/widget.js
  */
 if (!"console" in window) {
     window.console = {

@@ -1,0 +1,29 @@
+{% extends "../templates/base.html" %}
+
+{% block title %}Protoboard - About{% endblock %}
+
+{% block media %}{% endblock %}
+
+{% block article %}
+<h1>About</h1>
+<h2>About Protoboard</h2>
+<p>
+	In this web site I'm putting every personal project that I have been involved. Other thing that is important to me 
+	is that this web site is supported for mobile devices by using HTML5 and CSS.
+</p>
+
+<dl>
+  <dt>What's a Protoboard?</dt>
+    <dd>Also know as <a href="http://en.wikipedia.org/wiki/Breadboard" target="blank">BreabBoard</a> It's a Electronic term 
+	which means a construction base for a one-of-a-kind electronic circuit, a prototype.</dd>
+  <dt>Why in english if I'm a spanish native speaker?</dt>
+    <dd>	.... why not? well, I want to practice my english and that's the main reason.</dd>
+  <dt>Which technologies are being used here?</dt>
+    <dd>The web site has been made with Python/Django/HTML5/CSS3/jQuery & jQuery Mobile. 
+	 <br/>Projects are made in different technologies like Python, Bash, Assembler, PHP, jQuery, etc.</dd>
+</dl>
+
+{% include "../templates/about.html" %}
+
+{% endblock %}
+

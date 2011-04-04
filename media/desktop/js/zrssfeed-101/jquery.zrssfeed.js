@@ -11,12 +11,11 @@
  * 1.0.1 - Corrected issue with multiple instances
  *
  **/
-
 (function($){
 
 	var current = null; 
 	
-	$.fn.rssfeed = function(url, options) {	
+	$.fn.rssfeed = function(url, params) {	
 	
 		// Set pluign defaults
 		var defaults = {
@@ -30,7 +29,7 @@
 			errormsg: '',
 			key: null
 		};  
-		var options = $.extend(defaults, options); 
+		var options = $.extend(defaults, params); 
 		
 		// Functions
 		return this.each(function(i, e) {
@@ -48,26 +47,30 @@
 			if (options.key != null) api += "&key=" + options.key;
 
 			// Send request
-			$.getJSON(api, function(data){
-				
-				// Check for error
-				if (data.responseStatus == 200) {
-	
-					// Process the feeds
-					_callback(e, data.responseData.feed, options);
-				} else {
+			$.ajax({
+				url: api,
+				dataType: 'json', 
+				success: function(data, textStatus, jqXHR){
+					// Check for error
+					if (data.responseStatus == 200) {
+						// Process the feeds
+						_callback(e, data.responseData.feed, options);
+					} else {
 
-					// Handle error if required
-					if (options.showerror)
-						if (options.errormsg != '') {
-							var msg = options.errormsg;
-						} else {
-							var msg = data.responseDetails;
-						};
-						$(e).html('<div class="rssError"><p>'+ msg +'</p></div>');
-				};
-			});				
+						// Handle error if required
+						if (options.showerror)
+							if (options.errormsg != '') {
+								var msg = options.errormsg;
+							} else {
+								var msg = data.responseDetails;
+							};
+							$(e).html('<div class="rssError"><p>'+ msg + '</p></div>');
+					};
+				}
+			});
 		});
+		
+		
 	};
 	
 	// Callback function to create HTML result

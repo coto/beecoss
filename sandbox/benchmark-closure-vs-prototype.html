@@ -65,8 +65,11 @@ function TestPerformance() {
 
 	var closureTime = closureEndDateTime.getTime() - closureStartDateTime.getTime();
 	var prototypeTime = prototypeEndDateTime.getTime() - prototypeStartDateTime.getTime();
-	console.log("Instance Benchmark");	
+	console.log("Instance Benchmark");
+	document.write("<h2>Instance Benchmark</h2>");	
 	console.log("Closure time: " + closureTime + ", Prototype time: " + prototypeTime);
+	document.write("Closure time: " + closureTime + "<br> Prototype time: " + prototypeTime + "<hr/>");
+
 
 	// Testing Execution
 	var prototypeExecStartDateTime, prototypeExecEndDateTime
@@ -94,16 +97,15 @@ function TestPerformance() {
 
 	var closureExecTime = closureExecEndDateTime.getTime() - closureExecStartDateTime.getTime();
 	var prototypeExecTime = prototypeExecEndDateTime.getTime() - prototypeExecStartDateTime.getTime();
-	console.log("Execution Benchmark");	
+	console.log("Execution Benchmark");
+	document.write("<h2>Execution Benchmark</h2>");
 	console.log("Closure time: " + closureExecTime + ", Prototype time: " + prototypeExecTime);
+	document.write("Closure time: " + closureExecTime + "<br/> Prototype time: " + prototypeExecTime + "<hr/>");
 }
 
 TestPerformance();
 </script>
 </head>
 <body>
-Please, open a console to see the result.
 </body>
-
-
 </html>

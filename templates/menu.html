@@ -1,7 +1,9 @@
-	<menu>
-		<li class="selected"><a>Home</a></li>
-		<!--li><a href="/blog">Blog</a></li>
-		<li><a href="/about">About</a></li-->
-		<li><a href="/contact">Contact</a></li>
-		<!--li class="what"><a>What's Protoboard?</a></li-->
-	</menu>
+
+<nav>
+			<li {% ifequal "/home" path  %}class="selected"{% endifequal %}><a href="/">Home</a></li>
+			<li {% ifequal "/blog" path  %}class="selected"{% endifequal %}><a href="/blog">Blog</a></li>
+			<li {% ifequal "/about" path  %}class="selected"{% endifequal %}><a href="/about">About</a></li>
+			<li {% ifequal "/contact" path  %}class="selected"{% endifequal %}><a href="/contact">Contact</a></li>
+		</nav>
+
+
