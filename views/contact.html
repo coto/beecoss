@@ -1,10 +1,8 @@
 {% extends "../templates/base.html" %}
 
-{% block title %}Contact{% endblock %}
+{% block title %}Protoboard - Contact{% endblock %}
 
-{% block media %}
-	<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=0;"/>
-	
+{% block media %}	
 	<style type="text/css">      
 		img#avatar {
 			float: left;
@@ -18,20 +16,20 @@
 	 </style>
 {% endblock %}
 
-{% block content %}
-	{% block program %}{% endblock %}
+{% block article %}
+
  	<h1>Contact to Rodrigo Augosto (Coto)</h1> 
-	{{ reco }}
-	<form action="" method="post" accept-charset="utf-8">
+
+	<!--form action="" method="post" accept-charset="utf-8">
 		<p>From: <input type="text" name="who" value="" /></p>
 		<p>Subject: <input type="text" name="subject" value="" /></p>
 		<p>Message: <textarea name="message"></textarea></p>
 		<p><input type="submit" value="Send message!" /></p>
-	</form>
+	</form-->
 
 	<h2>How to Reach Me</h2>
 
-	<p>Besides the above form, you have other options to reach me, such as:
+	<p><!--Besides the above form, you have other options to reach me, such as:-->
 		<ul>
 			<li>Send me a direct message with your 
 		<a href="http://www.google.com/profiles/rodrigo.augosto/contactme?continue=http%3A%2F%2Fwww.google.com%2Fprofiles%2Frodrigo.augosto">Google Account</a>. 
@@ -55,21 +53,12 @@
 	</p>
 		
 	<hr /> 
-	<h2>About Me</h2> 
-	<p><img id="avatar" class="photo" src="/media/global/avatar.png" height="80" width="80"  alt="My Picture"/>
-		I am Rodrigo Augosto a.k.a. <a href="http://twitter.com/coto">coto</a>. I am a Front End and Mobile Software Engineer, also I am a JavaScript enthusiast. 
-	</p>
-	<p> 
-	  In October 2010, I graduated with my Bachelor of Computer Science at the  <a href="http://www.usach.cl">University
-	  of Santiago of Chile</a>, in December 2008, I graduated with a Computer Scientist and Engineer from the same institution 
-	  and in December 2001 I graduated with Electronics Technician from <a href="http://www.oai.utfsm.cl/en/">Federico Santa María University</a> .
-	</p>
-	<p>See also my resume  on <a href="http://www.linkedin.com/in/rodrigoaugosto">www.linkedin.com/in/rodrigoaugosto</a> </p>
+	{% include "../templates/about.html" %}
 	
+	{% ifequal device 'mobile' %}
  	<hr /> 
 	<h2>Links</h2> 
 	{% include "../templates/mylinks.html" %}
+	{% endifequal %}
 
 {% endblock %}
-
-{% block footer %}{% endblock %}

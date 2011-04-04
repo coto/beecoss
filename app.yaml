@@ -1,5 +1,5 @@
 application: breadboard-site
-version: 6
+version: 7
 runtime: python
 api_version: 1
 
@@ -12,21 +12,20 @@ handlers:
 - url: /sandbox
   static_dir: sandbox
 
+# only for mobile test
 - url: /mobile_views
   static_dir: mobile_views
-  
+
+
 - url: /poll
   script: poll.py
-
-- url: /
-  script: main.py
-  
-- url: /contact
-  script: main.py
-  
-- url: /author
-  script: main.py 
   
 - url: /test/.*
   script: test.py
-  login: admin
+  #login: admin
+
+- url: /.*
+  script: main.py
+
+builtins:
+- datastore_admin: on

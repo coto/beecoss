@@ -1,14 +1,14 @@
-/** Add css rules here for your application. */
-
-/* Formatting specific to the StockWatcher application */
-
+dt{
+	font-weight: bold;
+	padding: 5px 0;
+}
 a{
 	color: #3F8CD9;
 	text-decoration: none;
 }
-a:hover{
-	text-decoration: underline;
-}
+	a:hover{
+		text-decoration: underline;
+	}
 
 
 /*** Layout */
@@ -19,14 +19,12 @@ body {
 	font-family: Arial;
 	font-size: 13px;
 }
-#container{
-	padding: 40px;
-	padding-top: 0;
-}
-section{
+section#container{
+	margin: 0 40px;
 	padding: 20px 10px;
 	background-color: white;
-	
+	border-bottom-right-radius: 8px;
+	border-bottom-left-radius: 8px;
 }
 footer {
 	border-top: 1px solid #ddd;
@@ -42,33 +40,35 @@ aside{
 	overflow: hidden;
 	float: left;
 }
-div#content{
+article{
 	padding-left: 270px;
+	min-height: 650px;
 }
 
 /*** header */
 header{
 	height: 62px;
-	background: url('protoboard/head-background.gif') left top repeat-x;
+	background: url('desktop_images/head-bg.gif') left top repeat-x;
 	overflow: hidden;
+	margin: 0 40px;	
 }
 	header h1{
 		float: left;
 		width: 180px;
-		padding-left: 20px;
+		padding-left: 40px;
 		height: 60px;
 		margin: 0;
 		overflow: hidden;
 	}
-	menu{
+	nav{
 		float: left;
 		display: block;
-		margin: 21px 0 0;
+		margin: 21px 0 0 40px;
 	}
-		menu li{
+		nav li{
 			display: inline;
 		}
-		menu li a{
+		nav li a{
 			display: block;
 			font-weight: bold;
 			border: 1px solid #DDD;
@@ -88,64 +88,17 @@ header{
 			background: -webkit-gradient(linear,
 		                left top, left bottom, from(#ccc), to(#fff));
 		}
-		menu li.what a{
+		nav li.what a{
 			width: 190px;
 		}
-		menu li.selected a{
+		nav li.selected a{
 			border-bottom: 1px solid white;
 			color: black;
 			text-decoration: none;
 		}
 
-/**** watchList: Stocks list  */
-.watchListHeader {
-	background-color: #2062B8;
-	color: white;
-	font-style: italic;
-}
 	
-	/* stock list flex table */
-	.watchList {
-		border: 1px solid silver;
-		padding: 2px;
-		margin-bottom:6px;
-		width: 100%;
-	}
-	
-	/* stock list Price and Change fields */
-	.watchListNumericColumn {
-		text-align: right;
-		width:8em;
-	}
-	
-	/* stock list Remove column */
-	.watchListRemoveColumn {
-		text-align: center;
-	}
-	
-	/* Add Stock panel */
-	.addPanel {
-	  margin: 10px 0px 15px 0px;
-	}
-	
-	/* stock list, the Remove button */
-	.gwt-Button-remove {
-	  width: 50px;
-	}
-	/* Dynamic color changes for the Change field */
-	.noChange {
-	  color: black;
-	}
-	
-	.positiveChange {
-	  color: green;
-	}
-	
-	.negativeChange {
-	  color: red;
-	}
-	
-/*** Links profile */
+/*** Links Social Sites */
 ul.links{
 	margin-top: 20px;
 	list-style-image: none;
@@ -155,23 +108,11 @@ ul.links{
 }
 
 
-/*** Projects on protoboard */
-div.projects-on-protoboard ul{
-	font-weight: bold;
-	list-style-image: none;
-	list-style-position: outside;
-	list-style-type: none;
-	padding: 0;
-	border-top: 1px solid #ccc;
-}	
-
-	
 /*** Blog section */
 .rssFeed
 {
 	margin: 10px 0;
-	clear: both;
-	
+
 }
 	.rssHeader { 
 		padding: 0.2em 0; 
@@ -202,12 +143,12 @@ div.projects-on-protoboard ul{
 	.odd { background-color: #f3f3f3; }
 	.even { background-color: #fbfbfb; }
 
-/** Callout */
+/** Callout ("Projects") */
 
-div.main div.callouts {
+div.callouts {
 	background-color: blue;
 }
-	div.main div.callout {		
+	div.callout {		
 		border-right: 1px solid #ccc;
 		width: 31%;
 		float: left;
@@ -216,25 +157,25 @@ div.main div.callouts {
 		margin-top: 20px;
 		margin-bottom: 20px;
 	}
-	div.main div.callout.last {
+	div.callout.last {
 		border-right: 0;
 		margin-right: 0;
 	}
-	div.main div.callout.last p {
+	div.callout.last p {
 		padding-right: 0;
 	}
-	div.main div.callout h3 {
+	div.callout h3 {
 		font-size: 17px;
 		margin: 0;
 	}
-	div.main div.callout p {
+	div.callout p {
 		padding: 0 20px 0 0;
 	}
-	div.main div.callout img {
+	div.callout img {
 		float: left;
 		margin: 0 20px 20px 0;
 	}
-	div.main div.callout a {
+	div.callout a {
 		font-weight: bold;
 	}
 	hr.out{

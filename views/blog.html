@@ -1,0 +1,26 @@
+{% extends "../templates/base.html" %}
+
+{% block title %}Protoboard - Blog{% endblock %}
+
+{% block media %}
+	<script src="media/desktop/js/zrssfeed-101/jquery.zrssfeed.min.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		$(document).ready(function () {
+			$('#blog-section').rssfeed('http://feeds.feedburner.com/CotoBlog', {
+				limit: 5,
+				header: false
+			});
+		});
+	</script>
+{% endblock %}
+
+{% block article %}
+
+	<h1>Coto's Blog</h1>
+	
+	<div id="blog-section"></div>
+
+{% endblock %}
+
+

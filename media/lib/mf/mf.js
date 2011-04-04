@@ -251,6 +251,7 @@
 				}
 				viewBack        = $L.$history[$L.$cursorIndex][0];
 				viewBackOptions = $L.$history[$L.$cursorIndex][1];
+
 				while(viewBackOptions.record == "no"){
 					console.log("Exception: Controller " + viewBack.controller + " is " + viewBackOptions.record  + " recording");
 					$L.$cursorIndex--;

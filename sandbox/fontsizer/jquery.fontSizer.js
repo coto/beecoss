@@ -1,37 +1,12 @@
-/*
-####################################################################
- jQuery fontSizer 1.0
-
- Author: Rodrigo Augosto C. (coto) <contact@protoboard.cl>
- Twitter: http://twitter.com/coto
- URL: http://protoboard.cl
- Created: 2008
-####################################################################
-
-Tested: jQuery 1.2 > x < jQuery 1.4
-
-Hosted in: http://github.com/coto/fontsizer
-
-How to use:
-	1. include jquery.js and jquery.fontSizer.js between <head></head> tags.
-	2. give id's for both links, for example #increase (+) and #decrease (-)
-	3. initialize the plugin, like the folowing:
-		$(document).ready(function(){
-			$('#increase').fontSizer({
-				action: "up",
-				max: 36
-			});
-			$('#decrease').fontSizer({
-				action: 'down'
-		});
-	4. that's it. now, the parameters:
-			- action: "up/down" (required)
-			- elements: "element" (which element will be influenced by the font-size)
-			- increment: number (how many steps will increase/decrease the font-size)
-			- max: number (max. font-size)
-			- min: number (min. font-size)
-
---------------------------------------------- */
+/*!
+ * jQuery fontSizer v1.0
+ * http://protoboard.cl/
+ *
+ * Copyright 2011, Rodrigo Augosto (@coto)
+ * Dual licensed under the MIT or GPL Version 2 licenses.
+ *
+ * Date: Mon Mar 22 01:01:29 2011 -0500
+ */
 
 ;(function($) {
 
@@ -91,5 +66,4 @@ How to use:
 
 		})
 	}
-
 })(jQuery);
