@@ -345,6 +345,7 @@ div.l-toolbar {
 				display: inline-block;
 				font-weight: bold;
 				text-align: left;
+				text-decoration: underline;
 				padding-left: 4px;
 				width: 39%;
 				overflow: hidden;

@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 
 import os
-import datetime
 
 # Google App Engine imports.
-from google.appengine.api import users
-from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp \
 	import util, template
@@ -29,10 +26,6 @@ def main():
 		], debug=True)
 		
     util.run_wsgi_app(application)
-
-	# working with wsgiref 
-	#import wsgiref.handlers
-	#wsgiref.handlers.CGIHandler().run(application)
 
 if __name__ == '__main__':
     main()

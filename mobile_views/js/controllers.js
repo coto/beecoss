@@ -204,43 +204,48 @@ $L.registerView({
 			// DOMobject.tableToggle({'url': file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })
 			source = '/mobile_views/js/table_evaluations.js';
 			$viewer.find('#tableEvaluations').tableToggle({'url': source});
-			$viewer.find('#bigtable').click(function(evt){
-				evt.preventDefault();
-				elm = $("#bigone");
-				if($viewer.find('table tbody.data_content tr').size() > 0)
-					return;
-				
-				table = $('<table border="1"></table>');
-					table.append('<tr class="option" style="font-weight: bold; text-align: center; background-color: white;">')
-					.append('<tbody class="data_content">');
+			
+		}
+		,postEffect: function($viewer) {
+			//  Big Table
+			elm = $("#bigone");
+			if($viewer.find('table tbody.data_content tr').size() > 0)
+				return;
 
-				select=table.find('tr.option');
-				content=table.find('tbody.data_content');
-				
-				
-				$.getJSON(source, function(data){
-					select.append('<td>&nbsp;</td>');
-					$.each(data.Y, function(index, item){ // It's represented by SELECT
-						select.append('<td>'+item+'</td>');
-					});
+			table = $('<table border="1"></table>');
+				table.append('<tr class="option" style="font-weight: bold; text-align: center; background-color: white;">')
+				.append('<tbody class="data_content">');
+
+			select=table.find('tr.option');
+			content=table.find('tbody.data_content');
 
 
-					$.each(data.X, function(index, item){ // It's represented by ROW
-						var itemName = $('<td style="font-weight: bold; text-align: center; background-color: white;">'+item+'</td>');
-						var stack = "";
-						$.each(data.data[index], function(i){
-							stack = stack + '<td>'+data.data[index][i]+'</td>';
-						});
-
-						$('<tr id="'+index+'"></tr>').append(itemName).append(stack).appendTo(content);
-					});
-					elm.html(table);
+			$.getJSON(source, function(data){
+				select.append('<td>&nbsp;</td>');
+				$.each(data.Y, function(index, item){ // It's represented by SELECT
+					select.append('<td>'+item+'</td>');
 				});
 
 
+				$.each(data.X, function(index, item){ // It's represented by ROW
+					var itemName = $('<td style="font-weight: bold; text-align: center; background-color: white;">'+item+'</td>');
+					var stack = "";
+					$.each(data.data[index], function(i){
+						stack = stack + '<td>'+data.data[index][i]+'</td>';
+					});
+
+					$('<tr id="'+index+'"></tr>').append(itemName).append(stack).appendTo(content);
+				});
+				elm.html(table);
 			});
-		}
-		,postEffect: function($viewer) {
+			
+			// Show 
+			$viewer.find('#bigtable').click(function(evt){
+				evt.preventDefault();
+				$("#bigone").toggle();
+			});
+			$("#bigtable").show();
+			
 		}
 	}
 });
