@@ -13,224 +13,224 @@
 # limitations under the License.
 #
 
-import datetime, re, captcha, os
+import datetime, re, captcha, os, languages
 
 # Google App Engine imports.
 from google.appengine.api import mail
 from google.appengine.api import users
+from google.appengine.api import urlfetch
 from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp \
 	import util, template
 
+def get_country(self):
+    country = urlfetch.fetch("http://geoip.wtanaka.com/cc/"+self.request.remote_addr).content
+    return country
+
 def isAddressValid(email):
-	if len(email) > 7:
-		if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", email) != None:
-			return 1
-	return 0
+    if len(email) > 7:
+        if re.match("^.+\\@(\\[?)[a-zA-Z0-9\\-\\.]+\\.([a-zA-Z]{2,3}|[0-9]{1,3})(\\]?)$", email) != None:
+            return 1
+    return 0
+
 def get_device(self):
-	uastring = self.request.user_agent
-	if "Mobile" in uastring and "Safari" in uastring:
-		device = "mobile"
-	else:
-		device = "desktop"
+    uastring = self.request.user_agent
+    if "Mobile" in uastring and "Safari" in uastring:
+        kind = "mobile"
+    else:
+        kind = "desktop"
 
-	if "MSIE" in uastring:
-		browser = "Explorer"
-	elif "Firefox" in uastring:
-		browser = "Firefox"
-	elif "Presto" in uastring:
-		browser = "Opera"
-	elif "Android" in uastring and "AppleWebKit" in uastring:
-		browser = "Chrome for andriod"
-	elif "iPhone" in uastring and "AppleWebKit" in uastring:
-		browser = "Safari for iPhone"
-	elif "iPod" in uastring and "AppleWebKit" in uastring:
-		browser = "Safari for iPod"
-	elif "iPad" in uastring and "AppleWebKit" in uastring:
-		browser = "Safari for iPad"
-	elif "Chrome" in uastring:
-		browser = "Chrome"
-	elif "AppleWebKit" in uastring:
-		browser = "Safari"
-	else:
-		browser = "unknow"
+    if "MSIE" in uastring:
+        browser = "Explorer"
+    elif "Firefox" in uastring:
+        browser = "Firefox"
+    elif "Presto" in uastring:
+        browser = "Opera"
+    elif "Android" in uastring and "AppleWebKit" in uastring:
+        browser = "Chrome for andriod"
+    elif "iPhone" in uastring and "AppleWebKit" in uastring:
+        browser = "Safari for iPhone"
+    elif "iPod" in uastring and "AppleWebKit" in uastring:
+        browser = "Safari for iPod"
+    elif "iPad" in uastring and "AppleWebKit" in uastring:
+        browser = "Safari for iPad"
+    elif "Chrome" in uastring:
+        browser = "Chrome"
+    elif "AppleWebKit" in uastring:
+        browser = "Safari"
+    else:
+        browser = "unknow"
 
+    device = {
+		"kind": kind,
+		"browser": browser,
+		"uastring": uastring
+	}
 
-	return "desktop"
+    return device
+
+def set_lang_cookie_and_return_dict(request, response):
+    if request.get("hl") == "":
+        # ask for cookie
+        lang_cookie = request.cookies.get("hl")
+        if not lang_cookie:
+            lang_cookie = "en"
+    else:
+        # set cookie to en
+        lang_cookie = request.get("hl")
+
+    response.headers.add_header("Set-Cookie", "hl=" + lang_cookie + ";")
+    lang = {
+	  'en': languages.en,
+	  'es': languages.es,
+	}[lang_cookie]
+    return lang
 
 class ContactForm(db.Model):
-	when = db.DateTimeProperty(
-				auto_now_add=True)
-	who = db.StringProperty(
-				required=True)
-	subject = db.StringProperty(
-				required=True)
-	message = db.StringProperty(
-				required=True)
-	remote_addr = db.StringProperty()
+    when = db.DateTimeProperty(
+		auto_now_add=True)
+    who = db.StringProperty(
+		required=True)
+    subject = db.StringProperty(
+		required=True)
+    message = db.StringProperty(
+		required=True)
+    remote_addr = db.StringProperty()
+    country = db.StringProperty()
 
 class ContactHandler(webapp.RequestHandler):
-	def get(self):
-		path = self.request.path
-		chtml = captcha.displayhtml(
-		  public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
-		  use_ssl = False,
-		  error = None)
+    def get(self):
+        chtml = captcha.displayhtml(
+              public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
+              use_ssl = False,
+              error = None)
 
-		params = {
-			'device': get_device(self),
+        params = {
 			'captchahtml': chtml,
-			'path': path,
+			'device': get_device(self),
+			'lang': set_lang_cookie_and_return_dict(self.request, self.response),
+			'path': self.request.path,
 		}
-		self.response.out.write(
+        self.response.out.write(
 			template.render('views/contact.html', params))
 
-	def post(self):
-		ip = self.request.remote_addr
-		now = datetime.datetime.now()
-		who = self.request.get('who')
-		subject = self.request.get('subject')
-		message = self.request.get('message')
-		challenge = self.request.get('recaptcha_challenge_field')
-		response  = self.request.get('recaptcha_response_field')
-		chtml = captcha.displayhtml(
-		  public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
-		  use_ssl = False,
-		  error = None)
+    def post(self):
+        ip = self.request.remote_addr
+        now = datetime.datetime.now()
+        email = self.request.get('email')
+        lang = set_lang_cookie_and_return_dict(self.request, self.response)
+        subject = self.request.get('subject')
+        message = self.request.get('message')
+        challenge = self.request.get('recaptcha_challenge_field')
+        response  = self.request.get('recaptcha_response_field')
+        chtml = captcha.displayhtml(
+              public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
+              use_ssl = False,
+              error = None)
 
-		cResponse = captcha.submit(
-						 challenge,
-						 response.encode('utf-8'),
-						 "6Lc3HcMSAAAAAAq3AmnzE9t17wkxLU7OlKAKUjX9",
-						 ip)
-		if not cResponse.is_valid:
-			params = {
+        cResponse = captcha.submit(
+             challenge,
+             response.encode('utf-8'),
+             "6Lc3HcMSAAAAAAq3AmnzE9t17wkxLU7OlKAKUjX9", ip)
+
+        if not cResponse.is_valid:
+            params = {
+				'captchahtml': chtml,
 				'device': get_device(self),
+				'lang': set_lang_cookie_and_return_dict(self.request, self.response),
 				'path' : self.request.path,
-				'msg': "invalid captcha",
+				'msg': lang["invalid_captcha"],
 				'is_error': True,
-                'captchahtml': chtml,
 			}
-			self.response.out.write(
-				template.render('views/contact.html', params))
-			return
-		# valid email address
-		if not isAddressValid(who):
-			params = {
+            #self.response.out.write("chaptcha invalid: " + challenge  + " - " + response)
+            self.response.out.write(template.render('views/contact.html', params))
+            return
+        # valid email address
+        if not isAddressValid(email):
+            params = {
+				'captchahtml': chtml,
 				'device': get_device(self),
+				'lang': set_lang_cookie_and_return_dict(self.request, self.response),
 				'path' : self.request.path,
-				'msg': "invalid_email_address",
-				'is_error': False,
-                'captchahtml': chtml,
+				'msg': lang["invalid_email_address"],
+				'is_error': True,
 			}
-			self.response.out.write(
-				template.render('views/contact.html', params))
-
-		else:
-			contactForm = ContactForm(
-				who = who,
+            #self.response.out.write("is not a valid email: " + email)
+            self.response.out.write(template.render('views/contact.html', params))
+        else:
+            contactForm = ContactForm(
+				who = email,
 				subject = subject,
 				message = message,
-				remote_addr = ip
+				remote_addr = ip,
+				country = get_country(self)
 				)
-			contactForm.put()
+            contactForm.put()
 
-			# Internal
-			message_to_admin = mail.EmailMessage()
-			message_to_admin.sender = "rodrigo.augosto@gmail.com"
-			message_to_admin.subject = "Protoboard - Contact : ", subject
-			message_to_admin.to = "rodrigo.augosto@gmail.com"
-			message_to_admin.body = '{\n\t"who": "%(who)s", \n\t"when": "%(when)s", \n\t"remote_addr": "%(remote_addr)s", \n\t"message": "%(message)s"\n},' % \
-					  {'who': who, "when": str(now), "remote_addr": ip, "message": message}
-			message_to_admin.send()
-
-			params = {
+            # Internal
+            message_to_admin = mail.EmailMessage()
+            message_to_admin.sender = "rodrigo.augosto@gmail.com"
+            message_to_admin.subject = "Protoboard - Contact : " + subject
+            message_to_admin.to = "rodrigo.augosto@gmail.com"
+            message_to_admin.body = 'who: %(who)s \nwhen: %(when)s \nremote_addr: %(remote_addr)s \nCountry: %(country)s \n\n%(message)s' % \
+					  {'who': email, "when": str(now), "remote_addr": ip, "country": get_country(self), "message": message}
+            message_to_admin.send()
+            params = {
+				'captchahtml': chtml,
 				'device': get_device(self),
+				'lang': set_lang_cookie_and_return_dict(self.request, self.response),
 				'path' : self.request.path,
-				'msg': "successfuly sent",
+				'msg': lang["successfuly_sent"],
 				'is_error': False,
-                'captchahtml': chtml,
 			}
-			self.response.out.write(
+            self.response.out.write(
 				template.render('views/contact.html', params))
 
-
 class MainHandler(webapp.RequestHandler):
-	def get(self):
-		path = self.request.path
+    def get(self):
+        path = self.request.path
+        if path == "/":
+            path = "/home"
 
-		if path == "/":
-			path = "/home"
-
-		params = {
+        params = {
 			'device': get_device(self),
 			'path': path
 		}
 
-		view = os.path.join('views%s.html' % (path))
-		self.response.out.write(
+        view = os.path.join('views%s.html' % (path))
+        self.response.out.write(
 			template.render(view, params))
 
 class AuthorHandler(webapp.RequestHandler):
-	def get(self):
+    def get(self):
+        self.response.headers['Content-Type'] = 'text/html'
+        ip = self.request.remote_addr
+        now = datetime.datetime.now()
+        user = users.get_current_user()
 
-		self.response.headers['Content-Type'] = 'text/html'
-		uastring = self.request.user_agent
-		ip = self.request.remote_addr
-		now = datetime.datetime.now()
-		user = users.get_current_user()
-
-		if user:
-			greeting = ("Welcome, %s! (<a href=\"%s\">sign out</a>), it's %s" %
+        if user:
+            greeting = ("Welcome, %s! (<a href=\"%s\">sign out</a>), it's %s" %
 						(user.nickname(), users.create_logout_url("/author"), now))
-		else:
-			greeting = ("<a href=\"%s\">Sign in or register</a>, it's %s" %
+        else:
+            greeting = ("<a href=\"%s\">Sign in or register</a>, it's %s" %
 						(users.create_login_url("/author"), now))
 
-		if "Mobile" in uastring and "Safari" in uastring:
-			device = "mobile"
-		else:
-			device = "desktop"
-
-		if "MSIE" in uastring:
-			browser = "Explorer"
-		elif "Firefox" in uastring:
-			browser = "Firefox"
-		elif "Presto" in uastring:
-			browser = "Opera"
-		elif "Android" in uastring and "AppleWebKit" in uastring:
-			browser = "Chrome for andriod"
-		elif "iPhone" in uastring and "AppleWebKit" in uastring:
-			browser = "Safari for iPhone"
-		elif "iPod" in uastring and "AppleWebKit" in uastring:
-			browser = "Safari for iPod"
-		elif "iPad" in uastring and "AppleWebKit" in uastring:
-			browser = "Safari for iPad"
-		elif "Chrome" in uastring:
-			browser = "Chrome"
-		elif "AppleWebKit" in uastring:
-			browser = "Safari"
-		else:
-			browser = "unknow"
-
-		template_values = {
-			'device': device,
-			'uastring': uastring,
+        template_values = {
+			'device': get_device(self),
 			'ip': ip,
 			'greeting': greeting,
-			'browser': browser,
 		}
 
-		mobileDevice = "true"
-		if mobileDevice:
-			self.response.out.write(template.render('views/author.html', template_values))
-		else:
-			self.response.out.write(template.render('views/author.html', template_values))
+        mobileDevice = "true"
+        if mobileDevice:
+            self.response.out.write(template.render('views/author.html', template_values))
+        else:
+            self.response.out.write(template.render('views/author.html', template_values))
 
 
 def main():
-	application = webapp.WSGIApplication([
+    application = webapp.WSGIApplication([
 			('/', MainHandler),
 			('/blog', MainHandler),
 			('/about', MainHandler),
@@ -238,11 +238,11 @@ def main():
 			('/author', AuthorHandler)
 		], debug=True)
 
-	util.run_wsgi_app(application)
+    util.run_wsgi_app(application)
 
-	# working with wsgiref
-	#import wsgiref.handlers
-	#wsgiref.handlers.CGIHandler().run(application)
+    # working with wsgiref
+    #import wsgiref.handlers
+    #wsgiref.handlers.CGIHandler().run(application)
 
 if __name__ == '__main__':
-	main()
+    main()
