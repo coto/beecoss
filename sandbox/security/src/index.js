@@ -10,6 +10,8 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
     backText: 'Volver',
     useTitleAsBackText: true,
     initComponent : function() {
+        // navigationButton ("Menu")
+        // Visble solo en iPad o Desktop con Tamaño de pantalla pequeño
         this.navigationButton = new Ext.Button({
             hidden: Ext.is.Phone || Ext.Viewport.orientation == 'landscape',
             text: 'Menu',
@@ -17,6 +19,9 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
             scope: this
         });
 
+        // backButton ("Volver")
+        // Visble solo en Phone
+        // Por defecto oculto, se muestra
         this.backButton = new Ext.Button({
             text: this.backText,
             ui: 'back',
@@ -33,21 +38,23 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
             ui: 'dark',
             dock: 'top',
             title: this.title,
+            //style: 'border: 2px solid green',
             items: btns.concat(this.buttons || [])
         });
 
         this.navigationPanel = new Ext.NestedList({
 			// Barra lateral izquierda para iPhone y Tablets
             store: sink.StructureStore,
-            useToolbar: Ext.is.Phone ? false : true,
-			//title: '<img src="media/img/lg.gif" style="width: 100%;"/>',
+            useToolbar: Ext.is.Phone ? false : true, // Barra superior del menu
+			//title: '<img src="media/img/lg.gif" style="height: 100%;"/>',
             updateTitleText: false,
             dock: 'left',
+            //style: 'border: 2px solid yellow',
             hidden: !Ext.is.Phone && Ext.Viewport.orientation == 'portrait',
             toolbar: Ext.is.Phone ? this.navigationBar : null,
             listeners: {
-                itemtap: this.onNavPanelItemTap,
-                scope: this
+               itemtap: this.onNavPanelItemTap,
+               scope: this
             }
         });
 
@@ -57,15 +64,72 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
             this.navigationPanel.setWidth(250);
         }
 
+        this.navigationPanelPhone = new Ext.TabPanel({
+            tabBar: {
+                dock: 'bottom',
+                ui: 'light',
+                layout: {
+                    pack: 'center'
+                }
+            },
+            cardSwitchAnimation: {
+                type: 'slide',
+                cover: true
+            },
+            defaults: {
+                scroll: 'vertical'
+            },
+            items: [
+                {
+                    title: 'Noticias',
+                    html: '<p>Docking tabs to the bottom will automatically change their style. The tabs below are ui="light", though the standard type is dark. Badges (like the 4 below) can be added by setting <code>badgeText</code> when creating a tab/card or by using <code>setBadge()</code> on the tab later.</p>',
+                    iconCls: 'info',
+                    cls: 'card card1'
+                },
+                {
+                    title: 'Mercado',
+                    html: 'Favorites Card',
+                    iconCls: 'favorites',
+                    cls: 'card card2',
+                    badgeText: '4'
+                },
+                {
+                    title: 'Estudios',
+                    id: 'tab3',
+                    html: 'Downloads Card',
+                    badgeText: 'Text can go here too, but it will be cut off if it is too long.',
+                    cls: 'card card3',
+                    iconCls: 'download'
+                },
+                {
+                    title: 'Buscador',
+                    html: 'Settings Card',
+                    cls: 'card card4',
+                    iconCls: 'settings'
+                },
+                {
+                    title: 'Cliente',
+                    html: 'User Card',
+                    cls: 'card card5',
+                    iconCls: 'user'
+                }
+            ]
+        });
+
         this.dockedItems = this.dockedItems || [];
         this.dockedItems.unshift(this.navigationBar);
 
+        // Muestra el panel de navegación (navigationPanel)
+        // como dockedItems al lado izquierdo para lo que no es Phone
         if (!Ext.is.Phone && Ext.Viewport.orientation == 'landscape') {
             this.dockedItems.unshift(this.navigationPanel);
         }
+        // Muestra el panel de navegación (navigationPanel)
+        // como items, aplica en Phone
         else if (Ext.is.Phone) {
             this.items = this.items || [];
-            this.items.unshift(this.navigationPanel);
+            //this.items.unshift(this.navigationPanel);
+            this.items.unshift(this.navigationPanelPhone);
         }
 
         this.addEvents('navigate');
@@ -123,7 +187,6 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
     },
 
     onUiBack: function() {
-		alert("back");
 		// Accion Back del iPhone
         var navPnl = this.navigationPanel;
 
@@ -187,14 +250,18 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
     },
 
     layoutOrientation : function(orientation, w, h) {
-		// Se ejecutasolamente al inicio, identifica cuando no es iPhone
+		// Se ejecuta: Al inicio, cambio de resolución, cambio portrait/landscape
+		// Acción: Identifica cuando no es iPhone
 		// Aplica: 
 		//		- Desktop
 		//		- iPad
-		//		- iPhone        
+		//		- iPhone
 		if (!Ext.is.Phone) {
             if (orientation == 'portrait') {
-				alert("por")
+				// Menu flotante
+                // No Menu barra Lateral
+                // Boton de Navegación (navigationButton) despliega menu flotante
+                // Aplica en: iPad (Portrait)
 				
                 this.navigationPanel.hide(false);
                 this.removeDocked(this.navigationPanel, false);
@@ -206,11 +273,12 @@ Ext.ux.UniversalUI = Ext.extend(Ext.Panel, {
                 this.navigationButton.show(false);
             }
             else {
-				// Landscape or Desktop
+                // Menu barra lateral
+				// Aplica en: iPad (Landscape), Desktop
                 this.navigationPanel.setFloating(false);
                 this.navigationPanel.show(false);
                 this.navigationButton.hide(false);
-                //this.insertDocked(0, this.navigationPanel);
+                this.insertDocked(0, this.navigationPanel);
             }
             this.navigationBar.doComponentLayout();
         }
@@ -257,6 +325,7 @@ sink.Main = {
             title: Ext.is.Phone ? '<img src="media/img/lg.gif"/>' : 'Inversiones Security',
             useTitleAsBackText: false,
             navigationItems: sink.Structure,
+            //style: 'border: 2px solid red',
             buttons: [{xtype: 'spacer'}, this.sourceButton],
             listeners: {
                 navigate : this.onNavigate,
