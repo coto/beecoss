@@ -7,3 +7,10 @@
 = Description
 
  Personal Web Site
+
+
+== Resources
+
+* Tabifier: http://tools.arantius.com/tabifier
+* iPhone-Icon-Generator: http://wizardtoolkit.com/shooter/iPhone-Icon-Generator
+[link:http://tools.arantius.com/tabifier]
