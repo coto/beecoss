@@ -48,7 +48,7 @@ article{
 /*** header */
 header{
 	height: 62px;
-	background: url('desktop_images/head-bg.gif') left top repeat-x;
+	background: url('images/head-bg.gif') left top repeat-x;
 	overflow: hidden;
 	margin: 0 40px;	
 }
@@ -252,7 +252,7 @@ div.callouts {
         text-transform: uppercase;
         font-size: 30px;
         letter-spacing: -0.02em;
-        background: url('desktop_images/head-bg.gif') left top repeat-x;
+        background: url('images/head-bg.gif') left top repeat-x;
         padding: 16px 28px;
         margin: 0;
         -webkit-border-top-left-radius: 6px;
@@ -298,7 +298,7 @@ div.callouts {
 	}
 
 	.modal-content .button{
-		background: url(desktop_images/bg-big-button.png) no-repeat;
+		background: url("images/bg-big-button.png") no-repeat;
 		border: 0;
 		text-transform: uppercase;
 		color: #FFF;

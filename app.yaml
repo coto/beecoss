@@ -15,10 +15,6 @@ handlers:
 # only for mobile test
 - url: /mobile_views
   static_dir: mobile_views
-
-
-- url: /poll
-  script: poll.py
   
 - url: /test/.*
   script: test.py

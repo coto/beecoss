@@ -16,11 +16,11 @@
 	<link rel="openid2.local_id" href="https://coto.pip.verisignlabs.com/" /> 
 
 	{% ifequal device.kind 'desktop' %}
-	<script src="media/desktop/js/twitter-widget.js" type="text/javascript"></script>
+	<script src="media/js/twitter-widget.js" type="text/javascript"></script>
 	{% endifequal %}
-	<link type="text/css" rel="stylesheet" href="media/css/{{ device.kind }}.css" />
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
-    <script src="media/{{ device.kind }}/js/main.js"></script>
+	<link type="text/css" rel="stylesheet" href="/media/css/main.css" />
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6/jquery.min.js"></script>
+    <script src="media/js/main.js"></script>
 
 	{% block media %}
 
@@ -41,7 +41,7 @@
 <body>
 <header>
 		<h1>
-			<a href="/"><img alt="protoboard" src="/media/{{ device.kind }}/images/protoboard.png" /></a>
+			<a href="/"><img alt="protoboard" src="/media/images/protoboard.png" /></a>
 		</h1>
 		{% include "../templates/menu.html" %}
 </header>
