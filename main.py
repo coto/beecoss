@@ -81,7 +81,8 @@ def set_lang_cookie_and_return_dict(self):
                or c == "no" or c == "au" or c == "nz" or c == "se" or c == "dk" or c == "br" or c == "pt":
                 lang_cookie = "en"
             else:
-                lang_cookie = "es"
+                #TODO: Is Necessary to change to Spanish
+                lang_cookie = "en"
     else:
         # set cookie to en
         lang_cookie = self.request.get("hl")
@@ -201,7 +202,8 @@ class MainHandler(webapp.RequestHandler):
 
         params = {
 			'device': get_device(self),
-			'path': path
+            'lang': set_lang_cookie_and_return_dict(self),
+			'path': path,
 		}
 
         view = os.path.join('views%s.html' % (path))

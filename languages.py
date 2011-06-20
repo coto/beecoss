@@ -23,7 +23,7 @@ en["successfuly_sent"] = "Message successfuly sent"
 ## spanish dict
 
 es = {}
-es["id"] = "en"
+es["id"] = "es"
 es["menu_1"] = "Home"
 es["menu_2"] = "Blog"
 es["menu_3"] = "Acerca"

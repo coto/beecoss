@@ -1,7 +1,7 @@
 ﻿
 $L.registerView({
 	"id"			: "home"	
-	,"url"			: "/sandbox/frameworkmobile/home.html"
+	,"url"			: "/sandbox/frameworkmobile/views/home.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 
@@ -94,7 +94,7 @@ goHome = function(evt) {
 /* Ajax Test */
 $L.registerView({
 	"id"			: "render_success"
-	,"url"			: "/sandbox/frameworkmobile/render_success.py"
+	,"url"			: "/sandbox/frameworkmobile/views/render_success.py"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -109,7 +109,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "render_error"	
-	,"url"			: "/sandbox/frameworkmobile/render_error.py"
+	,"url"			: "/sandbox/frameworkmobile/views/render_error.py"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -121,7 +121,7 @@ $L.registerView({
 /******** Feature's Views ********/
 $L.registerView({
 	"id"			: "back-1"
-	,"url"			: "/sandbox/frameworkmobile/back-1.html"
+	,"url"			: "/sandbox/frameworkmobile/views/back-1.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -140,7 +140,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "back-2"
-	,"url"			: "/sandbox/frameworkmobile/back-2.html"
+	,"url"			: "/sandbox/frameworkmobile/views/back-2.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -155,7 +155,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "back-3"
-	,"url"			: "/sandbox/frameworkmobile/back-3.html"
+	,"url"			: "/sandbox/frameworkmobile/views/back-3.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -166,7 +166,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "nohistory"
-	,"url"			: "/sandbox/frameworkmobile/nohistory.html"
+	,"url"			: "/sandbox/frameworkmobile/views/nohistory.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -186,7 +186,7 @@ $L.registerView({
 /******** Feature's Views ********/
 $L.registerView({
 	"id"			: "slider"
-	,"url"			: "/sandbox/frameworkmobile/slider.html"
+	,"url"			: "/sandbox/frameworkmobile/views/slider.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -197,12 +197,12 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "table"
-	,"url"			: "/sandbox/frameworkmobile/table-toggle.html"
+	,"url"			: "/sandbox/frameworkmobile/views/table-toggle.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
 			// DOMobject.tableToggle({'url': file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })
-			source = '/sandbox/frameworkmobile/js/table_evaluations.js';
+			source = '/sandbox/frameworkmobile/data/table_evaluations.js';
 			$viewer.find('#tableEvaluations').tableToggle({'url': source});
 			
 		}
@@ -251,7 +251,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "tabs"
-	,"url"			: "/sandbox/frameworkmobile/tabs.html"
+	,"url"			: "/sandbox/frameworkmobile/views/tabs.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -262,7 +262,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "map"
-	,"url"			: "/sandbox/frameworkmobile/map.html"
+	,"url"			: "/sandbox/frameworkmobile/views/map.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -329,7 +329,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "accordion"
-	,"url"			: "/sandbox/frameworkmobile/accordion.html"
+	,"url"			: "/sandbox/frameworkmobile/views/accordion.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -340,7 +340,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "item-desplegable"
-	,"url"			: "/sandbox/frameworkmobile/item-desplegable.html"
+	,"url"			: "/sandbox/frameworkmobile/views/item-desplegable.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -351,7 +351,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "item-desplegable-select"
-	,"url"			: "/sandbox/frameworkmobile/item-desplegable-select.html"
+	,"url"			: "/sandbox/frameworkmobile/views/item-desplegable-select.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -362,7 +362,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "buttons"
-	,"url"			: "/sandbox/frameworkmobile/buttons.html"
+	,"url"			: "/sandbox/frameworkmobile/views/buttons.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -373,7 +373,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "forms"	
-	,"url"			: "/sandbox/frameworkmobile/forms.html"
+	,"url"			: "/sandbox/frameworkmobile/views/forms.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -393,7 +393,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "properties"
-	,"url"			: "/sandbox/frameworkmobile/properties.html"
+	,"url"			: "/sandbox/frameworkmobile/views/properties.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -404,7 +404,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "titles"
-	,"url"			: "/sandbox/frameworkmobile/titles-text.html"
+	,"url"			: "/sandbox/frameworkmobile/views/titles-text.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -415,7 +415,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "expanded-list"
-	,"url"			: "/sandbox/frameworkmobile/expanded-list.html"
+	,"url"			: "/sandbox/frameworkmobile/views/expanded-list.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -426,7 +426,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "rounded-list"	
-	,"url"			: "/sandbox/frameworkmobile/rounded-list.html"
+	,"url"			: "/sandbox/frameworkmobile/views/rounded-list.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
@@ -437,7 +437,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "dial-phone"
-	,"url"			: "/sandbox/frameworkmobile/dial-phone.html"
+	,"url"			: "/sandbox/frameworkmobile/views/dial-phone.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#homeButton').click(goHome);
