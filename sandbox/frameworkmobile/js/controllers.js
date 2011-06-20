@@ -203,12 +203,12 @@ $L.registerView({
 			$viewer.find('#homeButton').click(goHome);
 			// DOMobject.tableToggle({'url': file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })
 			source = '/sandbox/frameworkmobile/data/table_evaluations.js';
-			$viewer.find('#tableEvaluations').tableToggle({'url': source});
+			$viewer.find('#ContentTable').tableToggle({'url': source, 'by': 'y'});
 			
 		}
 		,postEffect: function($viewer) {
-			//  Big Table
-			elm = $("#bigone");
+			//####  Big Table ####
+			elm = $("#BigTable");
 			if($viewer.find('table tbody.data_content tr').size() > 0)
 				return;
 
@@ -240,12 +240,13 @@ $L.registerView({
 			});
 			
 			// Show 
-			$viewer.find('#bigtable').click(function(evt){
+			$viewer.find('#showBigTable').click(function(evt){
 				evt.preventDefault();
-				$("#bigone").toggle();
+				$("#BigTable").toggle();
+                $("#showBigTable").text($("#BigTable").is(":visible")?"Hide Complete Table":"Show Complete Table")
 			});
-			$("#bigtable").show();
-			
+			$("#BigTable").show();
+
 		}
 	}
 });
