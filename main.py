@@ -70,17 +70,23 @@ def get_device(self):
 
     return device
 
-def set_lang_cookie_and_return_dict(request, response):
-    if request.get("hl") == "":
+def set_lang_cookie_and_return_dict(self):
+    if self.request.get("hl") == "":
         # ask for cookie
-        lang_cookie = request.cookies.get("hl")
+        lang_cookie = self.request.cookies.get("hl")
+        c = get_country(self)
         if not lang_cookie:
-            lang_cookie = "en"
+            if c == "ca" or c == "uk" or c == "us" or c == "eu" or c == "de" \
+               or c == "gb" or c == "jp" or c == "cn" or c == "in" or c == "ru" \
+               or c == "no" or c == "au" or c == "nz" or c == "se" or c == "dk" or c == "br" or c == "pt":
+                lang_cookie = "en"
+            else:
+                lang_cookie = "es"
     else:
         # set cookie to en
-        lang_cookie = request.get("hl")
+        lang_cookie = self.request.get("hl")
 
-    response.headers.add_header("Set-Cookie", "hl=" + lang_cookie + ";")
+    self.response.headers.add_header("Set-Cookie", "hl=" + lang_cookie + ";")
     lang = {
 	  'en': languages.en,
 	  'es': languages.es,
@@ -109,7 +115,7 @@ class ContactHandler(webapp.RequestHandler):
         params = {
 			'captchahtml': chtml,
 			'device': get_device(self),
-			'lang': set_lang_cookie_and_return_dict(self.request, self.response),
+			'lang': set_lang_cookie_and_return_dict(self),
 			'path': self.request.path,
 		}
         self.response.out.write(
@@ -119,7 +125,7 @@ class ContactHandler(webapp.RequestHandler):
         ip = self.request.remote_addr
         now = datetime.datetime.now()
         email = self.request.get('email')
-        lang = set_lang_cookie_and_return_dict(self.request, self.response)
+        lang = set_lang_cookie_and_return_dict(self)
         subject = self.request.get('subject')
         message = self.request.get('message')
         challenge = self.request.get('recaptcha_challenge_field')
@@ -138,7 +144,7 @@ class ContactHandler(webapp.RequestHandler):
             params = {
 				'captchahtml': chtml,
 				'device': get_device(self),
-				'lang': set_lang_cookie_and_return_dict(self.request, self.response),
+				'lang': set_lang_cookie_and_return_dict(self),
 				'path' : self.request.path,
 				'msg': lang["invalid_captcha"],
 				'is_error': True,
@@ -151,7 +157,7 @@ class ContactHandler(webapp.RequestHandler):
             params = {
 				'captchahtml': chtml,
 				'device': get_device(self),
-				'lang': set_lang_cookie_and_return_dict(self.request, self.response),
+				'lang': set_lang_cookie_and_return_dict(self),
 				'path' : self.request.path,
 				'msg': lang["invalid_email_address"],
 				'is_error': True,
@@ -179,7 +185,7 @@ class ContactHandler(webapp.RequestHandler):
             params = {
 				'captchahtml': chtml,
 				'device': get_device(self),
-				'lang': set_lang_cookie_and_return_dict(self.request, self.response),
+				'lang': set_lang_cookie_and_return_dict(self),
 				'path' : self.request.path,
 				'msg': lang["successfuly_sent"],
 				'is_error': False,

@@ -11,13 +11,9 @@ handlers:
   
 - url: /sandbox
   static_dir: sandbox
-
-# only for mobile test
-- url: /mobile_views
-  static_dir: mobile_views
   
-- url: /test/.*
-  script: test.py
+- url: /sandbox/.*
+  script: sandbox.py
   #login: admin
 
 - url: /.*
