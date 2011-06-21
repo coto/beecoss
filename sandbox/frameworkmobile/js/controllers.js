@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 $L.registerView({
 	"id"			: "home"	
 	,"url"			: "/sandbox/frameworkmobile/views/home.html"
@@ -220,7 +220,7 @@ $L.registerView({
 			content=table.find('tbody.data_content');
 
 
-			$.getJSON(source, function(data){
+			$.getJSON(source+"?bigTable", function(data){
 				select.append('<td>&nbsp;</td>');
 				$.each(data.Y, function(index, item){ // It's represented by SELECT
 					select.append('<td>'+item+'</td>');
@@ -239,7 +239,7 @@ $L.registerView({
 				elm.html(table);
 			});
 			
-			// Show 
+			// Show/Hide Big Table
 			$viewer.find('#showBigTable').click(function(evt){
 				evt.preventDefault();
 				$("#BigTable").toggle();
