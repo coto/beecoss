@@ -6,9 +6,7 @@ Ext.setup({
     onReady: function() {
 
         /*
-        * TODO: HTML5 keynote empty and ready
         * TODO: Sencha Tabletoggle using jQuery
-        * TODO: HTML5 keynote
         * TODO: SENCHA without jQuery
         * */
         
