@@ -4,6 +4,13 @@ Ext.setup({
     phoneStartupScreen: 'phone_startup.png',
     glossOnIcon: false,
     onReady: function() {
+
+        /*
+        * TODO: HTML5 keynote empty and ready
+        * TODO: Sencha Tabletoggle using jQuery
+        * TODO: HTML5 keynote
+        * TODO: SENCHA without jQuery
+        * */
         
         var viewport = new Ext.Panel({
             fullscreen: true,
