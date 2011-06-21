@@ -203,11 +203,35 @@ $L.registerView({
 			$viewer.find('#homeButton').click(goHome);
 			// DOMobject.tableToggle({'url': file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })
 			source = '/sandbox/frameworkmobile/data/table_evaluations.js';
-			$viewer.find('#ContentTable').tableToggle({'url': source, 'by': 'y'});
+			$viewer.find('#ContentTable').tableToggle({'url': source, 'by': 'y', 'y': 3});
 			
 		}
 		,postEffect: function($viewer) {
-			//####  Big Table ####
+            //########  Highlight ##########
+            var toggleTable, bigTable;
+            bigTable = $("#BigTable");
+            toggleTable = $(".l-tableToggle");
+            hightlight = function(orderBy, axiNumber){
+                //alert(orderBy + "/"+ axiNumber);
+                bigTable.find(".data_content tr td").removeClass("highlight");
+                if(orderBy=="x"){
+                    bigTable.find(".data_content tr").eq(axiNumber).find("td").addClass("highlight");
+                }
+                else{
+                    bigTable.find(".data_content tr").each(function(){
+                        $(this).find("td").eq(1+parseInt(axiNumber)).addClass("highlight")
+                    });
+                }
+            }
+            $("select.tT-option").live('change', function(){
+                hightlight(toggleTable.attr("orderby"), $(this).val());
+            });
+            $("ul.tT-data_content span.tT-key").live('click', function(){
+                hightlight(toggleTable.attr("orderby"), $(this).parent().attr('id'));
+            });
+
+        
+			//########  Big Table ##########
 			elm = $("#BigTable");
 			if($viewer.find('table tbody.data_content tr').size() > 0)
 				return;
@@ -237,16 +261,17 @@ $L.registerView({
 					$('<tr id="'+index+'"></tr>').append(itemName).append(stack).appendTo(content);
 				});
 				elm.html(table);
+                // Used only with highlight
+                hightlight(toggleTable.attr("orderby"), toggleTable.attr("axinumber"));
 			});
 			
-			// Show/Hide Big Table
+			//########  Showing Big Table ##########
 			$viewer.find('#showBigTable').click(function(evt){
 				evt.preventDefault();
 				$("#BigTable").toggle();
                 $("#showBigTable").text($("#BigTable").is(":visible")?"Hide Complete Table":"Show Complete Table")
 			});
 			$("#BigTable").show();
-
 		}
 	}
 });

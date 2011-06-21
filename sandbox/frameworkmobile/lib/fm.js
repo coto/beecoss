@@ -286,13 +286,14 @@
 					elm.addClass('l-tableToggle');
 					elm.html('<h3 class="l-loadingTable">loading...</h3>');
 				table = $('<div></div>');
-					table.append('<h3 class="title">')
-					.append('<select class="option">')
-					.append('<ul class="data_content">');
-				title=table.find('h3.title');
-				select=table.find('select.option');
-				content=table.find('ul.data_content');
-				
+					table.append('<h3 class="tT-title">')
+					.append('<select class="tT-option">')
+					.append('<ul class="tT-data_content">');
+				title=table.find('h3.tT-title');
+				select=table.find('select.tT-option');
+				content=table.find('ul.tT-data_content');
+
+                // Avoid charge JSON file again
 				if (store == 'null') {
 					$.getJSON(options.url, function(data){
 						store = data;
@@ -303,20 +304,22 @@
 					exec(store);
 				}
 				function exec(data){
-					data_one = (by == "x")?data.X:data.Y;
-					data_two = (by == "x")?data.Y:data.X;
+					data_one = (by == "x")?data.X:data.Y; // data to fill select
+					data_two = (by == "x")?data.Y:data.X; // data to fill rows
+                    elm.attr({'orderby': by, 'axinumber': (by=="x")?x:y});
 					if(typeof(data.title) != "undefined")
 						title.text(data.title);
-					$.each(data_one, function(index, item){ // It's represented by SELECT
+                    // FILLING IN THE SELECT
+					$.each(data_one, function(index, item){
 						if(by=='x')
 							selected=(index==x)?'selected="selected"':'';
 						else
 							selected=(index==y)?'selected="selected"':'';
 						select.append('<option value="'+index+'" '+selected+'>'+item+'</option>');
 					});
-
-					$.each(data_two, function(index, item){ // It's represented by ROW
-						var itemName = $('<span class="key">'+item+'</span>')
+                    // FILLING IN EACH ROW
+					$.each(data_two, function(index, item){
+						var itemName = $('<span class="tT-key">'+item+'</span>')
 							.bind("click", function(e){
 								if(by=='x'){
 									y=$(this).parent().attr('id');
@@ -332,9 +335,9 @@
 							y=index;
 						else
 							x=index;
-						$('<li id="'+index+'"></li>').append(itemName).append('<span class="value">'+data.data[x][y]+'</span>').appendTo(content);
+						$('<li id="'+index+'"></li>').append(itemName).append('<span class="tT-value">'+data.data[x][y]+'</span>').appendTo(content);
 					});
-					
+
 					select.bind('change', function(evt){
 						if(by=='x')
 							x=$(this).val();

@@ -2,6 +2,17 @@
     .highlight{
         background-color: yellow;
     }
+    .instructionsTable span{
+        display: block;
+        padding-left: 20px;
+    }
+    .instructionsTable code{
+        display: block;
+        padding: 10px;
+        border: 3px solid #acacac;
+        background-color: #f8f8ff;
+        margin: 5px 20px;
+    }
 </style>
 
 <div class="logo" />
@@ -12,12 +23,19 @@
 <h1>Demo</h1>
 
 <h2>Swivel Table</h2>
-<p class="l-instructions" style="text-align: left;">
-	<b>The Problem: </b>How to show big tables on mobile devices<br>
-    <b>The Solution: </b>Show only 2 columns and navigate them choosing from the first row.<br/>
-	Also you can change between rows and columns  by clicking on any row of the first column.<br>
-    <b>The source: </b> This framework works loading the table from a <a href="/sandbox/frameworkmobile/data/table_evaluations.js">JSON</a>.
+<p class="l-instructions instructionsTable" style="text-align: left;">
+	<b>The Problem: </b>
+        <span>* How to show big tables on mobile devices</span>
+    <b>The Solution: </b>
+        <span>* Show only 2 columns and give an easy navigation.</span>
+	    <span>* Also you can rotate the axis by clicking on any row of the first column.</span>
+    <b>The source: </b>
+        <span>* The information of this table has been loaded from <a href="/sandbox/frameworkmobile/data/table_evaluations.js">this JSON</a>.</span>
+    <b>The only one code that you need: </b>
+    <code>DOMobject.tableToggle({'url': json_file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })</code>
 </p>
+
+<!-- This's the only thing that you need -->
 <div id="ContentTable"></div>
 
 <div id="showBigTable" style="color: blue; text-decoration: underline; text-align: center;">

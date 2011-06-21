@@ -323,25 +323,25 @@ div.l-toolbar {
 		text-indent: -900px;
 		overflow: hidden;
 	}
-	.l-tableToggle h3{
+	.l-tableToggle h3.tT-title{
 		text-align: center;
 	}
-	.l-tableToggle select{
+	.l-tableToggle select.tT-option{
 		border: 1px solid gray;
 		font-weight: bold;
 		font-size: 108%;
 		line-height: 32px;
 	}
-	.l-tableToggle ul{
+	.l-tableToggle ul.tT-data_content{
 		border-right: 1px solid gray;
 	}
-		.l-tableToggle ul li{
+		.l-tableToggle ul.tT-data_content li{
 			background-color: white;
 			border: 1px solid gray;
 			border-width: 0 0 1px 1px;
 			line-height: 35px;
 		}
-			.l-tableToggle ul li span.key{
+			.l-tableToggle ul.tT-data_content li span.tT-key{
 				display: inline-block;
 				font-weight: bold;
 				text-align: left;
@@ -352,7 +352,7 @@ div.l-toolbar {
 				text-overflow: ellipsis;
 				white-space: nowrap;
 			}
-			.l-tableToggle ul li span.value{
+			.l-tableToggle ul.tT-data_content li span.tT-value{
 				display: inline-block;
 				text-align: right;
 				background-color: #D7D7D7;
