@@ -178,7 +178,7 @@
               #form-types-mobile figcaption p {
                 text-align: left;
               }
-              #form-types-mobile figcaption hr {
+              #form-types-mobile figcaption {
                 padding-top: 60px;
               }
             </style>
@@ -188,7 +188,6 @@
               <figure>
                 <img src="http://www.sencha.com/img/sencha-large.png" style="" alt="Sencha Touch Logo" />
                 <figcaption>
-                    <hr>
                     <p>* 377kb</p>
                     <p>* But amazing</p>
                     <p>* But f***ng slow</p>
@@ -201,7 +200,6 @@
               <figure>
                 <img src="http://jquerymobile.com/demos/1.0b1/docs/_assets/images/jquery-logo.png" alt="jQuery Mobile Logo" />
                 <figcaption>
-                    <hr>
                     <p>* 27kb + 31Kb</p>
                     <p>* Slow Development</p>
                     <p>* They want to cover all devices around the world (Insane)</p>
@@ -213,7 +211,6 @@
               <figure>
                 <img src="http://www.protoboard.cl/media/images/protoboard.png" alt="Mobile Framework" />
                 <figcaption>
-                    <hr>
                     <p>Ready !!</p>
                     <p>Only WebKit</p>
                     <p>Tested in Transactional sites</p>
@@ -308,6 +305,31 @@
          </div>
 
 
+
+
+
+        <!--  ########      SLIDE   ######### -->
+        <div class="slide semantics" id="code-behind">
+          <header><span class="js">Framework Mobile</span> <h1>Code Behind</h1></header>
+          <section>
+            Parameter Options
+            <pre>
+ DOMobject.tableToggle({
+                'url': file.js,
+                ['by' : 'x'|'y'],
+                ['x' : integer],
+                ['y' : integer]
+                });
+</pre>
+            A real instance
+            <pre>
+$<b>viewer</b>.find('#ContentTable').<em>tableToggle</em>({'url': source, 'by': 'y', 'y': 3});
+</pre>
+             Where source is <a href="/sandbox/frameworkmobile/data/table_evaluations.js">this JSON</a>
+          </section>
+        </div>
+
+
         <!--  ########      SLIDE   ######### -->
         <div class="slide" id="rememberit">
           <style>
@@ -396,33 +418,8 @@
           </section>
         </div>
 
- 
-        <!--  ########      SLIDE   ######### -->
-        <div class="slide semantics" id="aria-attributes"> 
-          <header><span class="html">HTML</span> <h1>ARIA attributes</h1></header> 
-          <section> 
-            <pre>&lt;ul id="tree1"
-      <b>role</b>="<b>tree</b>" 
-      tabindex="0" 
-      <b>aria-labelledby</b>="label_1">
-  &lt;li <b>role</b>="<b>treeitem</b>" tabindex="-1" <b>aria-expanded</b>="true">Fruits&lt;/li>
-  &lt;li <b>role</b>="<b>group</b>">
-    &lt;ul>
-      &lt;li <b>role</b>="<b>treeitem</b>" tabindex="-1">Oranges&lt;/li>
-      &lt;li <b>role</b>="<b>treeitem</b>" tabindex="-1">Pineapples&lt;/li>
-      ...
-    &lt;/ul>
-  &lt;/li>
-&lt;/ul>
-</pre> 
-          </section> 
-        </div> 
 
         <!--  ########      SLIDE   ######### -->
-        
-      
- 
- 
         <div class="slide" id="bye">
           <style> 
             p.resource-link {
@@ -442,6 +439,154 @@
               <p class="resource-link">
                 <a href="http://www.twitter.com/@coto">@coto</a>
               </p>
+          </section>
+        </div>
+
+
+
+
+
+        <!--  ########      SLIDE   ######### -->
+        <div class="slide semantics" id="how-tabletoggle">
+          <header><span class="js">Framework Mobile</span> <h1>Code Behind Toggle Table</h1></header>
+          <section>
+            1st Part (Only parameters)
+            <pre>
+$.fn.tableToggle = function(args){
+    var elm, table, by, x, y;
+    options = jQuery.extend({
+        'by': 'x',
+        'x' : 0,
+        'y' : 0,
+        'debug' : false
+    }, args);
+    by = options.by;
+    x = options.x;
+    y = options.y;
+    if(args.url.lenght < 1)
+        return;
+    elm = $(this);
+        elm.addClass('l-tableToggle');
+        elm.html('&lt;h3 class="l-loadingTable"&gt;loading...&lt;/h3&gt;');
+    table = $('&lt;div&gt;&lt;/div&gt;');
+        table.append('&lt;h3 class="tT-title"&gt;')
+        .append('&lt;select class="tT-option"&gt;')
+        .append('&lt;ul class="tT-data_content"&gt;');
+    title=table.find('h3.tT-title');
+    select=table.find('select.tT-option');
+    content=table.find('ul.tT-data_content');
+
+    ....
+}
+</pre>
+
+          </section>
+        </div>
+
+
+
+
+        <!--  ########      SLIDE   ######### -->
+        <div class="slide semantics" id="how-tabletoggle2">
+          <header><span class="js">Framework Mobile</span> <h1>Code Behind Toggle Table</h1></header>
+          <section>
+            2nd Part (Loading JSON File)
+            <pre>
+$.fn.tableToggle = function(args){
+    ...
+    // Avoid charge JSON file again
+    if (store == 'null') {
+        $.getJSON(options.url, function(data){
+            store = data;
+            exec(store);
+        });
+    }
+    else{
+        exec(store);
+    }
+    function exec(data){
+        data_one = (by == "x")?data.X:data.Y; // data to fill select
+        data_two = (by == "x")?data.Y:data.X; // data to fill rows
+        if(typeof(data.title) != "undefined")
+            title.text(data.title);
+        // FILLING IN THE SELECT
+        $.each(data_one, function(index, item){
+            if(by=='x')
+                selected=(index==x)?'selected="selected"':'';
+            else
+                selected=(index==y)?'selected="selected"':'';
+            select.append('&lt;option value="'+index+'" '+selected+'>'+item+'&lt;/option&gt;');
+        });
+     ....
+    }
+}
+</pre>
+
+          </section>
+        </div>
+
+
+
+        <!--  ########      SLIDE   ######### -->
+        <div class="slide semantics" id="how-tabletoggle3">
+          <header><span class="js">Framework Mobile</span> <h1>Code Behind Toggle Table</h1></header>
+          <section>
+            3rd Part (Filling each row and Bind an action to the first Row)
+            <pre>
+$.fn.tableToggle = function(args){
+    ...
+
+        // FILLING IN EACH ROW
+        $.each(data_two, function(index, item){
+            var itemName = $('&lt;span class="tT-key">'+item+'&lt;/span&gt;')
+                .bind("click", function(e){
+                    if(by=='x'){
+                        y=$(this).parent().attr('id');
+                        by='y';
+                    }
+                    else{
+                        x=$(this).parent().attr('id');
+                        by='x';
+                    }
+                    elm.tableToggle({'url': args.url, 'by':by, 'x':x , 'y': y });
+                });
+            if(by=='x')
+                y=index;
+            else
+                x=index;
+            $('&lt;li id="'+index+'"&gt;&lt;/li&gt;').append(itemName).append('&lt;span class="tT-value"&gt;'+data.data[x][y]+'&lt;/span&gt;').appendTo(content);
+        });
+     ...
+    }
+}
+</pre>
+
+          </section>
+        </div>
+
+
+
+        <!--  ########      SLIDE   ######### -->
+        <div class="slide semantics" id="how-tabletoggle4">
+          <header><span class="js">Framework Mobile</span> <h1>Code Behind Toggle Table</h1></header>
+          <section>
+            4th Part (Bind action to Select)
+            <pre>
+$.fn.tableToggle = function(args){
+    ...
+
+        select.bind('change', function(evt){
+            if(by=='x')
+                x=$(this).val();
+            else
+                y=$(this).val();
+            elm.tableToggle({'url': args.url, 'by':by, 'x':x, 'y':y });
+        });
+        elm.html(table);
+    }
+}
+</pre>
+
           </section>
         </div>
 
