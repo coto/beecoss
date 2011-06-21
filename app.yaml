@@ -11,7 +11,10 @@ handlers:
   
 - url: /sandbox
   static_dir: sandbox
-  
+
+- url: /keynotes
+  static_dir: keynotes
+
 - url: /sandbox/.*
   script: sandbox.py
   #login: admin
