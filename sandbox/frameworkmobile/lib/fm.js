@@ -128,17 +128,12 @@
 	};
 		
 	var $L = new function () {
-		this.loginView = "login";
-		this.userNotLoggedInException = "Antaios.DTO.Auth.NotLoggedInException";
-		this.validationException = "Antaios.DTO.Validation.ValidationException";
-		this.publicException = "Antaios.DTO.Exceptions.PublicException";
-		this.loginEffectStrategy = "fromBottom";
 		this.effectDuration = "slow";
 		this.defaultEffectStrategyOptions = {'effect': 'none'};		
 		this.minHeight = 430;
 		this.currentView = {};
 		this.oldView = {};
-		this.caja;
+		this.box;
 		this.transitionBusy = false;
 		this.currentController = {};
 		this.views = {};
@@ -588,20 +583,7 @@
 		};
 		
 		this.errorHandlerStrategy = function(ex) {
-			switch(ex.getType) {
-				case $L.userNotLoggedInException:
-					setTimeout(function() {$L.renderView($L.loginView, {'effect': $L.loginEffectStrategy});}, 500);
-					break;
-				case $L.validationException:
-					$L.validationErrorStrategy(ex);
-					break;
-				case $L.publicException:
-					setTimeout(function() {alert(ex.message);}, 500);
-					break;
-				default:
-					setTimeout(function() {alert("Se produjo un error inesperado. Inténtelo más tarde");}, 500);
-					break;
-			}
+			setTimeout(function() {alert("Se produjo un error inesperado. Inténtelo más tarde.\n" + ex.getType);}, 500);
 		}
 		
 		this.ajax = function(s) {
@@ -611,15 +593,8 @@
 				$('li.l-selectable').removeClass('l-selected');
 				try {
 					var ex, executeDefault = true;
-					
-					switch(request.status) {
-						case 401:
-							ex = {"getType": $L.userNotLoggedInException};
-							break;
-						default:
-							ex = $.parseJSON(request.responseText);
-							break;
-					}
+
+					ex = $.parseJSON(request.responseText);
 					
 					if(originalError) {
 						executeDefault = originalError(ex);
@@ -634,11 +609,7 @@
 			
 			$.ajax(s);
 		};
-		
-		this.validationErrorStrategy = function(ex) {
-			setTimeout(function() {alert(ex.message);$("#" + ex.field).focus();}, 500);
-		};
-		
+
 		function normalizeViewersHeight() {
 			if($L.$nextViewer.height() < $L.$currentViewer.height()) {
 				$L.$nextViewer.height($L.$currentViewer.height());
@@ -879,7 +850,7 @@
 						break;
 				}
 			}
-			$L.caja = successRender;
+			$L.box = successRender;
 			$L.ajax({
 				'type': options && options.data?'POST':'GET'
 				,'dataType': 'html'
@@ -887,7 +858,7 @@
 				,'data': options && options.data?options.data:{}
 				,'complete': function(request, textStatus) {
 					console.log("> AjaxComplete");
-					if(successRender === $L.caja){
+					if(successRender === $L.box){
 						$L.transitionBusy = true;
 						console.log(request.status + " - " + textStatus  + "... \"" + $L.currentView.controller + "\" is last view called, << REQUESTS LOCKED >>");
 						successRender(request, textStatus, options);
@@ -900,7 +871,7 @@
 			
 			return $container;
 		};
-	}
+	};
 	
 	$L.effectStrategy = new WebkitEffectStrategy();
 	

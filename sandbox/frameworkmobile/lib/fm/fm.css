@@ -576,18 +576,18 @@ ul.l-inputgroup > li > label {
 }
 
 /* Footer */
-#footer {
+#l-footer-bar {
 	margin: 20px 0;
 	position: relative;
 	text-align: center;
 }
-	#footer  p{
+	#l-footer-bar  p{
 		margin-top: 10px;
 	}
-	#footer .ColoredBar { /* Aplicada barra en footer */
+	#l-footer-bar .ColoredBar { /* Aplicada barra en footer */
 		text-align: center;
 	}
-	#footer ul.ButtonBar {
+	#l-footer-bar ul.ButtonBar {
 		position: relative;
 		display: inline-block;
 	}
