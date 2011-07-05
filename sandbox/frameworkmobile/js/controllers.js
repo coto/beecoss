@@ -87,17 +87,12 @@ $L.registerView({
 	}
 });
 
-goHome = function(evt) {
-	evt.preventDefault();
-	$L.renderView('home', {'effect': $L.effectBack});
-}
 /* Ajax Test */
 $L.registerView({
 	"id"			: "render_success"
 	,"url"			: "/sandbox/frameworkmobile/views/render_success.py"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 			$viewer.find('.myself').click(function(evt) {
 				evt.preventDefault();
 				$L.renderView('render_success', {'effect': effectGlobal});
@@ -124,7 +119,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/back-1.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 			$viewer.find('#view-2').click(function(evt) {
 				evt.preventDefault();
 				$L.renderView("back-2", {'effect': effectGlobal});
@@ -143,7 +137,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/back-2.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 			$viewer.find('#view-3').click(function(evt) {
 				evt.preventDefault();
 				$L.renderView("back-3", {'effect': effectGlobal});
@@ -158,7 +151,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/back-3.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -169,7 +161,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/nohistory.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 			$viewer.find('#view-2').click(function(evt) {
 				evt.preventDefault();
 				$L.renderView("back-2", {'effect': effectGlobal});
@@ -189,7 +180,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/slider.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -200,7 +190,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/table-toggle.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 			// DOMobject.tableToggle({'url': file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })
 			source = '/sandbox/frameworkmobile/data/table_evaluations.js';
 			$viewer.find('#ContentTable').tableToggle({'url': source, 'by': 'y', 'y': 3});
@@ -280,7 +269,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/tabs.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -291,7 +279,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/map.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 				var geocoder;
@@ -358,7 +345,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/accordion.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -369,7 +355,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/item-desplegable.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -380,7 +365,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/item-desplegable-select.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -391,7 +375,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/buttons.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -402,7 +385,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/forms.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 			$viewer.find('#form-button').click(function(evt){
 				evt.preventDefault();
 				serial = $L.formSerialize();
@@ -422,7 +404,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/properties.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -433,7 +414,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/titles-text.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -444,7 +424,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/expanded-list.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -455,7 +434,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/rounded-list.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
@@ -466,7 +444,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/dial-phone.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-			$viewer.find('#homeButton').click(goHome);
 		}
 		,postEffect: function($viewer) {
 		}
