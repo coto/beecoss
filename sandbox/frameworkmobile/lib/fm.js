@@ -236,7 +236,7 @@
 			/*
 			 * Funcionalidad que permite volver a la vista anterior "l-back"
 			 */
-			$viewer.find('.l-back').click(function(evt){
+			$('.l-back').click(function(evt){
                 evt.preventDefault();
 				console.log("Call button called");
 				$L.$cursorIndex = $L.$cursorIndex - 1;
@@ -722,7 +722,7 @@
 		this.initialize = function() {
 			/* Originalmente el body está vacío y genera una estructura compuesta por un
 			   container y dos hijos (El current y el next). Además,establece los márgenes y bordes a 0 */
-			$("body")
+			$("#l-container")
 				.append('<div id="l-loading">Cargando</div><div id="container"><div id="one"></div><div id="two"></div></div>');
 
 			$L.$container = $("#container");

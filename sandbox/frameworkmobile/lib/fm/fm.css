@@ -2,19 +2,114 @@
  * Reset
  * */
 html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}body{font:14px/1.231 Helvetica, Arial, sans-serif;}select,input,button,textarea,button{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;line-height:100%;}
+
 /*
- * Body
+ * Scroll Header
+ */
+#header {
+    position:absolute; z-index:2;
+    top:0; left:0;
+    width:100%;
+    height:45px;
+    line-height:45px;
+    background-color:#d51875;
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+    background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+    background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+    padding:0;
+    color:#eee;
+    font-size:20px;
+    text-align:center;
+}
+        #header a.l-button {
+            display: block;
+            float: left;
+            margin: 0; padding: 0;
+            width: 41px;
+            height: 44px;
+            text-indent: -9000px;
+            overflow: hidden; /* Muy importante para evitar flash que se produce al inicio de una animación como consecuencia de text-indent */
+        }
+        #header a.l-button.l-back {
+            background: transparent url('img/l-back.png') left top no-repeat;
+        }
+        #header a.l-button.l-forward {
+            background: transparent url('img/l-forward.png') left top no-repeat;
+        }
+        #header a.l-button.l-home {
+            background: transparent url('img/l-home.png') left top no-repeat;
+        }
+        #header a {
+            color:#f3f3f3;
+            text-decoration:none;
+            font-weight:bold;
+            text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+        }
+/*
+ * Scroll Footer
+ */
+#footer {
+   font-size:12px;
+    -webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+    position:absolute; z-index:2;
+    bottom:0; left:0;
+    width:100%;
+    height:48px;
+    background-color:#222;
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+    background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+    background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+    padding:0;
+    border-top:1px solid #444;
+}
+    #footer li {
+        display:block;
+        float:left;
+        width:33%;
+        text-align:center;
+    }
+
+    #footer a.remove {
+        border-right:1px solid #333;
+    }
+
+    #footer a.add {
+        border-left:1px solid #6a6a6a;
+    }
+
+    #footer a {
+        display:block;
+        text-decoration:none;
+        font-size:12px;
+        color:#eee;
+        line-height:24px;
+        text-shadow:0 -1px 0 #000;
+    }
+
+    #footer span {
+        display:block;
+        font-size:30px;
+        font-weight:bold;
+    }
+
+    #wrapper {
+        position:absolute; z-index:1;
+        top:45px; bottom:48px; left:0;
+        width:100%;
+        background:#CCC;
+        overflow:auto;
+    }
+
+    #scroller {
+        position:absolute; z-index:1;
+        -webkit-tap-highlight-color:rgba(0,0,0,0);
+        width:100%;
+        padding:0;
+    }
+/*
+ *  l-loading
  * */
-body,#container,#one,#two, .l-dialog {
-	background-color: #D7D7D7;
-	width: 100%;
-	height: 100%;
-	position: absolute; /* Importante: Permite moverlos para animar transiciones */
-	padding-bottom: 10px;
-}
-body {
-	overflow-x: hidden;	
-}
 #l-loading{
 	background: black url(img/loading.gif) no-repeat 50% 20px;
 	-webkit-border-radius: 16px;
@@ -39,7 +134,7 @@ li:after {
 /*
  * Headers h1, h2 y h3 
  * */
-h1 {
+#l-container h1 {
 	font-size: 153.9%; /* 20px */
 	/*background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#b4c2d4), color-stop(0.5, #8ea0b7), to(#627794));*/
 	background-image: -webkit-gradient(linear,left top,left bottom,
@@ -49,11 +144,10 @@ h1 {
 	border-bottom: 1px solid black;
 	color: white;
 	text-shadow: #000 0px 0px 2px;
-	padding: 10px 0;
 	text-align: center;
 	font-weight: bold;
 }
-h2 {
+#l-container h2 {
 	font-size: 131%; /* 17px */
 	font-weight: bold;
 	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#B7C0C8), color-stop(0.05, #7E8D9B), to(#596774));
@@ -66,7 +160,21 @@ h2 {
 	padding: 5px;
 	border-bottom: 1px solid black;
 }
-h3 {
+    /*
+     * .l-h2-button-bar: Button located in second Title's Bar (H2)
+     * */
+    div.l-h2-button-bar a.l-button {
+        float: right;
+        -webkit-border-image: url(img/button.png) 0 5 0 5;
+        border-width: 3px 5px 0px 5px;
+        line-height: 25px;
+        color: white;
+        text-shadow: #000 0px 1px 1px;
+        text-decoration: none;
+        text-align: center;
+        margin-right: 10px;
+    }
+#l-container h3 {
 	font-size: 131%; /* 17px */
 	margin: 10px 0px 0px 10px;
 	font-weight: bold;
@@ -97,48 +205,48 @@ h3 {
 			background: transparent url('img/pointer.png') center center no-repeat;
 		}
 
-.l-slider .l-slideControls{
-	/*background-color: green;*/
-	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#FFFFFF), to(#dfe0e1));
-	position: relative;
-	color: #3e3e3e;
-	font-size: 131%;
-	font-weight: bold;
-	text-align: center;
-	border: 1px solid #cdcdcc;
-	border-width: 1px 0;
-}
+    .l-slider .l-slideControls{
+        /*background-color: green;*/
+        background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#FFFFFF), to(#dfe0e1));
+        position: relative;
+        color: #3e3e3e;
+        font-size: 131%;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #cdcdcc;
+        border-width: 1px 0;
+    }
 
-	.l-slider .l-value{
-		display: block;
-		/*background-color: bisque;*/
-		padding: 0 50px; /* 50px = width of .minus & .more */
-		line-height: 35px;
-		height: 35px;
-	}
+        .l-slider .l-value{
+            display: block;
+            /*background-color: bisque;*/
+            padding: 0 50px; /* 50px = width of .minus & .more */
+            line-height: 35px;
+            height: 35px;
+        }
 
-	.l-slider .l-minus,
-	.l-slider .l-more{
-		position: absolute;
-		/*background-color: greenyellow;*/
-		width: 50px;
-		line-height: 35px;
-		height: 35px;
-		top: 0;
-	}
+        .l-slider .l-minus,
+        .l-slider .l-more{
+            position: absolute;
+            /*background-color: greenyellow;*/
+            width: 50px;
+            line-height: 35px;
+            height: 35px;
+            top: 0;
+        }
 
-	.l-slider .l-minus{
-		left: 0;
-		background: transparent url('img/arrow-blue-left.png') center center no-repeat;
-		text-indent: -100px;
-		overflow: hidden;
-	}
-	.l-slider .l-more{
-		right: 0;
-		background: transparent url('img/arrow-blue-right.png') center center no-repeat;
-		text-indent: -100px;
-		overflow: hidden;
-	}
+        .l-slider .l-minus{
+            left: 0;
+            background: transparent url('img/arrow-blue-left.png') center center no-repeat;
+            text-indent: -100px;
+            overflow: hidden;
+        }
+        .l-slider .l-more{
+            right: 0;
+            background: transparent url('img/arrow-blue-right.png') center center no-repeat;
+            text-indent: -100px;
+            overflow: hidden;
+        }
 /*
  * .l-map Implementa diseño de Elementos utilizados en vista Mapa
  * */
@@ -147,78 +255,37 @@ h3 {
 	position: relative;
 	padding-top: 5px;
 }
-#l-map-canvas {
-	height: 100%;
-}
-.l-map-info {
-	position: absolute;
-	top: 70px;
-	z-index: 5;
-	width: 100%;
-}
-.l-map-info .l-map-message {
-	margin: 0 20%;
-	background-color: #FFC;
-	border: 1px solid #C93;
-	font-weight: bold;
-	text-align: center;
-	padding: 10px;
-	display: none;
-}
-	.l-map-info.alert  .l-map-message{
-		background-color: red;
-		color: white;
-	}
-.l-map-content input.l-map-addresssearch {
-	background-color: white;
-	border-radius: 8px;
-	text-align: left;
-}
-.l-map-content input.l-map-search {
-	padding: 2px 30px;
-	text-align: center;
-}
-/*
- * .l-h2-button-bar: Button located in second Title's Bar (H2)
- * */
-div.l-h2-button-bar a.l-button {
-	float: right;
-	-webkit-border-image: url(img/button.png) 0 5 0 5;
-	border-width: 3px 5px 0px 5px;
-	line-height: 25px;
-	color: white;
-	text-shadow: #000 0px 1px 1px;
-	text-decoration: none;
-	text-align: center;
-	margin-right: 3px;
-}
-/*
- * .l-nav-button-bar: Main Navigation Bar, includes "Back" and "Home" buttons
- * */
-div.l-nav-button-bar 
-, div.l-action-button-bar {
-	position: absolute;
-	width: 100%;
-}
-	div.l-nav-button-bar a.l-button {
-		display: block;
-		float: left;
-		margin: 0; padding: 0;
-		width: 41px;
-		height: 44px;
-		border-top: 1px solid black;
-		text-indent: -9000px;
-		overflow: hidden; /* Muy importante para evitar flash que se produce al inicio de una animación como consecuencia de text-indent */
-	}
-	div.l-nav-button-bar a.l-button.l-back {
-		background: transparent url('img/l-back.png') left top no-repeat;
-	}
-	div.l-nav-button-bar a.l-button.l-forward {
-		background: transparent url('img/l-forward.png') left top no-repeat;
-	}
-	div.l-nav-button-bar a.l-button.l-home {
-		background: transparent url('img/l-home.png') left top no-repeat;
-	}
+    #l-map-canvas {
+        height: 100%;
+    }
+    .l-map-info {
+        position: absolute;
+        top: 70px;
+        z-index: 5;
+        width: 100%;
+    }
+    .l-map-info .l-map-message {
+        margin: 0 20%;
+        background-color: #FFC;
+        border: 1px solid #C93;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        display: none;
+    }
+        .l-map-info.alert  .l-map-message{
+            background-color: red;
+            color: white;
+        }
+    .l-map-content input.l-map-addresssearch {
+        background-color: white;
+        border-radius: 8px;
+        text-align: left;
+    }
+    .l-map-content input.l-map-search {
+        padding: 2px 30px;
+        text-align: center;
+    }
 /*
  * .l-instructions: Text Instructions
  * */
