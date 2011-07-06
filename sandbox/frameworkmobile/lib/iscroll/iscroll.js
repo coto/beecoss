@@ -4,7 +4,7 @@
  */
 
 (function(){
-var m = Math,
+    var m = Math,
 	vendor = (/webkit/i).test(navigator.appVersion) ? 'webkit' :
 		(/firefox/i).test(navigator.userAgent) ? 'Moz' :
 		'opera' in window ? 'O' : '',
