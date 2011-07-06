@@ -126,7 +126,34 @@
 			};
 		}
 	};
-		
+
+    /*
+    * Back Event
+    * */
+    function goBack(evt){
+        evt.preventDefault();
+        console.log("Call button called");
+        $L.$cursorIndex = $L.$cursorIndex - 1;
+        if($L.$cursorIndex < 0){
+            $L.$cursorIndex = 0;
+            alert("History is empty");
+            return;
+        }
+        viewBack        = $L.$history[$L.$cursorIndex][0];
+        viewBackOptions = $L.$history[$L.$cursorIndex][1];
+
+        while(viewBackOptions.record == "no"){
+            console.log("Exception: Controller " + viewBack.controller + " is " + viewBackOptions.record  + " recording");
+            $L.$cursorIndex--;
+            viewBack        = $L.$history[$L.$cursorIndex][0];
+            viewBackOptions = $L.$history[$L.$cursorIndex][1];
+        }
+        viewBackOptions.effect = $L.effectBack;
+        viewBackOptions.transition = "back";
+        if (viewBack != undefined) {
+            $L.renderView(viewBack.controller, viewBackOptions);
+        }
+    };
 	var $L = new function () {
 		this.effectDuration = "slow";
 		this.defaultEffectStrategyOptions = {'effect': 'none'};		
@@ -236,30 +263,14 @@
 			/*
 			 * Funcionalidad que permite volver a la vista anterior "l-back"
 			 */
-			$('.l-back').click(function(evt){
-                evt.preventDefault();
-				console.log("Call button called");
-				$L.$cursorIndex = $L.$cursorIndex - 1;
-				if($L.$cursorIndex < 0){
-					$L.$cursorIndex = 0;
-					alert("No existen elementos en el historial");
-					return;
-				}
-				viewBack        = $L.$history[$L.$cursorIndex][0];
-				viewBackOptions = $L.$history[$L.$cursorIndex][1];
 
-				while(viewBackOptions.record == "no"){
-					console.log("Exception: Controller " + viewBack.controller + " is " + viewBackOptions.record  + " recording");
-					$L.$cursorIndex--;
-					viewBack        = $L.$history[$L.$cursorIndex][0];
-					viewBackOptions = $L.$history[$L.$cursorIndex][1];
-				}
-				viewBackOptions.effect = $L.effectBack;
-				viewBackOptions.transition = "back";
-				if (viewBack != undefined) {
-					$L.renderView(viewBack.controller, viewBackOptions);
-				}
-			});
+            if($L.$cursorIndex <= 0){
+                $(".l-back").hide().unbind();
+            }
+            else{
+                $(".l-back").show().unbind('click').bind("click", {msg: $L.$cursorIndex}, goBack);
+            }
+
 			/*
 			 * tableToggle(): Funcionalidad de Table con Toggle
 			 * DOMobject.tableToggle({'url': file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })

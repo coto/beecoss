@@ -4,10 +4,6 @@ $L.registerView({
 	,"url"			: "/sandbox/frameworkmobile/views/home.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
-
-			if($L.$cursorIndex <= 0){
-				$viewer.find(".l-back").remove();
-			}
 			$viewer.find('.menu li[view-id]').click(function(evt) {
 				evt.preventDefault();
 				newView = $(this).attr('view-id');
