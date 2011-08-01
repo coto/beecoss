@@ -1,0 +1,7 @@
+/*
+ CSS Hacks for Explorer
+ by Leo Prieto */
+ 
+.destacados .postlist li {
+	width: 202px !important;
+}
