@@ -1,4 +1,4 @@
-#!/usr/bin/env python2.5
+#!/usr/bin/env python
 ##
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,7 +13,9 @@
 # limitations under the License.
 #
 
-import datetime, re, captcha, os, languages
+from datetime import datetime, timedelta
+
+import re, captcha, os, languages
 
 # Google App Engine imports.
 from google.appengine.api import mail
@@ -23,6 +25,16 @@ from google.appengine.ext import db
 from google.appengine.ext import webapp
 from google.appengine.ext.webapp \
 	import util, template
+
+
+def get_date_time(UTC_OFFSET=3):
+    """
+    Format: %Y-%m-%d %H:%M:%S
+    """
+    local_datetime = datetime.now()
+    now = local_datetime - timedelta(hours=UTC_OFFSET)
+    now = datetime.fromtimestamp(1321925140.78)
+    return now
 
 def get_country(self):
     country = urlfetch.fetch("http://geoip.wtanaka.com/cc/"+self.request.remote_addr).content
@@ -214,7 +226,7 @@ class AuthorHandler(webapp.RequestHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/html'
         ip = self.request.remote_addr
-        now = datetime.datetime.now()
+        now = os.environ['TZ'] +" "+ str(get_date_time())
         user = users.get_current_user()
 
         if user:
