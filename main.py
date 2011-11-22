@@ -27,13 +27,14 @@ from google.appengine.ext.webapp \
 	import util, template
 
 
-def get_date_time(UTC_OFFSET=3):
+def get_date_time(UTC_OFFSET=3, format="%Y-%m-%d %H:%M:%S"):
     """
-    Format: %Y-%m-%d %H:%M:%S
+    Get date and time in UTC for Chile with a specific format
     """
     local_datetime = datetime.now()
     now = local_datetime - timedelta(hours=UTC_OFFSET)
-    now = datetime.fromtimestamp(1321925140.78)
+    now = now.strftime(format)
+#    now = datetime.fromtimestamp(1321925140.78)
     return now
 
 def get_country(self):
