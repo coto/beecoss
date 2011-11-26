@@ -137,39 +137,40 @@ class ContactHandler(webapp.RequestHandler):
 
     def post(self):
         ip = self.request.remote_addr
-        now = datetime.datetime.now()
+        now = get_date_time()
         email = self.request.get('email')
         lang = set_lang_cookie_and_return_dict(self)
         subject = self.request.get('subject')
         message = self.request.get('message')
-        challenge = self.request.get('recaptcha_challenge_field')
-        response  = self.request.get('recaptcha_response_field')
-        chtml = captcha.displayhtml(
-              public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
-              use_ssl = False,
-              error = None)
+#        challenge = self.request.get('recaptcha_challenge_field')
+#        response  = self.request.get('recaptcha_response_field')
+#        chtml = captcha.displayhtml(
+#              public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
+#              use_ssl = False,
+#              error = None)
 
-        cResponse = captcha.submit(
-             challenge,
-             response.encode('utf-8'),
-             "6Lc3HcMSAAAAAAq3AmnzE9t17wkxLU7OlKAKUjX9", ip)
+#        cResponse = captcha.submit(
+#             challenge,
+#             response.encode('utf-8'),
+#             "6Lc3HcMSAAAAAAq3AmnzE9t17wkxLU7OlKAKUjX9", ip)
+#
+#        if not cResponse.is_valid:
+#            params = {
+#				'captchahtml': chtml,
+#				'device': get_device(self),
+#				'lang': set_lang_cookie_and_return_dict(self),
+#				'path' : self.request.path,
+#				'msg': lang["invalid_captcha"],
+#				'is_error': True,
+#			}
+#            #self.response.out.write("chaptcha invalid: " + challenge  + " - " + response)
+#            self.response.out.write(template.render('views/contact.html', params))
+#            return
 
-        if not cResponse.is_valid:
-            params = {
-				'captchahtml': chtml,
-				'device': get_device(self),
-				'lang': set_lang_cookie_and_return_dict(self),
-				'path' : self.request.path,
-				'msg': lang["invalid_captcha"],
-				'is_error': True,
-			}
-            #self.response.out.write("chaptcha invalid: " + challenge  + " - " + response)
-            self.response.out.write(template.render('views/contact.html', params))
-            return
         # valid email address
         if not isAddressValid(email):
             params = {
-				'captchahtml': chtml,
+#				'captchahtml': chtml,
 				'device': get_device(self),
 				'lang': set_lang_cookie_and_return_dict(self),
 				'path' : self.request.path,
@@ -197,7 +198,7 @@ class ContactHandler(webapp.RequestHandler):
 					  {'who': email, "when": str(now), "remote_addr": ip, "country": get_country(self), "message": message}
             message_to_admin.send()
             params = {
-				'captchahtml': chtml,
+#				'captchahtml': chtml,
 				'device': get_device(self),
 				'lang': set_lang_cookie_and_return_dict(self),
 				'path' : self.request.path,
