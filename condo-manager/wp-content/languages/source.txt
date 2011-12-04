@@ -1,0 +1,7 @@
+http://codex.wordpress.org/WordPress_in_Your_Language
+
+	WPMU es_ES -> http://www.buddypress-es.com/noticias/descargas/
+	WPMU pt_BR -> http://www.wordpress-br.com/downloads - http://svn.automattic.com/wordpress-i18n/pt_BR/mu/tags/
+	
+	BuddyPress es_ES -> http://www.buddypress-es.com/noticias/descargas/
+	BuddyPress pt_BR -> http://www.wordpress-br.com/downloads
