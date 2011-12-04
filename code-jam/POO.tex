@@ -1,0 +1,81 @@
+% Created with $ pdflatex POO.tex
+
+\documentclass[14pt]{article}
+\usepackage{hyperref} % Make links
+\usepackage{listings} % Write code
+\usepackage{verbatim} % Multiline comments
+\usepackage{color}
+
+	\definecolor{listcomment}{rgb}{0.0,0.5,0.0}
+	\definecolor{listkeyword}{rgb}{0.0,0.0,0.5}
+	\definecolor{listnumbers}{gray}{0.65}
+	\definecolor{listlightgray}{gray}{0.955}
+	\definecolor{listwhite}{gray}{1.0}
+
+\input{inpuTex/lstset}
+
+\title{Object-Oriented Programming}
+\author{\href{http://twitter.com/coto}{Rodrigo Augosto}, \href{http://twitter.com/janogonzalez}{Alejandro Gonzalez} }
+\date{November 16, 2010}
+
+\begin{document}
+\maketitle						% automatic title!
+
+This document has been prepared to guide learners of 
+Object-Oriented Programming (\textbf{OOP}).
+ 
+We used \LaTeX{} to make this document and there are
+examples to each term involved using Python, Ruby, C\#, Java and JavaScript
+
+\tableofcontents
+
+\input{inpuTex/ProgrammingFundamentals}
+
+
+\input{inpuTex/Class}
+	\begin{center} 
+		\lstsetJava{Java - Class Example}
+		\lstinputlisting
+		{inpuTex_java/ClassExample.java} 
+	\end{center}
+
+	\begin{center} 
+		\lstsetCpp{C\# - Class Example}
+		\lstinputlisting
+		{inpuTex_csharp/ClassExample.cs} 
+	\end{center}
+
+	\begin{center} 
+		\lstsetPython{Python - Class Example}
+		\lstinputlisting
+		{inpuTex_python/ClassExample.py} 
+	\end{center}
+
+	\begin{center} 
+		\lstsetRuby{Ruby - Class Example}
+		\lstinputlisting
+		{inpuTex_ruby/ClassExample.rb} 
+	\end{center}
+
+	\begin{center} 
+		\lstsetJavaScript{JavaScript - Class Example}
+		\lstinputlisting
+		{inpuTex_javascript/ClassExample.js} 
+	\end{center}
+
+\input{inpuTex/OOP_Encapsulation}
+\input{inpuTex/OOP_Inheritance}
+\input{inpuTex/OOP_Polymorphism}
+
+\input{inpuTex/Casting}
+\input{inpuTex/ClassAbstract}
+\input{inpuTex/Delegates}
+\input{inpuTex/Enumeration}
+\input{inpuTex/Generics}
+\input{inpuTex/Interface}
+\input{inpuTex/Lambda}
+\input{inpuTex/TDD}
+
+
+
+\end{document}             % End of document.

@@ -1,0 +1,182 @@
+% C++ Definition
+
+\newcommand{\lstsetCpp}[1]
+{ 
+\lstset{caption={#1}, 
+	language=[ANSI]C++,
+	breaklines=true, 
+        frame = tb, 
+        framerule = 0.25pt, 
+        float, 
+        fontadjust, 
+        backgroundcolor={\color{listlightgray}}, 
+        basicstyle = {\ttfamily\footnotesize}, 
+        keywordstyle = {\ttfamily\color{listkeyword}\textbf}, 
+        identifierstyle = {\ttfamily}, 
+        commentstyle = {\ttfamily\color{listcomment}\textit}, 
+        stringstyle = {\ttfamily}, 
+        showstringspaces = false, 
+        showtabs = false, 
+        numbers = left, 
+        numbersep = 6pt, 
+        numberstyle={\ttfamily\color{listnumbers}}, 
+        tabsize = 2, 
+        floatplacement=!h 
+        } 
+}
+
+% Java Definition
+
+\newcommand{\lstsetJava}[1]
+{ 
+\lstset{caption={#1},
+	language=Java, 
+	breaklines=true,
+	frame = tb, 
+        framerule = 0.25pt, 
+        float, 
+        fontadjust, 
+        backgroundcolor={\color{listlightgray}}, 
+        basicstyle = {\ttfamily\footnotesize}, 
+        keywordstyle = {\ttfamily\color{listkeyword}\textbf}, 
+        identifierstyle = {\ttfamily}, 
+        commentstyle = {\ttfamily\color{listcomment}\textit}, 
+        stringstyle = {\ttfamily}, 
+        showstringspaces = false, 
+        showtabs = false, 
+        numbers = left, 
+        numbersep = 6pt, 
+        numberstyle={\ttfamily\color{listnumbers}}, 
+        tabsize = 2, 
+        floatplacement=!h 
+        } 
+}
+
+% Ruby Definition
+
+\newcommand{\lstsetRuby}[1]
+{ 
+\lstset{caption={#1}, 
+	language=Ruby, 
+	breaklines=true,
+	frame = tb, 
+        framerule = 0.25pt, 
+        float, 
+        fontadjust, 
+        backgroundcolor={\color{listlightgray}}, 
+        basicstyle = {\ttfamily\footnotesize}, 
+        keywordstyle = {\ttfamily\color{listkeyword}\textbf}, 
+        identifierstyle = {\ttfamily}, 
+        commentstyle = {\ttfamily\color{listcomment}\textit}, 
+        stringstyle = {\ttfamily}, 
+        showstringspaces = false, 
+        showtabs = false, 
+        numbers = left, 
+        numbersep = 6pt, 
+        numberstyle={\ttfamily\color{listnumbers}}, 
+        tabsize = 2, 
+        floatplacement=!h 
+        } 
+}
+
+% Python Definition
+
+\newcommand{\lstsetPython}[1]
+{ 
+\lstset{caption={#1}, 
+	language=Python,
+	breaklines=true,
+	frame = tb, 
+        framerule = 0.25pt, 
+        float, 
+        fontadjust, 
+        backgroundcolor={\color{listlightgray}}, 
+        basicstyle = {\ttfamily\footnotesize}, 
+        keywordstyle = {\ttfamily\color{listkeyword}\textbf}, 
+        identifierstyle = {\ttfamily}, 
+        commentstyle = {\ttfamily\color{listcomment}\textit}, 
+        stringstyle = {\ttfamily}, 
+        showstringspaces = false, 
+        showtabs = false, 
+        numbers = left, 
+        numbersep = 6pt, 
+        numberstyle={\ttfamily\color{listnumbers}}, 
+        tabsize = 2, 
+        floatplacement=!h 
+        } 
+}
+
+% JavaScript Definition
+
+\lstdefinelanguage{JavaScript}{
+    keywords={attributes, class, classend, do, empty, endif, endwhile, fail, function, functionend, if, implements, in, inherit, inout, not, of, operations, out, return, set, then, types, while, use},
+    keywordstyle=\color{blue}\bfseries,
+    ndkeywords={},
+    ndkeywordstyle=\color{yellow}\bfseries,
+    identifierstyle=\color{black},
+    sensitive=false,
+    comment=[l]{//},
+    commentstyle=\color{green}\ttfamily,
+    stringstyle=\color{red}\ttfamily
+ }
+
+\newcommand{\lstsetJavaScript}[1]
+{ 
+\lstset{caption={#1}, 
+	language=JavaScript,
+	breaklines=true,
+	frame = tb, 
+        framerule = 0.25pt, 
+        float, 
+        fontadjust, 
+        backgroundcolor={\color{listlightgray}}, 
+        basicstyle = {\ttfamily\footnotesize}, 
+        keywordstyle = {\ttfamily\color{listkeyword}\textbf}, 
+        identifierstyle = {\ttfamily}, 
+        commentstyle = {\ttfamily\color{listcomment}\textit}, 
+        stringstyle = {\ttfamily}, 
+        showstringspaces = false, 
+        showtabs = false, 
+        numbers = left, 
+        numbersep = 6pt, 
+        numberstyle={\ttfamily\color{listnumbers}}, 
+        tabsize = 2, 
+        floatplacement=!h 
+        } 
+}
+
+% Examples 
+
+\begin{comment}
+\begin{center} 
+	\lstsetPython{Python - Class Example}
+	\lstinputlisting
+	{path/file.ext} 
+\end{center}	
+
+\lstsetCpp
+\begin{lstlisting} 
+unsigned int lifeUniverseAndEverything = 42; 
+
+public class Animal {
+	public static void main(String[] args) {
+		System.out.println("Buenas, soy un aprendiz de Java!");
+	}
+
+	private Location loc;
+	private double energyReserves;
+ 
+	boolean isHungry() {
+		return energyReserves < 2.5;
+	}
+	void eat(Food f) {
+		// Consume food
+		energyReserves += f.getCalories();
+	 }
+	void moveTo(Location l) {
+		// Move to new location
+		loc = l;
+	}
+}
+\end{lstlisting}
+\end{comment}

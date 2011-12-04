@@ -1,0 +1,130 @@
+1
+Si entre las clases Factura e ItemFactura existe una relación de agregación donde la clase Factura se compone de ItemFactura. Al invocar el método Cancelar() de la clase Factura:
+Se contruye una instancia de la clase ItemFactura
+Se cancelan todas las instancias de ItemFactura agregadas por Factura
+Se cancela la Factura pero no las instancias agregadas de ItemFactura
+El comportamiento depende de la identidad de la instancia de la clase Factura
+
+2
+¿Qué es un Namespace, o espacio de nombres?
+Un método para agrupar lógicamente clases relacionadas entre si
+Un método para agrupar físicamente clases relacionadas entre si
+Un contenedor lógico de DLL's
+Todas las opciones son correctas
+
+3
+Si se desea definir un comportamiento para un conjunto de clases no necesariamente relacionadas entre sí, la mejor opción sería:
+Definir una jerarquía de herencia entre las clases
+Encapsular el comportamiento en una clase agregada
+Definir una interfaz
+Relacionar las clases mediante una asociación bi-direccional
+
+4
+¿A qué se denomina "Excepción" en .NET?
+A los errores imprevistos que se producen en tiempo de codificación
+A los errores imprevistos que se producen en tiempo de ejecución
+A los errores imprevistos que se producen en tiempo de diseño
+Todas las opciones son correctas
+
+5
+
+6
+¿Qué se puede representar con ojetos?
+Entidades de Software
+Entidades Físicas
+Entidades Conceptuales
+Todas las alternativas son correctas
+
+7
+¿Qué es una variable?
+Es un espacio en una base de datos para almacenar información
+Es un desvío condicional en el programa
+Es un bucle que el programa contiene
+Es una posición de memoria RAM con nombre y que contiene un valor
+
+
+
+8
+¿Qué tipos de herencia son soportados por .NET?
+Compuesta
+Múltiple
+Simple
+Ninguna opción es correcta
+
+
+10
+Acerca de los parámetros, es correcto afirmar que:
+Son un medio para pasar información entre el programa principal y un subprograma
+Es obligatorio que un subprograma utilice parámetros
+Los parámetros de salida son aquellos cuyos valores deben ser proporcionados por el programa principal al subprograma
+Las opciones a y b son correctas
+
+11
+¿A qué se denomina comunmente "CAST"?
+A un conjunto de datos a ser convertidos
+A la conversión implícita de un objeto/tipo o tipo/objeto
+A una forma explicita de convertir tipos de datos entre si
+Ninguna opción es correcta
+
+12
+¿Qué es un constructor?
+Es un método llamado automáticamente cuando se crea una instancia de una clase
+Es un método que debemos llamar explicitamente para incializar una instancia de clase ya creada
+Es un método llamado automáticamente para inicializar una instancia de clase ya creada
+Ninguna opción es correcta
+
+13
+¿Para qué sirve el encapsulamiento?
+Permite ocultar los métodos de una clase
+Permite ocultar la implementación de los métodos de una clase
+Permite identificar objetos de forma unívoca
+Permite generar relaciones de herencia
+
+14
+¿Qué es un método estático, o "de clase"?
+Un miembro de una clase que no requiere de una instancia para ser utilizado
+Un miembro de una clase que obligatoriamente requiere de una instancia para ser utilizado
+Un miembro de una clase que sólo puede ser utilizado dentro de la misma
+Un miembro de una clase que no puede ser utilizado
+
+15
+¿Cuál es el bloque que utiliza .NET para proveer administración estructurada de excepciones?
+OnError/Goto
+If/Else
+Throw
+Try/Catch/Finally
+
+16
+Cuales de las siguientes afirmaciones son correctas acerca de los procedimientos y funciones:
+Están compuestos por un grupo de sentencias
+Se les asigna un nombre
+Se comunican con su invocador a través de parámetros
+Todas las opciones son correctas
+
+17
+Decimos que dos métodos están sobrecargados cuando:
+Tienen el mismo nombre y la misma firma
+Tienen distinto nombre y la misma firma
+Tienen el mismo nombre y distinta firma
+Tienen distinto nombre y distinta firma
+
+18
+¿Es posible en .NET afectar mediante palabras clave la habilidad de heredar desde una clase base?
+Si, ya que es posible impedir que una clase pueda ser extendida mediante herencia
+Si, ya que es posible especificar que una clase sólo podrá ser utilizada si se la extiende mediante herencia
+No, no es posible
+Las opciones a y b son correctas
+
+19
+Los lenguajes C# y Visual Basic .NET son:
+Lenguajes funcionales de alto nivel
+Lenguajes estructurados de alto nivel
+Lenguajes orientados a objetos de bajo nivel
+Ninguna opción es correcta
+
+20
+¿Cuáles de los siguientes tipos de lenguajes de programación permiten escribir instrucciones o sentencias con palabras similares a los lenguajes humanos ?
+Los lenguajes de bajo nivel
+Los lenguajes de alto nivel
+Los lenguajes de máquina
+Ninguna opción es correcta
