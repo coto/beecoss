@@ -8,9 +8,9 @@ handlers:
   static_files: media/robots.txt
   upload: media/robots.txt
 
-- url: /sitemap.xml
-  static_files: media/sitemap.xml
-  upload: media/sitemap.xml
+#- url: /sitemap.xml
+#  static_files: media/sitemap.xml
+#  upload: media/sitemap.xml
  
 - url: /media
   static_dir: media
