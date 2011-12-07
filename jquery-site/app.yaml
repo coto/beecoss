@@ -19,3 +19,9 @@ handlers:
 builtins:
 - datastore_admin: on
 - appstats: on
+
+libraries:
+- name: jinja2
+  version: latest
+- name: django
+  version: latest
