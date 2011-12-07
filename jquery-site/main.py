@@ -34,4 +34,6 @@ class MainHandler(BaseHandler):
 
         self.render_template('index.html', template_values)
 
-app = webapp2.WSGIApplication([('/', MainHandler)], debug = True)
+app = webapp2.WSGIApplication([
+    ('/', MainHandler),
+], debug = True)
