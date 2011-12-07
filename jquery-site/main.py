@@ -14,14 +14,14 @@
 #
 
 import os
+import webapp2
 
-from google.appengine.ext import webapp
 from google.appengine.ext.webapp import util, template
 
-class BaseHandler(webapp.RequestHandler):
+class BaseHandler(webapp2.RequestHandler):
     def render_template(self, filename, **template_args):
         path = os.path.join(os.path.dirname(__file__), filename)
-        self.response.out.write(template.render(path, template_args))
+        self.response.write(template.render(path, template_args))
 
 class MainHandler(BaseHandler):
     def get(self):
@@ -31,7 +31,7 @@ class MainHandler(BaseHandler):
 
 
 def main():
-    application = webapp.WSGIApplication([
+    application = webapp2.WSGIApplication([
 			('/', MainHandler),
 		], debug=True)
 
