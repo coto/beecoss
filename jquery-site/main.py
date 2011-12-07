@@ -12,19 +12,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-import webapp2
+
+
 import os
-# specify the name of your settings module
-os.environ['DJANGO_SETTINGS_MODULE'] = 'myapp.settings'
 
-import django.core.handlers.wsgi
-app = django.core.handlers.wsgi.WSGIHandler()
+from google.appengine.ext import webapp
+from google.appengine.ext.webapp import util, template
 
-class MainPage(webapp2.RequestHandler):
-  def get(self):
-      self.response.headers['Content-Type'] = 'text/plain'
-      self.response.out.write('WWorking on this sites!!!')
+class BaseHandler(webapp.RequestHandler):
+    def render_template(self, filename, **template_args):
+        path = os.path.join(os.path.dirname(__file__), filename)
+        self.response.out.write(template.render(path, template_args))
 
-app = webapp2.WSGIApplication([
-    ('/', MainPage),
-], debug=True)
+class MainHandler(BaseHandler):
+    def get(self):
+
+        self.render_template('index.html', name=self.request.get('name'))
+
+
+
+def main():
+    application = webapp.WSGIApplication([
+			('/', MainHandler),
+		], debug=True)
+
+    util.run_wsgi_app(application)
+
+if __name__ == '__main__':
+    main()
