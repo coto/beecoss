@@ -29,7 +29,6 @@ class MainHandler(BaseHandler):
         self.render_template('index.html', name=self.request.get('name'))
 
 
-
 def main():
     application = webapp2.WSGIApplication([
 			('/', MainHandler),
