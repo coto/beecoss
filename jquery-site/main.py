@@ -13,11 +13,17 @@
 # limitations under the License.
 #
 import webapp2
+import os
+# specify the name of your settings module
+os.environ['DJANGO_SETTINGS_MODULE'] = 'myapp.settings'
+
+import django.core.handlers.wsgi
+app = django.core.handlers.wsgi.WSGIHandler()
 
 class MainPage(webapp2.RequestHandler):
   def get(self):
       self.response.headers['Content-Type'] = 'text/plain'
-      self.response.out.write('working on this site!')
+      self.response.out.write('WWorking on this sites!!!')
 
 app = webapp2.WSGIApplication([
     ('/', MainPage),
