@@ -4,12 +4,6 @@ runtime: python27
 api_version: 1
 threadsafe: true
 
-libraries:
-- name: PIL
-  version: latest
-- name: jinja2
-  version: latest
-
 handlers:
 - url: /robots.txt
   static_files: media/robots.txt
@@ -18,9 +12,18 @@ handlers:
 #- url: /sitemap.xml
 #  static_files: media/sitemap.xml
 #  upload: media/sitemap.xml
- 
+
 - url: /.*
   script: main.app
 
+  
+libraries:
+- name: PIL
+  version: latest
+- name: django
+  version: "1.2"
+
+
 builtins:
 - datastore_admin: on
+- appstats: on
