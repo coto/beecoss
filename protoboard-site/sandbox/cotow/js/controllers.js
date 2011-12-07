@@ -1,7 +1,7 @@
 ﻿﻿
 $L.registerView({
 	"id"			: "home"	
-	,"url"			: "/sandbox/frameworkmobile/views/home.html"
+	,"url"			: "/sandbox_files/cotow/views/home.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('.menu li[view-id]').click(function(evt) {
@@ -86,7 +86,7 @@ $L.registerView({
 /* Ajax Test */
 $L.registerView({
 	"id"			: "render_success"
-	,"url"			: "/sandbox/frameworkmobile/views/render_success.py"
+	,"url"			: "/sandbox_files/cotow/views/render_success.py"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('.myself').click(function(evt) {
@@ -100,7 +100,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "render_error"	
-	,"url"			: "/sandbox/frameworkmobile/views/render_error.py"
+	,"url"			: "/sandbox_files/cotow/views/render_error.py"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -112,7 +112,7 @@ $L.registerView({
 /******** Feature's Views ********/
 $L.registerView({
 	"id"			: "back-1"
-	,"url"			: "/sandbox/frameworkmobile/views/back-1.html"
+	,"url"			: "/sandbox_files/cotow/views/back-1.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#view-2').click(function(evt) {
@@ -130,7 +130,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "back-2"
-	,"url"			: "/sandbox/frameworkmobile/views/back-2.html"
+	,"url"			: "/sandbox_files/cotow/views/back-2.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#view-3').click(function(evt) {
@@ -144,7 +144,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "back-3"
-	,"url"			: "/sandbox/frameworkmobile/views/back-3.html"
+	,"url"			: "/sandbox_files/cotow/views/back-3.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -154,7 +154,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "nohistory"
-	,"url"			: "/sandbox/frameworkmobile/views/nohistory.html"
+	,"url"			: "/sandbox_files/cotow/views/nohistory.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#view-2').click(function(evt) {
@@ -173,7 +173,7 @@ $L.registerView({
 /******** Feature's Views ********/
 $L.registerView({
 	"id"			: "slider"
-	,"url"			: "/sandbox/frameworkmobile/views/slider.html"
+	,"url"			: "/sandbox_files/cotow/views/slider.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -183,11 +183,11 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "table"
-	,"url"			: "/sandbox/frameworkmobile/views/table-toggle.html"
+	,"url"			: "/sandbox_files/cotow/views/table-toggle.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			// DOMobject.tableToggle({'url': file.js, ['by' : 'x'|'y'] , ['x' : integer] , ['y' : integer] })
-			source = '/sandbox/frameworkmobile/data/table_evaluations.js';
+			source = '/sandbox_files/cotow/data/table_evaluations.js';
 			$viewer.find('#ContentTable').tableToggle({'url': source, 'by': 'y', 'y': 3});
 			
 		}
@@ -262,7 +262,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "tabs"
-	,"url"			: "/sandbox/frameworkmobile/views/tabs.html"
+	,"url"			: "/sandbox_files/cotow/views/tabs.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -272,7 +272,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "map"
-	,"url"			: "/sandbox/frameworkmobile/views/map.html"
+	,"url"			: "/sandbox_files/cotow/views/map.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -338,7 +338,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "accordion"
-	,"url"			: "/sandbox/frameworkmobile/views/accordion.html"
+	,"url"			: "/sandbox_files/cotow/views/accordion.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -348,7 +348,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "item-desplegable"
-	,"url"			: "/sandbox/frameworkmobile/views/item-desplegable.html"
+	,"url"			: "/sandbox_files/cotow/views/item-desplegable.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -358,7 +358,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "item-desplegable-select"
-	,"url"			: "/sandbox/frameworkmobile/views/item-desplegable-select.html"
+	,"url"			: "/sandbox_files/cotow/views/item-desplegable-select.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -368,7 +368,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "buttons"
-	,"url"			: "/sandbox/frameworkmobile/views/buttons.html"
+	,"url"			: "/sandbox_files/cotow/views/buttons.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -378,7 +378,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "forms"	
-	,"url"			: "/sandbox/frameworkmobile/views/forms.html"
+	,"url"			: "/sandbox_files/cotow/views/forms.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 			$viewer.find('#form-button').click(function(evt){
@@ -397,7 +397,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "properties"
-	,"url"			: "/sandbox/frameworkmobile/views/properties.html"
+	,"url"			: "/sandbox_files/cotow/views/properties.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -407,7 +407,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "titles"
-	,"url"			: "/sandbox/frameworkmobile/views/titles-text.html"
+	,"url"			: "/sandbox_files/cotow/views/titles-text.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -417,7 +417,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "expanded-list"
-	,"url"			: "/sandbox/frameworkmobile/views/expanded-list.html"
+	,"url"			: "/sandbox_files/cotow/views/expanded-list.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -427,7 +427,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "rounded-list"	
-	,"url"			: "/sandbox/frameworkmobile/views/rounded-list.html"
+	,"url"			: "/sandbox_files/cotow/views/rounded-list.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
@@ -437,7 +437,7 @@ $L.registerView({
 });
 $L.registerView({
 	"id"			: "dial-phone"
-	,"url"			: "/sandbox/frameworkmobile/views/dial-phone.html"
+	,"url"			: "/sandbox_files/cotow/views/dial-phone.html"
 	,"controller"	: {
 		preEffect: function($viewer) {
 		}
