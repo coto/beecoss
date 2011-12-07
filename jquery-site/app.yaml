@@ -1,7 +1,8 @@
 application: jqueryespanol-site
 version: 1
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
 
 handlers:
 - url: /robots.txt
@@ -13,7 +14,7 @@ handlers:
 #  upload: media/sitemap.xml
 
 - url: /.*
-  script: main.py
+  script: main.app
 
 builtins:
 - datastore_admin: on

@@ -16,7 +16,7 @@
 import os
 import webapp2
 
-from google.appengine.ext.webapp import util, template
+from google.appengine.ext.webapp import template
 
 class BaseHandler(webapp2.RequestHandler):
     def render_template(self, filename, **template_args):
@@ -28,12 +28,6 @@ class MainHandler(BaseHandler):
 
         self.render_template('index.html', name=self.request.get('name'))
 
-def main():
-    application = webapp2.WSGIApplication([
-			('/', MainHandler),
-		], debug=True)
-
-    util.run_wsgi_app(application)
-
-if __name__ == '__main__':
-    main()
+app = webapp2.WSGIApplication([
+    ('/', MainHandler),
+], debug=True)
