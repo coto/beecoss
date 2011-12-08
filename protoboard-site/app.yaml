@@ -1,7 +1,8 @@
 application: protoboard-site
 version: 7
-runtime: python
+runtime: python27
 api_version: 1
+threadsafe: true
 
 handlers:
 - url: /robots.txt
@@ -15,19 +16,23 @@ handlers:
 - url: /media
   static_dir: media
   
-- url: /sandbox
+- url: /sandbox_files
   static_dir: sandbox
 
 - url: /keynotes
   static_dir: keynotes
 
 - url: /sandbox/.*
-  script: sandbox.py
+  script: sandbox.app
   #login: admin
 
 - url: /.*
-  script: main.py
+  script: main.app
 
 builtins:
 - datastore_admin: on
 - appstats: on
+
+libraries:
+- name: jinja2
+  version: latest

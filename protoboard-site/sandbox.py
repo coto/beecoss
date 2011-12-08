@@ -1,25 +1,25 @@
 #!/usr/bin/env python
 
-import os
+import os, webapp2, jinja2
 
-# Google App Engine imports.
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp \
-	import util, template
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
 
-class MobileHandler(webapp.RequestHandler):
+
+class BaseHandler(webapp2.RequestHandler):
+    def render_template(self, filename, template_args):
+#        print "filename %s" % filename
+        template = jinja_environment.get_template(filename)
+#        print "template %s" % template
+        self.response.out.write(template.render(template_args))
+
+class MobileHandler(BaseHandler):
     def get(self):
+        params = {
+            'device': 'name',
+        }
+        self.render_template('views/cotow.html', params)
 
-        path = os.path.join(os.path.dirname(__file__), 'sandbox/frameworkmobile/main.html')
-        self.response.out.write(template.render(path, {}))
-
-
-def main():
-    application = webapp.WSGIApplication([
-			('/sandbox/frameworkmobile', MobileHandler),
-		], debug=True)
-		
-    util.run_wsgi_app(application)
-
-if __name__ == '__main__':
-    main()
+app = webapp2.WSGIApplication([
+    ('/sandbox/cotow', MobileHandler),
+], debug=True)
