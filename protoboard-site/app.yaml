@@ -29,10 +29,10 @@ handlers:
 - url: /.*
   script: main.app
 
-builtins:
-- datastore_admin: on
-- appstats: on
-
 libraries:
 - name: jinja2
   version: latest
+
+builtins:
+- datastore_admin: on
+- appstats: on
