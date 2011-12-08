@@ -21,7 +21,7 @@ from google.appengine.ext import db
 
 # Python imports
 from datetime import datetime, timedelta
-import re, captcha, languages, logging
+import re, captcha, languages
 import os, webapp2, jinja2
 
 jinja_environment = jinja2.Environment(
@@ -107,7 +107,7 @@ def set_lang_cookie_and_return_dict(self):
         # set cookie to en
         lang_cookie = self.request.get("hl")
 
-    self.response.headers.add_header("Set-Cookie", "hl=" + lang_cookie + ";")
+    self.response.headers.add_header("Set-Cookie", str("hl=" + lang_cookie + ";"))
     lang = {
 	  'en': languages.en,
 	  'es': languages.es,
@@ -140,7 +140,7 @@ class ContactHandler(BaseHandler):
 			'path': self.request.path,
 		}
 
-        self.render_template('views/contact.html', params)
+        self.render_template("views/contact.html", params)
 
     def post(self):
         ip = self.request.remote_addr
@@ -185,7 +185,7 @@ class ContactHandler(BaseHandler):
 				'is_error': True,
 			}
             #self.response.out.write("is not a valid email: " + email)
-            self.render_template('views/contact.html', params)
+            self.render_template("views/contact.html", params)
         else:
             contactForm = ContactForm(
 				who = email,
@@ -212,7 +212,7 @@ class ContactHandler(BaseHandler):
 				'msg': lang["successfuly_sent"],
 				'is_error': False,
 			}
-            self.render_template('views/contact.html', params)
+            self.render_template("views/contact.html", params)
 
 class MainHandler(BaseHandler):
     def get(self):
@@ -226,12 +226,13 @@ class MainHandler(BaseHandler):
 			'path': path,
 		}
 
-        view = os.path.join('views%s.html' % (path))
+        view = os.path.join("views%s.html" % (path))
         self.render_template(view, params)
 
 class AuthorHandler(BaseHandler):
     def get(self):
-        self.response.headers['Content-Type'] = 'text/html'
+        self.response.headers['Content-Type'] = "text/html"
+#        self.response.headers['Content-Type'] = "text/plain"
         ip = self.request.remote_addr
         now = os.environ['TZ'] +" "+ str(get_date_time())
         user = users.get_current_user()
@@ -249,8 +250,7 @@ class AuthorHandler(BaseHandler):
 			'greeting': greeting,
 		}
 
-        mobileDevice = "true"
-        self.render_template('views/author.html', params)
+        self.render_template("views/author.html", params)
 
 
 app = webapp2.WSGIApplication([
