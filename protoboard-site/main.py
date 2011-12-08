@@ -13,19 +13,37 @@
 # limitations under the License.
 #
 
-from datetime import datetime, timedelta
-
-import re, captcha, os, languages
-
 # Google App Engine imports.
 from google.appengine.api import mail
 from google.appengine.api import users
 from google.appengine.api import urlfetch
 from google.appengine.ext import db
-from google.appengine.ext import webapp
-from google.appengine.ext.webapp \
-	import util, template
 
+# Python imports
+from datetime import datetime, timedelta
+import re, captcha, languages
+import os, webapp2, jinja2
+
+jinja_environment = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)))
+
+class BaseHandler(webapp2.RequestHandler):
+    def render_template(self, filename, template_args):
+        print "filename %s" % filename
+        try:
+            template = jinja_environment.get_template(filename)
+        except jinja2.TemplateError:
+            print "TemplateError"
+        except jinja2.UndefinedError:
+            print "UndefinedError"
+        except jinja2.TemplateNotFound:
+            print "TemplateNotFound"
+        except jinja2.TemplateSyntaxError:
+            print "TemplateSyntaxError"
+        except jinja2.TemplateAssertionError:
+            print "TemplateAssertionError"
+        print "template %s" % template
+        self.response.out.write(template.render(template_args))
 
 def get_date_time(UTC_OFFSET=3, format="%Y-%m-%d %H:%M:%S"):
     """
@@ -119,7 +137,7 @@ class ContactForm(db.Model):
     remote_addr = db.StringProperty()
     country = db.StringProperty()
 
-class ContactHandler(webapp.RequestHandler):
+class ContactHandler(BaseHandler):
     def get(self):
         chtml = captcha.displayhtml(
               public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
@@ -132,8 +150,8 @@ class ContactHandler(webapp.RequestHandler):
 			'lang': set_lang_cookie_and_return_dict(self),
 			'path': self.request.path,
 		}
-        self.response.out.write(
-			template.render('views/contact.html', params))
+
+        self.render_template('views/contact.html', params)
 
     def post(self):
         ip = self.request.remote_addr
@@ -178,7 +196,7 @@ class ContactHandler(webapp.RequestHandler):
 				'is_error': True,
 			}
             #self.response.out.write("is not a valid email: " + email)
-            self.response.out.write(template.render('views/contact.html', params))
+            self.render_template('views/contact.html', params)
         else:
             contactForm = ContactForm(
 				who = email,
@@ -205,10 +223,9 @@ class ContactHandler(webapp.RequestHandler):
 				'msg': lang["successfuly_sent"],
 				'is_error': False,
 			}
-            self.response.out.write(
-				template.render('views/contact.html', params))
+            self.render_template('views/contact.html', params)
 
-class MainHandler(webapp.RequestHandler):
+class MainHandler(BaseHandler):
     def get(self):
         path = self.request.path
         if path == "/":
@@ -221,10 +238,9 @@ class MainHandler(webapp.RequestHandler):
 		}
 
         view = os.path.join('views%s.html' % (path))
-        self.response.out.write(
-			template.render(view, params))
+        self.render_template(view, params)
 
-class AuthorHandler(webapp.RequestHandler):
+class AuthorHandler(BaseHandler):
     def get(self):
         self.response.headers['Content-Type'] = 'text/html'
         ip = self.request.remote_addr
@@ -238,33 +254,20 @@ class AuthorHandler(webapp.RequestHandler):
             greeting = ("<a href=\"%s\">Sign in or register</a>, it's %s" %
 						(users.create_login_url("/author"), now))
 
-        template_values = {
+        params = {
 			'device': get_device(self),
 			'ip': ip,
 			'greeting': greeting,
 		}
 
         mobileDevice = "true"
-        if mobileDevice:
-            self.response.out.write(template.render('views/author.html', template_values))
-        else:
-            self.response.out.write(template.render('views/author.html', template_values))
+        self.render_template('views/author.html', params)
 
 
-def main():
-    application = webapp.WSGIApplication([
-			('/', MainHandler),
-			('/blog', MainHandler),
-			('/about', MainHandler),
-			('/[c|C]ontact', ContactHandler),
-			('/author', AuthorHandler)
-		], debug=True)
-
-    util.run_wsgi_app(application)
-
-    # working with wsgiref
-    #import wsgiref.handlers
-    #wsgiref.handlers.CGIHandler().run(application)
-
-if __name__ == '__main__':
-    main()
+app = webapp2.WSGIApplication([
+    ('/', MainHandler),
+    ('/blog', MainHandler),
+    ('/about', MainHandler),
+    ('/[c|C]ontact', ContactHandler),
+    ('/author', AuthorHandler),
+], debug=True)
