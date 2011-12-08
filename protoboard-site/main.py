@@ -21,7 +21,7 @@ from google.appengine.ext import db
 
 # Python imports
 from datetime import datetime, timedelta
-import re, captcha, languages
+import re, captcha, languages, logging
 import os, webapp2, jinja2
 
 jinja_environment = jinja2.Environment(
@@ -29,20 +29,9 @@ jinja_environment = jinja2.Environment(
 
 class BaseHandler(webapp2.RequestHandler):
     def render_template(self, filename, template_args):
-        print "filename %s" % filename
-        try:
-            template = jinja_environment.get_template(filename)
-        except jinja2.TemplateError:
-            print "TemplateError"
-        except jinja2.UndefinedError:
-            print "UndefinedError"
-        except jinja2.TemplateNotFound:
-            print "TemplateNotFound"
-        except jinja2.TemplateSyntaxError:
-            print "TemplateSyntaxError"
-        except jinja2.TemplateAssertionError:
-            print "TemplateAssertionError"
-        print "template %s" % template
+#        print "filename %s" % filename
+        template = jinja_environment.get_template(filename)
+#        print "template %s" % template
         self.response.out.write(template.render(template_args))
 
 def get_date_time(UTC_OFFSET=3, format="%Y-%m-%d %H:%M:%S"):
