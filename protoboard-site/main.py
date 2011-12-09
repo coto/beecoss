@@ -134,7 +134,7 @@ class ContactHandler(BaseHandler):
               error = None)
 
         params = {
-			'captchahtml': chtml,
+#			'captchahtml': chtml,
 			'device': get_device(self),
 			'lang': set_lang_cookie_and_return_dict(self),
 			'path': self.request.path,
