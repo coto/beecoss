@@ -1,1 +1,1 @@
-../mods-available/authz_default.load
+LoadModule authz_default_module /usr/lib/apache2/modules/mod_authz_default.so

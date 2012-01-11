@@ -1,1 +1,1 @@
-../mods-available/alias.load
+LoadModule alias_module /usr/lib/apache2/modules/mod_alias.so

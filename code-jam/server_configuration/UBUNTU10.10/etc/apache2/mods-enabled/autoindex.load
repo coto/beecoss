@@ -1,1 +1,1 @@
-../mods-available/autoindex.load
+LoadModule autoindex_module /usr/lib/apache2/modules/mod_autoindex.so

@@ -1,1 +1,1 @@
-../mods-available/status.load
+LoadModule status_module /usr/lib/apache2/modules/mod_status.so
