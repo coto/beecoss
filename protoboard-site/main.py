@@ -252,6 +252,93 @@ class AuthorHandler(BaseHandler):
 
         self.render_template("views/author.html", params)
 
+class WidgetHandler(BaseHandler):
+    def get(self):
+        chtml = captcha.displayhtml(
+            public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
+            use_ssl = False,
+            error = None)
+
+        params = {
+            #			'captchahtml': chtml,
+            'device': get_device(self),
+            'lang': set_lang_cookie_and_return_dict(self),
+            'path': self.request.path,
+            }
+
+        self.render_template("views/widget.html", params)
+
+    def post(self):
+        ip = self.request.remote_addr
+        now = get_date_time()
+        email = self.request.get('email')
+        lang = set_lang_cookie_and_return_dict(self)
+        subject = self.request.get('subject')
+        message = self.request.get('message')
+        #        challenge = self.request.get('recaptcha_challenge_field')
+        #        response  = self.request.get('recaptcha_response_field')
+        #        chtml = captcha.displayhtml(
+        #              public_key = "6Lc3HcMSAAAAAICqorBn6iITHLZMqF08gjzKvshm",
+        #              use_ssl = False,
+        #              error = None)
+
+        #        cResponse = captcha.submit(
+        #             challenge,
+        #             response.encode('utf-8'),
+        #             "6Lc3HcMSAAAAAAq3AmnzE9t17wkxLU7OlKAKUjX9", ip)
+        #
+        #        if not cResponse.is_valid:
+        #            params = {
+        #				'captchahtml': chtml,
+        #				'device': get_device(self),
+        #				'lang': set_lang_cookie_and_return_dict(self),
+        #				'path' : self.request.path,
+        #				'msg': lang["invalid_captcha"],
+        #				'is_error': True,
+        #			}
+        #            #self.response.out.write("chaptcha invalid: " + challenge  + " - " + response)
+        #            self.response.out.write(template.render('views/contact.html', params))
+        #            return
+
+        # valid email address
+        if not isAddressValid(email):
+            params = {
+                #				'captchahtml': chtml,
+                'device': get_device(self),
+                'lang': set_lang_cookie_and_return_dict(self),
+                'path' : self.request.path,
+                'msg': lang["invalid_email_address"],
+                'is_error': True,
+                }
+            #self.response.out.write("is not a valid email: " + email)
+            self.render_template("views/widget.html", params)
+        else:
+            contactForm = ContactForm(
+                who = email,
+                subject = subject,
+                message = message,
+                remote_addr = ip,
+                country = get_country(self)
+            )
+            contactForm.put()
+
+            # Internal
+            message_to_admin = mail.EmailMessage()
+            message_to_admin.sender = "rodrigo.augosto@gmail.com"
+            message_to_admin.subject = "Protoboard - Contact : " + subject
+            message_to_admin.to = "rodrigo.augosto@gmail.com"
+            message_to_admin.body = 'who: %(who)s \nwhen: %(when)s \nremote_addr: %(remote_addr)s \nCountry: %(country)s \n\n%(message)s' %\
+                                    {'who': email, "when": str(now), "remote_addr": ip, "country": get_country(self), "message": message}
+            message_to_admin.send()
+            params = {
+                #				'captchahtml': chtml,
+                'device': get_device(self),
+                'lang': set_lang_cookie_and_return_dict(self),
+                'path' : self.request.path,
+                'msg': lang["successfuly_sent"],
+                'is_error': False,
+                }
+            self.render_template("views/widget.html", params)
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
@@ -259,4 +346,5 @@ app = webapp2.WSGIApplication([
     ('/about', MainHandler),
     ('/[c|C]ontact', ContactHandler),
     ('/author', AuthorHandler),
+    ('/widget', WidgetHandler),
 ], debug=True)
