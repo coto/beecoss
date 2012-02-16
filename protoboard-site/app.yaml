@@ -34,5 +34,4 @@ libraries:
   version: latest
 
 builtins:
-- datastore_admin: on
 - appstats: on
