@@ -12,10 +12,35 @@ handlers:
 #- url: /sitemap.xml
 #  static_files: media/sitemap.xml
 #  upload: media/sitemap.xml
- 
-- url: /media
-  static_dir: media
-  
+
+- url: /sitemap\.xml
+  static_files: statics/sitemap.xml
+  upload: statics/sitemap.xml
+
+- url: /robots\.txt
+  static_files: statics/robots.txt
+  upload: statics/robots.txt
+
+- url: /apple-touch-icon\.png
+  static_files: statics/apple-touch-icon.png
+  upload: statics/apple-touch-icon.png
+
+- url: /favicon\.ico
+  static_files: statics/favicon.ico
+  upload: statics/favicon.ico
+  mime_type: image/vnd.microsoft.icon
+
+- url: /img/(.*\.(gif|png|jpg))
+  static_files: statics/img/\1
+  upload: statics/img/(.*\.(gif|png|jpg))
+
+- url: /css
+  static_dir: statics/css
+
+- url: /js
+  mime_type: text/javascript
+  static_dir: statics/js
+
 - url: /sandbox_files
   static_dir: sandbox
 

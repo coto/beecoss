@@ -1,0 +1,17 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+
+.hero-unit {
+    padding-bottom: 10px;
+}
+
+fieldset legend {
+    padding-left: 30px;
+    font-weight: bold;
+}
+
+.nav > li > a:hover {
+    background-color: transparent;
+}
