@@ -20,11 +20,13 @@ handlers:
 - url: /favicon\.ico
   static_files: statics/favicon.ico
   upload: statics/favicon.ico
-  mime_type: image/vnd.microsoft.icon
 
 - url: /img/(.*\.(gif|png|jpg))
   static_files: statics/img/\1
   upload: statics/img/(.*\.(gif|png|jpg))
+
+- url: /files
+  static_dir: statics/global
 
 - url: /css
   static_dir: statics/css

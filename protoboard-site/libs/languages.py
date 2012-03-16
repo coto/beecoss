@@ -1,4 +1,9 @@
-## english dict
+"""
+    English / Spanish dictionary
+"""
+
+__author__ = 'Rodrigo Augosto (@coto) - coto@protoboard.cl'
+__website__ = 'www.protoboard.cl'
 
 en = {}
 en["id"] = "en"

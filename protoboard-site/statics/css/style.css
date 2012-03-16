@@ -1,5 +1,6 @@
 body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    background-color: #fefefe;
 }
 
 
@@ -14,4 +15,83 @@ fieldset legend {
 
 .nav > li > a:hover {
     background-color: transparent;
+}
+
+/*
+* Items
+*/
+h1 {
+    color: #3F8CD9;
+    font-size: 2em;
+}
+
+
+/*** Links Social Sites */
+ul.links{
+    margin: 20px 0 0 10px;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding: 0;
+}
+
+
+/*** Blog section */
+.rssFeed
+{
+    margin: 10px 0;
+
+}
+.rssHeader {
+    padding: 0.2em 0;
+}
+.rssHeader a{
+    color: #333;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.rssBody { border: 1px solid #999; }
+.rssBody ul { list-style: none; }
+.rssBody ul, .rssRow, .rssRow h4, .rssRow p
+{
+    margin: 0;
+    padding: 0;
+}
+
+.rssRow { padding: 0.8em; }
+.rssRow h4 { font-size: 1.1em; }
+.rssRow div
+{
+    font-size: 90%;
+    color: #666;
+    margin: 0.2em 0 0.4em 0;
+}
+
+.odd { background-color: #f3f3f3; }
+.even { background-color: #fbfbfb; }
+
+
+/*
+* Contact and Message Forms
+*/
+.fields{
+    padding-left: 70px;
+}
+.fields label{
+    display: inline-block;
+    width: 100px;
+}
+.fields p{
+    text-align: left;
+    padding: 0;
+}
+.keypad{
+    text-align: center;
+}
+
+
+#recaptcha_widget_div {
+    text-align: center;
+    padding-left: 136px;
 }
