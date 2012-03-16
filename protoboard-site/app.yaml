@@ -5,21 +5,13 @@ api_version: 1
 threadsafe: true
 
 handlers:
-- url: /robots.txt
-  static_files: media/robots.txt
-  upload: media/robots.txt
-
-#- url: /sitemap.xml
-#  static_files: media/sitemap.xml
-#  upload: media/sitemap.xml
+- url: /robots\.txt
+  static_files: statics/robots.txt
+  upload: statics/robots.txt
 
 - url: /sitemap\.xml
   static_files: statics/sitemap.xml
   upload: statics/sitemap.xml
-
-- url: /robots\.txt
-  static_files: statics/robots.txt
-  upload: statics/robots.txt
 
 - url: /apple-touch-icon\.png
   static_files: statics/apple-touch-icon.png
@@ -45,7 +37,7 @@ handlers:
   static_dir: sandbox
 
 - url: /keynotes
-  static_dir: keynotes
+  static_dir: statics/keynotes
 
 - url: /sandbox/.*
   script: sandbox.app
