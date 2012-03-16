@@ -1,5 +1,8 @@
 #!/usr/bin/env python
 
+__author__ = 'Rodrigo Augosto (@coto) - coto@protoboard.cl'
+__website__ = 'www.protoboard.cl'
+
 import os, webapp2, jinja2
 
 jinja_environment = jinja2.Environment(
