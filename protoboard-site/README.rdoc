@@ -6,8 +6,7 @@
 
 = Description
 
- Personal Web Site *bold*::       \*word* or \<b>text</b>
-
+ Personal Web Site
 
 == Resources
 
