@@ -1,0 +1,111 @@
+.no-csstransforms3d body{
+	overflow: auto;
+}
+.no-csstransforms3d .f-page.f-cover,
+.no-csstransforms3d .f-page.f-cover-back{
+	display: none !important;
+}
+.no-csstransforms3d .main-title{
+    display: none;
+	/*position: relative;
+	width: 100%;*/
+}
+.no-csstransforms3d .box{
+	width: auto;
+	float: none;
+	height: auto;
+	margin-bottom: 20px;
+	box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+	cursor: auto;
+}
+.box.box_scale:hover {
+    -webkit-transform: scale(1.004);
+       -moz-transform: scale(1.004);
+        -ms-transform: scale(1.004);
+         -o-transform: scale(1.004);
+            transform: scale(1.004);
+    box-shadow: 7px 7px 7px rgba(0,0,0,0.2);
+}
+
+
+.no-csstransforms3d .box:after,
+.no-csstransforms3d .box-img-left:after,
+.no-csstransforms3d .box-img-right:after{
+	display: none;
+}
+.no-csstransforms3d .box .img-cont,
+.no-csstransforms3d .box-img-left .img-cont,
+.no-csstransforms3d .box-img-right .img-cont{
+	width: 300px;
+	height: 200px;
+	float: left;
+	margin: 10px 20px 20px 0;
+}
+.no-csstransforms3d .box-img-left p{
+	margin-left: 0px;
+}
+.no-csstransforms3d .box-img-right p{
+	margin-right: 0px;
+}
+
+/* _media queries_ */
+@media (max-width: 767px) {
+
+    header p.led {
+        background-color: green;
+    }
+
+}
+@media (max-width: 480px) {
+    header p.led {
+        background-color: fuchsia;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+
+    header p.led {
+        background-color: blue;
+    }
+
+    .no-csstransforms3d .box{
+        width: 49%;
+        margin-right: 1%;
+        float: left;
+        height: 400px;
+    }
+
+}
+
+
+/* Fixed subnav on scroll, but only for 980px and up (sorry IE!) */
+@media (min-width: 980px) {
+
+    header p.led {
+        background-color: red;
+    }
+
+    .no-csstransforms3d .box{
+        width: 32%;
+        margin-right: 1%;
+        float: left;
+        height: 400px;
+    }
+}
+
+
+@media (min-width: 1200px) {
+
+    header p.led {
+        background-color: #ffff00;
+    }
+    .no-csstransforms3d .box{
+        width: 24%;
+        margin-right: 1%;
+        float: left;
+        height: 400px;
+    }
+
+
+}

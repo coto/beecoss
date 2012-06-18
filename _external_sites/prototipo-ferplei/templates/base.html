@@ -1,0 +1,229 @@
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ lang.id }}"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+
+    <title>{% block title %}Ferplei{% endblock %}</title>
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Mobile viewport optimized: h5bp.com/viewport -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="canonical" href="http://ferplei.com/" />
+    <link rel="alternate" type="application/rss+xml" title="Ferplei RSS Feed" href="http://feeds.feedburner.com/ferplei" />
+    {% if is_mobile %}
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" sizes="57x57" href="/icons/apple-touch-icon-57x57.png" />
+    <link rel="apple-touch-icon" sizes="72x72" href="/icons/apple-touch-icon-72x72.png" />
+    <link rel="apple-touch-icon" sizes="114x114" href="/icons/apple-touch-icon-114x114.png" />
+    <link rel="apple-touch-startup-image" href="/splash/splash-748x1024.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:landscape)" />
+    <link rel="apple-touch-startup-image" href="/splash/splash-768x1004.png" media="screen and (min-device-width: 481px) and (max-device-width: 1024px) and (orientation:portrait)" />
+    <link rel="apple-touch-startup-image" href="/splash/splash-320x460.png" media="screen and (max-device-width: 320px)" />
+    <link rel="apple-touch-startup-image" href="/splash/splash-640x920.png" media="screen and (max-device-width: 640px) and (-webkit-min-device-pixel-ratio: 2)" />
+    {% endif %}
+
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/bootstrap-responsive.css">
+    <link rel="stylesheet" href="/css/main.css" />
+
+    {% block mediaCSS %}{% endblock %}
+    <!-- All JavaScript at the bottom, except this Modernizr build.
+       Modernizr enables HTML5 elements & feature detects for optimal performance.
+       Create your own custom Modernizr build: www.modernizr.com/download/ -->
+    <script src="/js/libs/modernizr-2.5.3.min.js"></script>
+
+    {% if view == "mashup" %}
+    <link rel="stylesheet" type="text/css" href="css/flip/demo.css" />
+    <link rel="stylesheet" type="text/css" href="css/flip/style.css" />
+    <script id="pageTmpl" type="text/x-jquery-tmpl">
+        <div class="${theClass}" style="${theStyle}">
+            <div class="front">
+                <div class="outer">
+                    <div class="content" style="${theContentStyleFront}">
+                        <div class="inner">{{ '{{' }}html theContentFront{{ '}}' }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="back">
+                <div class="outer">
+                    <div class="content" style="${theContentStyleBack}">
+                        <div class="inner">{{ '{{' }}html theContentBack{{ '}}' }}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+    {% endif %}
+</head>
+<body>
+    <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+           chromium.org/developers/how-tos/chrome-frame-getting-started -->
+    <!--[if lte IE 7]><style type="text/css">@import '/css/ie.css';</style><![endif]-->
+    <!--[if lt IE 7]>{{ lang.text_oldbrowser|safe }}<![endif]-->
+
+    {% block header %}
+    <div class="navbar navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-chevron-down icon-white"></span>
+                </a>
+                {% if view == "list" %}
+                <a class="btn btn-navbar" data-change-view="mashup">
+                    <span class="icon-th icon-white"></span>
+                </a>
+                {% else %}
+                <a class="btn btn-navbar" data-change-view="list">
+                    <span class="icon-th-list icon-white"></span>
+                </a>
+                {% endif %}
+                <a class="brand" href="#">Betazeta</a>
+                <div class="nav-collapse">
+                    <ul class="nav pull-left">
+                        <li><a href="#">Belelú</a></li>
+                        <li><a href="#">Bólido</a></li>
+                        <li><a href="#">CHW</a></li>
+                        <li><a href="#">Fayerwayer</a></li>
+                        <li><a href="#">FW Brasil</a></li>
+                        <li class="active"><a href="#">Ferplei</a></li>
+                        <li><a href="#">LUPA</a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Más <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Niubie</a></li>
+                                <li><a href="#">Sabrosía</a></li>
+                                <li><a href="#">VeoVerde</a></li>
+                                <li><a href="#">Wayerless</a></li>
+                                <li><a href="#">Zimio</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <form class="navbar-search pull-left" action="">
+                        <input type="text" class="search-query span2" placeholder="Buscar">
+                    </form>
+                    <ul class="nav pull-right">
+                        <li>
+                            <a href="#" style="position: relative; padding-right: 25px;">Notificaciones <span style="" class="x-badge">2</span></a>
+                        </li>
+                        <li class="divider-vertical"></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">@coto <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="/?view=reader">Ayuda</a></li>
+                                <li><a href="#">Configuración de la cuenta</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Cerrar Sesión</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div><!-- /.nav-collapse -->
+            </div>
+        </div><!-- /navbar-inner -->
+    </div><!-- /navbar -->
+
+
+    <header class="jumbotron subhead" id="overview">
+        <div class="container">
+            <h1>Ferplei</h1>
+            <p class="led">Son las cosas del Futbol</p>
+            <div class="subnav">
+                <ul class="nav nav-pills">
+                    <li class="active"><a href="#typography">Liga Chilena</a></li>
+                    <li><a href="#code">Liga BBVA</a></li>
+                    <li><a href="#tables">Cartelera</a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Equipos <b class="caret"></b></a>
+                        <div class="dropdown-menu">
+                            <div class="menu_news">
+                                <span>
+                                    <a href="http://www.ferplei.com/2012/05/rafael-caroca-pide-a-gritos-a-la-u-en-playoffs-tenemos-una-espina-clavada-queremos-revancha/" title="Rafael Caroca pide a gritos a la U en playoffs">
+                                        <img width="300" alt="Ferplei_Cartelera_300x90" src="http://cl.img.e-planning.net/esb/4/0/8d02/866b17bfb279df38.jpg" height="90" border="0">
+                                        Rafael Caroca pide a gritos a la U en playoffs: “Tenemos una espina clavada, queremos revancha”
+                                    </a>
+                                </span>
+                                <p>Otro que habló en el Monumental fue el delantero Roberto Gutiérrez, quien señaló que, “Colo Colo siempre va a ser candidato al título, es algo que tenemos que ratificar".</p>
+                            </div>
+                            <ul>
+                                <li><a href="#">Cobresal</a></li>
+                                <li><a href="#">Cobreloa</a></li>
+                                <li><a href="#">Antofagasta</a></li>
+                                <li><a href="#">Iquique</a></li>
+                                <li><a href="#">Puerto Montt</a></li>
+                                <li><a href="#">Magallanes</a></li>
+                                <li><a href="#">Colo Colo</a></li>
+                                <li><a href="#">Unversidad de Chile</a></li>
+                                <li><a href="#">Universidad Catòlica</a></li>
+                                <li><a href="#">Concepción</a></li>
+                                <li><a href="#">Malleco Unido</a></li>
+                                <li><a href="#">Linares</a></li>
+                                <li><a href="#">Rangers</a></li>
+                                <li><a href="#">Deportes Copiapó</a></li>
+                                <li><a href="#">Soinca Bata</a></li>
+                            </ul>
+
+                        </div>
+                    </li>
+                    <li><a href="#forms">Guapas</a></li>
+                    <li><a href="#icons">Chilenos en el extrajero</a></li>
+                    {% if view == "list" %}
+                    <li class="bz-icons-subnav"><a href="#" data-change-view="mashup"><span class="icon-th icon-white">Vista Mashup</span></a></li>
+                    {% else %}
+                    <li class="bz-icons-subnav"><a href="#" data-change-view="list"><span class="icon-th-list icon-white">Vista Listado</span></a></li>
+                    {% endif %}
+                    <li class="bz-icons-subnav"><a href="#"><span class="icon-plus icon-white">Google Plus</span></a></li>
+                    <li class="bz-icons-subnav"><a href="#"><span class="icon-thumbs-up icon-white">Facebook</span></a></li>
+                    <li class="bz-icons-subnav"><a href="#"><span class="icon-leaf icon-white">Twitter</span></a></li>
+                </ul>
+            </div>
+            {% if messages %}
+            <!-- can use alert-error alert-success or alert-info--->
+            <div class="alert alert-block alert-{{ level }} fade in">
+                <button class="close" data-dismiss="alert">×</button>
+                <h4 class="alert-heading">Oh snap! Tienes una actualización!</h4>
+                <p>Actualiza tu perfil para ver quien sigue los artículos que escribes.</p>
+                <p data-dismiss="alert">
+                    <a class="btn btn-primary" href="#">Actualizar perfil</a> <a class="btn" href="#">Más adelante</a>
+                </p>
+            </div>
+            {% endif %}
+        </div>
+
+
+    </header>
+
+    {% endblock %}
+
+    <div class="content">
+    {% block content %}{% endblock %}
+    </div>
+
+    {% block footer %}{% endblock %}
+
+    <!-- JavaScript at the bottom for fast page loading -->
+    <!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
+    <script src="//code.jquery.com/jquery-1.7.2.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/js/libs/jquery-1.7.2.min.js"><\/script>')</script>
+    <script src="/js/libs/bootstrap.min.js"></script>
+
+    <!-- scripts concatenated and minified via build script -->
+    <script src="/js/plugins.js"></script>
+    <script src="/js/script.js"></script>
+    {% block mediaJS %}{% endblock %}
+    <!-- end scripts -->
+
+    <!-- Asynchronous Google Analytics snippet. Change UA-XXXXX-X to be your site's ID.
+   mathiasbynens.be/notes/async-analytics-snippet -->
+    <script>
+        /*var _gaq=[['_setAccount','{{ google_analytics_code }}'],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+            g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+            s.parentNode.insertBefore(g,s)}(document,'script'));*/
+    </script>
+</body>
+</html>

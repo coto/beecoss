@@ -1,0 +1,63 @@
+application: beecoss-site
+version: latest
+runtime: python27
+api_version: 1
+threadsafe: true
+
+
+# In production, uncomment line below.
+default_expiration: "30d"
+
+skip_files:
+- ^(.*/)?app\.yaml
+- ^(.*/)?app\.yml
+- ^(.*/)?index\.yaml
+- ^(.*/)?index\.yml
+- ^(.*/)?#.*#
+- ^(.*/)?.*~
+- ^(.*/)?.*\.py[co]
+- ^(.*/)?.*/RCS/.*
+- ^(.*/)?\..*
+- ^(.*/)?tests$
+- ^(.*/)?test$
+- ^Makefile
+- ^COPYING.LESSER
+- ^README.rdoc
+- \.gitignore
+- ^\.git/.*
+- \.*\.lint$
+- ^_docs
+- ^_external_sites
+- ^_tools
+
+handlers:
+- url: /robots.txt
+  static_files: media/robots.txt
+  upload: media/robots.txt
+
+#- url: /sitemap.xml
+#  static_files: media/sitemap.xml
+#  upload: media/sitemap.xml
+ 
+- url: /media
+  static_dir: media
+  
+- url: /sandbox_files
+  static_dir: sandbox
+
+- url: /keynotes
+  static_dir: keynotes
+
+- url: /sandbox/.*
+  script: sandbox.app
+  #login: admin
+
+- url: /.*
+  script: main.app
+
+libraries:
+- name: jinja2
+  version: latest
+
+builtins:
+- appstats: on

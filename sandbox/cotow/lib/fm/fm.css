@@ -1,0 +1,731 @@
+﻿/*
+ * Reset
+ * */
+html{color:#000;background:#FFF;}body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td{margin:0;padding:0;}table{border-collapse:collapse;border-spacing:0;}fieldset,img{border:0;}address,caption,cite,code,dfn,em,strong,th,var,optgroup{font-style:inherit;font-weight:inherit;}del,ins{text-decoration:none;}li{list-style:none;}caption,th{text-align:left;}h1,h2,h3,h4,h5,h6{font-size:100%;font-weight:normal;}q:before,q:after{content:'';}abbr,acronym{border:0;font-variant:normal;}sup{vertical-align:baseline;}sub{vertical-align:baseline;}legend{color:#000;}input,button,textarea,select,optgroup,option{font-family:inherit;font-size:inherit;font-style:inherit;font-weight:inherit;}body{font:14px/1.231 Helvetica, Arial, sans-serif;}select,input,button,textarea,button{font:99% arial,helvetica,clean,sans-serif;}table{font-size:inherit;font:100%;}pre,code,kbd,samp,tt{font-family:monospace;line-height:100%;}
+
+/*
+ * Scroll Header
+ */
+#header {
+    position:absolute; z-index:2;
+    top:0; left:0;
+    width:100%;
+    height:45px;
+    line-height:45px;
+    background-color:#d51875;
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+    background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+    background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+    padding:0;
+    color:#eee;
+    font-size:20px;
+    text-align:center;
+}
+        #header a.l-button {
+            display: block;
+            float: left;
+            margin: 0; padding: 0;
+            width: 41px;
+            height: 44px;
+            text-indent: -9000px;
+            overflow: hidden; /* Muy importante para evitar flash que se produce al inicio de una animación como consecuencia de text-indent */
+        }
+        #header a.l-button.l-back {
+            background: transparent url('img/l-back.png') left top no-repeat;
+        }
+        #header a.l-button.l-forward {
+            background: transparent url('img/l-forward.png') left top no-repeat;
+        }
+        #header a.l-button.l-home {
+            background: transparent url('img/l-home.png') left top no-repeat;
+        }
+        #header a {
+            color:#f3f3f3;
+            text-decoration:none;
+            font-weight:bold;
+            text-shadow:0 -1px 0 rgba(0,0,0,0.5);
+        }
+/*
+ * Scroll Footer
+ */
+#footer {
+   font-size:12px;
+    -webkit-user-select:none;
+    -webkit-text-size-adjust:none;
+    position:absolute; z-index:2;
+    bottom:0; left:0;
+    width:100%;
+    height:48px;
+    background-color:#222;
+    background-image:-webkit-gradient(linear, 0 0, 0 100%, color-stop(0, #999), color-stop(0.02, #666), color-stop(1, #222));
+    background-image:-moz-linear-gradient(top, #999, #666 2%, #222);
+    background-image:-o-linear-gradient(top, #999, #666 2%, #222);
+    padding:0;
+    border-top:1px solid #444;
+}
+    #footer li {
+        display:block;
+        float:left;
+        width:33%;
+        text-align:center;
+    }
+
+    #footer a.remove {
+        border-right:1px solid #333;
+    }
+
+    #footer a.add {
+        border-left:1px solid #6a6a6a;
+    }
+
+    #footer a {
+        display:block;
+        text-decoration:none;
+        font-size:12px;
+        color:#eee;
+        line-height:24px;
+        text-shadow:0 -1px 0 #000;
+    }
+
+    #footer span {
+        display:block;
+        font-size:30px;
+        font-weight:bold;
+    }
+
+    #wrapper {
+        position:absolute; z-index:1;
+        top:45px; bottom:48px; left:0;
+        width:100%;
+        background:#CCC;
+        overflow:auto;
+    }
+
+    #scroller {
+        position:absolute; z-index:1;
+        -webkit-tap-highlight-color:rgba(0,0,0,0);
+        width:100%;
+        padding:0;
+    }
+/*
+ *  l-loading
+ * */
+#l-loading{
+	background: black url(img/loading.gif) no-repeat 50% 20px;
+	-webkit-border-radius: 16px;
+	color: white;
+	font-size: 16px;
+	font-weight: bold;
+	height: 60px;
+	text-align: center;
+	width: 150px;
+}
+/*
+ *  Clearfix
+ * */
+li:after {
+	content: '.';
+	display: block;
+	clear: both;
+	font-size: 0;
+	height: 0;
+	visibility: hidden;
+}
+/*
+ * Headers h1, h2 y h3 
+ * */
+#l-container h1 {
+	font-size: 153.9%; /* 20px */
+	/*background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#b4c2d4), color-stop(0.5, #8ea0b7), to(#627794));*/
+	background-image: -webkit-gradient(linear,left top,left bottom,
+	    color-stop(0,         #555555),
+	    color-stop(1,         #333333));
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	color: white;
+	text-shadow: #000 0px 0px 2px;
+	text-align: center;
+	font-weight: bold;
+}
+#l-container h2 {
+	font-size: 131%; /* 17px */
+	font-weight: bold;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#B7C0C8), color-stop(0.05, #7E8D9B), to(#596774));
+	background-image: -webkit-gradient(linear,left top,left bottom,
+	    color-stop(0,         #ffffff),
+	    color-stop(15%,       #f5f5f5),
+	    color-stop(1,         #eeeeee));
+	color: #333;
+	/*text-shadow: rgba(0, 0, 0, 0.6) 0px 1px 0px;*/
+	padding: 5px;
+	border-bottom: 1px solid black;
+}
+    /*
+     * .l-h2-button-bar: Button located in second Title's Bar (H2)
+     * */
+    div.l-h2-button-bar a.l-button {
+        float: right;
+        -webkit-border-image: url(img/button.png) 0 5 0 5;
+        border-width: 3px 5px 0px 5px;
+        line-height: 25px;
+        color: white;
+        text-shadow: #000 0px 1px 1px;
+        text-decoration: none;
+        text-align: center;
+        margin-right: 10px;
+    }
+#l-container h3 {
+	font-size: 131%; /* 17px */
+	margin: 10px 0px 0px 10px;
+	font-weight: bold;
+	color: #4C566C;
+}
+/*
+ * .slider : Slider to graphics
+ * */
+.l-slider{
+	position: relative;
+	background-color: white;
+	text-align: center;
+	margin: 5px 0;
+	border: 0px solid brown;
+	padding-bottom: -20px;
+}
+	.l-slider .l-slide{
+		position: relative;
+		bottom: 0px;
+		height: 28px;
+		background: transparent url('img/pointer-backslider.png') left bottom repeat-x;
+	}
+		.l-slider .l-slide .l-pointer{
+			position: absolute;
+			display: inline-block;
+			height: 28px;
+			width: 40px;
+			background: transparent url('img/pointer.png') center center no-repeat;
+		}
+
+    .l-slider .l-slideControls{
+        /*background-color: green;*/
+        background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#FFFFFF), to(#dfe0e1));
+        position: relative;
+        color: #3e3e3e;
+        font-size: 131%;
+        font-weight: bold;
+        text-align: center;
+        border: 1px solid #cdcdcc;
+        border-width: 1px 0;
+    }
+
+        .l-slider .l-value{
+            display: block;
+            /*background-color: bisque;*/
+            padding: 0 50px; /* 50px = width of .minus & .more */
+            line-height: 35px;
+            height: 35px;
+        }
+
+        .l-slider .l-minus,
+        .l-slider .l-more{
+            position: absolute;
+            /*background-color: greenyellow;*/
+            width: 50px;
+            line-height: 35px;
+            height: 35px;
+            top: 0;
+        }
+
+        .l-slider .l-minus{
+            left: 0;
+            background: transparent url('img/arrow-blue-left.png') center center no-repeat;
+            text-indent: -100px;
+            overflow: hidden;
+        }
+        .l-slider .l-more{
+            right: 0;
+            background: transparent url('img/arrow-blue-right.png') center center no-repeat;
+            text-indent: -100px;
+            overflow: hidden;
+        }
+/*
+ * .l-map Implementa diseño de Elementos utilizados en vista Mapa
+ * */
+.l-map-content{
+	height: 400px;
+	position: relative;
+	padding-top: 5px;
+}
+    #l-map-canvas {
+        height: 100%;
+    }
+    .l-map-info {
+        position: absolute;
+        top: 70px;
+        z-index: 5;
+        width: 100%;
+    }
+    .l-map-info .l-map-message {
+        margin: 0 20%;
+        background-color: #FFC;
+        border: 1px solid #C93;
+        font-weight: bold;
+        text-align: center;
+        padding: 10px;
+        display: none;
+    }
+        .l-map-info.alert  .l-map-message{
+            background-color: red;
+            color: white;
+        }
+    .l-map-content input.l-map-addresssearch {
+        background-color: white;
+        border-radius: 8px;
+        text-align: left;
+    }
+    .l-map-content input.l-map-search {
+        padding: 2px 30px;
+        text-align: center;
+    }
+/*
+ * .l-instructions: Text Instructions
+ * */
+.l-instructions {
+	color: gray;
+	text-align: center;
+	margin: 5px 0;
+	font-weight: normal;
+}
+/*
+ * .l-button-bar: Button Bar (safety and warning included)
+ * */
+div.l-button-bar {
+	text-align: center;
+	margin: 5px 0;
+}
+	div.l-button-bar a.l-button {
+		background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(white), color-stop(0.5, #E6E6E6), to(#BFBFBF));
+		border: 1px solid #A6A6A6;
+		-webkit-border-radius: 8px;
+		color: #333;
+		text-decoration: none;
+		line-height: 30px;
+		text-shadow: rgba(255, 255, 255, 0.246094) 0px 1px 0px;
+		padding: 6px 17px;
+	}
+	div.l-button-bar a.l-safety
+	, div.l-button-bar a.l-warning {
+		color: white;
+		text-shadow: rgba(0, 0, 0, 0.246094) 1px -1px 0px;
+	}
+	div.l-button-bar a.l-warning  {
+		background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#FB6A6A), color-stop(0.5, #F90606), to(#AE0404));
+		border: 1px solid #7C0303;
+		text-shadow: rgba(0, 0, 0, 0.246094) 0px -1px 0px;
+	}
+	div.l-button-bar a.l-safety {
+		background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#C1FA3B), color-stop(0.5, #8FCA05), to(#5A7F03));
+	}
+/*
+ * .l-toolbar .l-tabbar: Toolbar tabular, includes selected class
+ * */
+div.l-toolbar {
+	text-align: center;
+	margin: 5px 0;
+}
+	div.l-toolbar  ul.l-tabbar {
+		display: inline-block;
+	}
+	div.l-toolbar  ul.l-tabbar li{
+		display: inline;
+		float: left;
+		color: white;
+		font-size: 108%;
+		font-weight: bold;
+		height: 35px;
+		line-height: 24px;
+		-webkit-box-shadow: #6F8190 0px 0px 1px 1px inset, rgba(255, 255, 255, 0.246094) 0px 1px 0px 0px;
+		-webkit-box-sizing: border-box;
+		-webkit-user-select: none;
+		background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#B7C0C8), color-stop(0.02, #7E8D9B), to(#596774));
+		text-shadow: rgba(0, 0, 0, 0.496094) 0px -1px 0px;
+		vertical-align: middle;
+		border-bottom: 1px solid #384148;
+		border-left: 0px none #333;
+		border-right: 1px solid #384148;
+		border-top: 1px solid #434D57;
+		overflow-x: hidden;
+		overflow-y: hidden;
+		padding: 4px 12px; margin: 0;
+		list-style-image: none;
+		list-style-position: outside;
+		list-style-type: none;
+	}
+	div.l-toolbar  ul.l-tabbar li:first-child{
+		border-bottom-left-radius: 6px;
+		border-bottom-right-radius: 0px;
+		border-left: 1px solid #384148;
+		border-top-left-radius: 6px;
+		border-top-right-radius: 0px;
+	}
+	div.l-toolbar  ul.l-tabbar li:last-child {
+		border-bottom-left-radius: 0px;
+		border-bottom-right-radius: 6px;
+		border-top-left-radius: 0px;
+		border-top-right-radius: 6px;
+	}
+	div.l-toolbar  ul.l-tabbar li.selected {
+		background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#596774), color-stop(0.04, #4E5A66), color-stop(0.1, #576471), color-stop(0.65, #596774), to(#5A6875));
+	}
+/*
+ * .l-tableToggle
+ * */
+.l-tableToggle {
+	margin: 5px 0;
+}
+	.l-tableToggle .l-loadingTable {
+		margin: 5px 0;
+		padding: 80px 0;
+		text-align: center;
+		background: transparent url('img/loadingTable.gif') center center no-repeat;
+		text-indent: -900px;
+		overflow: hidden;
+	}
+	.l-tableToggle h3.tT-title{
+		text-align: center;
+	}
+	.l-tableToggle select.tT-option{
+		border: 1px solid gray;
+		font-weight: bold;
+		font-size: 108%;
+		line-height: 32px;
+	}
+	.l-tableToggle ul.tT-data_content{
+		border-right: 1px solid gray;
+	}
+		.l-tableToggle ul.tT-data_content li{
+			background-color: white;
+			border: 1px solid gray;
+			border-width: 0 0 1px 1px;
+			line-height: 35px;
+		}
+			.l-tableToggle ul.tT-data_content li span.tT-key{
+				display: inline-block;
+				font-weight: bold;
+				text-align: left;
+				text-decoration: underline;
+				padding-left: 4px;
+				width: 39%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+			}
+			.l-tableToggle ul.tT-data_content li span.tT-value{
+				display: inline-block;
+				text-align: right;
+				background-color: #D7D7D7;
+				border-left: 1px solid gray;
+				width: 50%;
+				float: right;
+				padding-right: 4px;
+			}
+
+ /*
+ * .l-datalist: Data List, includes selectable and selected classes
+ * */
+ul.l-datalist {
+	background-color: white;
+	margin: 5px 0;
+}
+	ul.l-datalist > li {
+		padding: 8px;
+		font-size: 131%; /* 17px */
+		font-weight: bold;
+		border-top: 1px solid #D7D7D7;
+		line-height: 140%; /* Importante para alinear etiquetas con controles de formulario */
+	}
+		ul.l-datalist > li:first-child {
+			border-top: none;
+		}
+		ul.l-datalist > li.l-selectable.l-selected {
+			color: white;
+			background: #E98A15 url(img/selectedRightArrow.png) no-repeat right center;
+		}
+		ul.l-datalist > li.l-selectable.l-selected * {
+			color: white;
+		}
+		
+		ul.l-datalist > li.l-nav-forward {
+			background: url(img/rightArrow.png) no-repeat right center;
+		}
+		/*
+		 * .l-map: Map Item
+		 * */
+		ul.l-datalist > li.l-map > label {
+			float: left;
+			width: 50%;
+			text-overflow: ellipsis;
+			overflow: hidden;
+			white-space: nowrap;
+		}
+		ul.l-datalist > li.l-map > div {
+			color: #E98A15;
+			margin-left: 50%;
+			display: block;
+			text-align: right;
+		}
+		ul.l-datalist > li.l-map.l-multiline-key  > label {
+			text-overflow: clip;
+			overflow: visible;
+			white-space: normal;
+		}
+		ul.l-datalist > li.l-map.l-nav-forward  > div {
+			margin-right: 10px;
+		}
+		/*
+		 * .l-datalist.l-extended: Data list extended, rounded borders
+		 * */
+		ul.l-datalist.l-extended {
+			-webkit-border-radius: 8px;
+			margin:5px 10px 5px 10px;
+		}
+			ul.l-datalist.l-extended > li:first-child {
+				-webkit-border-top-left-radius: 8px;
+				-webkit-border-top-right-radius: 8px;
+			}
+			ul.l-datalist.l-extended > li:last-child {
+				-webkit-border-bottom-left-radius: 8px;
+				-webkit-border-bottom-right-radius: 8px;
+			}
+		/* .datalist.l-properties */
+		ul.l-datalist.l-properties {
+		}
+			ul.l-datalist.l-properties > li {
+				border-top: 1px dashed #2995CF;
+				font-size: 90%;
+				margin-left: 10px;
+				margin-right: 10px;
+			}
+				ul.l-datalist.l-properties > li:first-child {
+					border-top: none;
+				}
+				ul.l-datalist.l-properties > li > label {
+					color: #E98A15;
+					float: left;
+					width: 50%;
+					text-overflow: ellipsis;
+					overflow: hidden;
+					white-space: nowrap;
+					text-align: right;
+				}
+				ul.l-datalist.l-properties > li > div {
+					color: black;
+					margin-left: 55%;
+					display: block;
+					text-align: left;
+				}
+		/*
+		 * .l-withdescription: Item description
+		 * */
+		ul.l-datalist li.l-withdescription{
+			display: table;
+			width: 100%;
+		}
+		 
+		ul.l-datalist > li.l-withdescription > div {
+			color: gray;
+			font-weight: normal;
+			font-size: 57%;
+			line-height: 90%;
+		}
+			ul.l-datalist li.l-withdescription div.l-medio{
+				text-align: right;
+				display: table-cell;
+				vertical-align: middle;
+			}
+		/*
+		 * .l-expandable: Permite dar estilos a un item plegable
+		 * */
+		ul.l-datalist > li.l-expandable {
+			background-color: white;
+		}
+			ul.l-datalist > li.l-expandable > .header{
+				background: transparent url('img/arrow-blue-down.png') right center no-repeat;
+				padding-right: 30px;
+			}
+			ul.l-datalist > li.l-expandable > .content {
+				background-color: white;
+				-webkit-border-radius: 8px;
+				padding: 10px;
+				margin-top: 8px;
+			}
+				ul.l-datalist > li.l-expandable.active {
+					background-color: #E98A15;
+				}
+				ul.l-datalist > li.l-expandable.active .header{
+					background-image: url('img/arrow-blue-up.png');
+					color: white;
+				}
+		/*
+		 * .l-expandablelist: Permite dar estilos a una lista plegable
+		 * */
+		ul.l-expandablelist {
+			margin: 5px 0;
+		}
+		ul.l-expandablelist li{
+			border-bottom: 1px solid #c6c6c6;
+			background-image: -webkit-gradient(linear, 0 0, 0 25, from(#FFFFFF), to(#dfe0e1));
+		}
+			ul.l-expandablelist > li > .header {
+				background: transparent url('img/grayArrowRight.png') 5px center no-repeat;
+				display: block;
+				text-shadow: rgba(255, 255, 255, 0.246094) 0px 1px 0px;
+				padding: 8px;
+				padding-left: 35px;
+				font-size: 131%; /* 17px */
+				font-weight: bold;
+				line-height: 100%; /* Importante para alinear etiquetas con controles de formulario */
+			}
+			ul.l-expandablelist  > li.active > .header {
+				background-image: url('img/grayArrowBottom.png');
+			}
+			ul.l-expandablelist > li > .content {
+				background-image: -webkit-gradient(linear, left top, left bottom, from(#cdcdcd), to(#FFFFFF));
+				border-top: 1px solid #c6c6c6;
+				padding: 10px;
+			}
+		/*
+		 * .l-expandablelist.l-extended: Rounded corners
+		 * */
+		ul.l-expandablelist.l-extended {
+			margin: 5px 10px;
+		}
+		ul.l-expandablelist.l-extended > li:first-child, ul.l-expandablelist.l-extended > li:first-child > .header{
+			-webkit-border-top-left-radius: 8px;
+			-webkit-border-top-right-radius: 8px;
+		}
+			ul.l-expandablelist.l-extended > li:last-child, ul.l-expandablelist.l-extended > li:last-child > .header, ul.l-expandablelist.l-extended > li:last-child > .content{
+				-webkit-border-bottom-left-radius: 8px;
+				-webkit-border-bottom-right-radius: 8px;
+				/*border: 1px solid #c6c6c6;*/
+			}	
+			ul.l-expandablelist.l-extended > li.active:last-child > .header{
+				-webkit-border-bottom-left-radius: 0;
+				-webkit-border-bottom-right-radius: 0;
+			}
+/*
+ * l-inputgroup: Grupos de input
+ * */
+ul.l-inputgroup > li {
+	text-align: left;
+	line-height: 180%;
+}
+
+ul.l-inputgroup > li > label {
+	margin-left: 5px;
+}
+/*
+ * l-inputgroup: Grupos de input
+ * */
+
+.ColoredBar { /* Aplicada en H1 y barra en footer */
+	color: white;
+	background-image: -webkit-gradient(linear, 0% 0, 0% 100%, from(#B7C0C8), color-stop(0.05, #7E8D9B), to(#596774));
+	text-shadow: rgba(0, 0, 0, 0.597656) 0px 1px 0px;
+	border: none;
+	font-weight: bold;
+	padding: 3px 0 3px 12px;
+	margin: 5px 10px;
+	text-align: left;
+	-webkit-border-radius: 8px;
+	margin-bottom: 0;
+	position: relative;
+	min-height: 24px;
+}
+
+/* Footer */
+#l-footer-bar {
+	margin: 20px 0;
+	position: relative;
+	text-align: center;
+}
+	#l-footer-bar  p{
+		margin-top: 10px;
+	}
+	#l-footer-bar .ColoredBar { /* Aplicada barra en footer */
+		text-align: center;
+	}
+	#l-footer-bar ul.ButtonBar {
+		position: relative;
+		display: inline-block;
+	}
+/**
+ * .ButtonBar
+ */
+ul.ButtonBar {
+	position: absolute;
+	right: 0;
+	top: 0;
+	padding-top: 3px;
+}
+	ul.ButtonBar li {
+		width: 50px;
+		height: 24px;
+		float: right;
+		border-right: 1px solid #ccc;
+	}
+	ul.ButtonBar li  a{
+		text-indent: -9000px;
+		overflow: hidden;
+		display: block;
+		width: 50px;
+		height: 24px;
+	}
+	ul.ButtonBar li:first-child{
+		border-right-width: 0;
+	}
+		ul.ButtonBar a.l-button.l-logout {
+			background: transparent url('img/l-icon-logout.png') center center no-repeat;
+		}
+		ul.ButtonBar a.l-button.l-top {
+			background: transparent url('img/l-icon-top.png') center center no-repeat;
+		}
+		ul.ButtonBar a.l-button.l-home {
+			background: transparent url('img/l-icon-home.png') center center no-repeat;
+		}
+		ul.ButtonBar a.l-button.l-back{
+			background: transparent url('img/l-icon-back.png') center center no-repeat;
+		}
+
+
+/*
+ * Elementos de formulario
+ * */
+input[type=text]
+, input[type=email]
+, input[type=number]
+, input[type=url]
+, input[type=search]
+, textarea {
+	color: #8A8C89;
+	width: 100%;
+	background: none;
+	text-align: right;
+	border-width:1px;
+	border-style:solid;
+	border-bottom-color:#ddd;
+	border-right-color:#ddd;
+	border-top-color:#aaa;
+	border-left-color:#aaa;
+	-webkit-border-radius:3px;
+	font-size: 77%; /* 10px */
+	height: 1.3em;
+}
+textarea {
+	height: 5em;
+	text-align: left;
+}
+select {
+	width: 100%;
+	font-size: 77%; /* 10px */
+	height: 2em;
+}

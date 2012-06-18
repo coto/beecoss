@@ -1,0 +1,10 @@
+/* the humans responsible & colophon */
+/* humanstxt.org */
+
+
+/* TEAM */
+  Rodrigo Augosto
+  Site: www.protoboard.cl
+  Twitter: @coto
+  Location: Chile
+
