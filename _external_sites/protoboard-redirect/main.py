@@ -15,13 +15,22 @@
 
 # Google App Engine imports.
 import webapp2, re
+import models.models as models
+from lib import utils
 
-#test : http://7.protoboard-site.appspot.com/
+
+#test : http://protoboard-site.appspot.com/
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
 
 #        self.response.write(self.request.url)
+        visitLog = models.VisitLog(
+            uastring = self.request.user_agent,
+            ip = self.request.remote_addr,
+            timestamp = utils.get_date_time()
+        )
+        visitLog.put()
 
         if re.search('protoboard.cl', str(self.request.url)):
             new_url = re.sub('protoboard.cl', 'beecoss.com', str(self.request.url))
@@ -31,7 +40,7 @@ class MainHandler(webapp2.RequestHandler):
             new_url = re.sub('protoboard', 'beecoss', str(self.request.url))
             self.redirect(new_url)
         else:
-            self.response.write("This domain had moved to <a href='http://beecoss.com'>Beecoss.com</a>.")
+            self.response.write("This domain has been acquired by <a href='http://beecoss.com'>Beecoss.com</a>.")
 
 
 app = webapp2.WSGIApplication([
