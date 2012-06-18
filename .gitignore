@@ -1,4 +1,8 @@
 .DS_Store
-.idea/*
-*/.idea/*
 *.pyc
+ndb/*.pyc
+.idea
+*.lint
+.pydevproject
+.project
+.settings*
