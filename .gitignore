@@ -4,14 +4,13 @@
 *.egg
 *.egg-info
 dist
-build
 eggs
 parts
-bin
 var
 sdist
 develop-eggs
 .installed.cfg
+npm-debug.log
 
 # Installer logs
 pip-log.txt
@@ -21,7 +20,7 @@ pip-log.txt
 .tox
 
 #Translations
-*.mo
+#*.mo
 
 #Mr Developer
 .mr.developer.cfg
@@ -34,3 +33,29 @@ pip-log.txt
 .project
 .settings*
 
+stress/results/
+generate_languages.sh
+.vagrant
+Vagrantfile
+
+# node stuff
+node_modules
+
+# built assets
+static/*/js/dist
+static/*/js/build
+static/*/css/dist
+static/*/css/build
+static/*/css/build
+static/*/scss*/*.css
+static/*/scss/*landings*/*.css
+
+#sass cache
+.sass-cache
+
+# datastore
+datastore.sqlite
+test-datastore.sqlite
+
+# virtualenvs
+venv
