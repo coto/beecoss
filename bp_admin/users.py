@@ -69,7 +69,7 @@ class AdminUserListHandler(BaseHandler):
                 params['p'] = p
             if cursor:
                 params['c'] = cursor.urlsafe()
-            return self.uri_for('user-list', **params)
+            return self.uri_for('admin-user-list', **params)
 
         self.view.pager_url = pager_url
         self.view.q = q
@@ -104,7 +104,7 @@ class AdminUserEditHandler(BaseHandler):
                 self.form.populate_obj(user)
                 user.put()
                 self.add_message("Changes saved!", 'success')
-                return self.redirect_to("user-edit", user_id=user_id)
+                return self.redirect_to("admin-user-edit", user_id=user_id)
             else:
                 self.add_message("Could not save changes!", 'error')
         else:
