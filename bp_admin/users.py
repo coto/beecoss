@@ -41,7 +41,7 @@ class AdminUserListHandler(BaseHandler):
         cursor = Cursor(urlsafe=c)
 
         if q:
-            qry = models.User.query(ndb.OR(models.User.last_name.lower() == q.lower(),
+            qry = models.User.query(ndb.OR(models.User.last_name == q.lower(),
                                            models.User.email == q.lower(),
                                            models.User.username == q.lower()))
         else:
