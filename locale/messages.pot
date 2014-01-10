@@ -325,6 +325,9 @@ msgstr ""
 msgid "Users Geolocation"
 msgstr ""
 
+msgid "Visit Site"
+msgstr ""
+
 msgid "Welcome <strong>{}</strong>, you are now logged in."
 msgstr ""
 

@@ -25,7 +25,7 @@ class AdminGeoChartHandler(BaseHandler):
         params = {
             "data": users_by_country.items()
         }
-        return self.render_template('admin/geochart.html', **params)
+        return self.render_template('admin_users_geochart.html', **params)
 
 
 class EditProfileForm(forms.EditProfileForm):
@@ -41,9 +41,9 @@ class AdminUserListHandler(BaseHandler):
         cursor = Cursor(urlsafe=c)
 
         if q:
-            qry = models.User.query(ndb.OR(models.User.last_name == q,
-                                           models.User.email == q,
-                                           models.User.username == q))
+            qry = models.User.query(ndb.OR(models.User.last_name.lower() == q.lower(),
+                                           models.User.email == q.lower(),
+                                           models.User.username == q.lower()))
         else:
             qry = models.User.query()
 
@@ -69,7 +69,7 @@ class AdminUserListHandler(BaseHandler):
                 params['p'] = p
             if cursor:
                 params['c'] = cursor.urlsafe()
-            return self.uri_for('admin-user-list', **params)
+            return self.uri_for('admin-users-list', **params)
 
         self.view.pager_url = pager_url
         self.view.q = q
@@ -84,7 +84,7 @@ class AdminUserListHandler(BaseHandler):
             "users": users,
             "count": qry.count()
         }
-        return self.render_template('admin/list.html', **params)
+        return self.render_template('admin_users_list.html', **params)
 
 
 class AdminUserEditHandler(BaseHandler):
@@ -114,7 +114,7 @@ class AdminUserEditHandler(BaseHandler):
         params = {
             'user': user
         }
-        return self.render_template('admin/edit.html', **params)
+        return self.render_template('admin_user_edit.html', **params)
 
     @webapp2.cached_property
     def form(self):

@@ -1,4 +1,4 @@
-{% extends 'admin/base.html' %}
+{% extends 'admin_base.html' %}
 
 {% block header_title %}
     {% trans %}User List{% endtrans %}
@@ -12,7 +12,7 @@
         <input type="text" name="q" value="{{ q or '' }}" class="input-medium search-query" placeholder="{{ _('Search User') }}"></input>
         <button type="submit" title="Search"><i class="icon-search"></i></button>
         {% if q %}
-        <a href="{{ uri_for('admin-user-list') }}" class="clear">×</a>
+        <a href="{{ uri_for('admin-users-list') }}" class="clear">×</a>
         {% endif %}
     </form>
     </div>

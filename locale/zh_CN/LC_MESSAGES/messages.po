@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2013-11-13 00:56+0100\n"
+"POT-Creation-Date: 2014-01-10 01:09-0300\n"
 "PO-Revision-Date: 2012-06-21 01:51-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: zh_CN <LL@li.org>\n"
@@ -350,6 +350,9 @@ msgid "Username or Email"
 msgstr "用户名或电子邮件"
 
 msgid "Users Geolocation"
+msgstr ""
+
+msgid "Visit Site"
 msgstr ""
 
 msgid "Welcome <strong>{}</strong>, you are now logged in."
