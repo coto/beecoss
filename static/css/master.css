@@ -25,10 +25,10 @@ h3, h4, h5 {
 	font-weight: 400;
 }
 .position, .uk-tab > li > a:hover, .uk-tab > li > a:focus, .uk-tab > li.uk-open > a, .uk-tab > li.uk-active > a, #mess {
-	color:#2ECC71;
+	color:#7eb001;
 }
 #maintitle, .carousel, .uk-tooltip, .pagination li a:focus, .pagination li a:hover, .uk-nav-side > li.uk-active > a, .uk-nav-dropdown > li > a:hover, .uk-nav-dropdown > li > a:focus, .uk-pagination > .uk-active > span {
-	background: #2ECC71;
+	background: #7eb001;
 }
 #title .breadcrumbs, .subtitle, .position, .slider .caption, .cycle-slideshow blockquote, .cycle-slideshow cite, .portfolioFilter {
 	font-family: 'Roboto Condensed', sans-serif;
@@ -46,16 +46,16 @@ img {
 	font-family: Arial, Helvetica, Tahoma, sans-serif;
 }
 .uk-tooltip-top:after, .uk-tooltip-top-left:after, .uk-tooltip-top-right:after {
-	border-top-color: #2ECC71;
+	border-top-color: #7eb001;
 }
 .uk-tooltip-bottom:after, .uk-tooltip-bottom-left:after, .uk-tooltip-bottom-right:after {
-	border-bottom-color: #2ECC71;
+	border-bottom-color: #7eb001;
 }
 .uk-tooltip-left:after {
-	border-left-color: #2ECC71;
+	border-left-color: #7eb001;
 }
 .uk-tooltip-right:after {
-	border-right-color: #2ECC71;
+	border-right-color: #7eb001;
 }
 /* 2. Links
 -----------------------------------------------------------------------------*/
@@ -68,24 +68,24 @@ a {
 .btn, .uk-pagination > li > a {
 	border: 1px solid #b4b4b4;
 	border-radius: 3px;
-	color: #2ECC71;
+	color: #7eb001;
 	background: #fafafa;
 	text-shadow: none;
 }
 .btn:hover, .uk-pagination > li > a:hover, .uk-pagination > li > a:focus {
-	border: 1px solid #2ECC71;
+	border: 1px solid #7eb001;
 	color: #fff;
-	background: #2ECC71;
+	background: #7eb001;
 	text-shadow: none;
 }
 .btn-color {
-	border: 1px solid #2ECC71;
+	border: 1px solid #7eb001;
 	color: #fff;
-	background: #2ECC71;
+	background: #7eb001;
 }
 .btn-color:hover {
 	border: 1px solid #b4b4b4;
-	color: #2ECC71;
+	color: #7eb001;
 	background: #fafafa;
 }
 .btn-round {
@@ -118,7 +118,7 @@ a {
 }
 .btn-1 {
 	border: 1px solid #b4b4b4;
-	color: #2ECC71;
+	color: #7eb001;
 }
 .btn-1a {
 	overflow: hidden;
@@ -128,7 +128,7 @@ a {
 	height: 0;
 	top: 50%;
 	left: 50%;
-	background: #2ECC71;
+	background: #7eb001;
 	opacity: 0;
 	-webkit-transform: translateX(-50%) translateY(-50%) rotate(45deg);
 	-moz-transform: translateX(-50%) translateY(-50%) rotate(45deg);
@@ -382,7 +382,7 @@ a {
 	line-height: 0;
 }
 .content-item .overlay {
-	border-bottom: 90px solid #2ECC71;
+	border-bottom: 90px solid #7eb001;
 	border-left: 90px solid transparent;
 	bottom: 0;
 	height: 0;
@@ -397,7 +397,7 @@ a {
 	width: 0;
 }
 .content-item:hover .overlay {
-	border-bottom: 800px solid #2ECC71;
+	border-bottom: 800px solid #7eb001;
 	border-left: 800px solid transparent;
 	-webkit-transition: all 0.5s ease-out;
 	-moz-transition: all 0.5s ease-out;
@@ -773,7 +773,7 @@ nav select {
 	top: -6px;
 	border-left: 6px solid transparent;
 	border-right: 6px solid transparent;
-	border-bottom: 6px solid #2ECC71; /* top triangle color */
+	border-bottom: 6px solid #7eb001; /* top triangle color */
 }
 #menu ul ul li:first-child a:after {
 	left: -6px;
@@ -782,7 +782,7 @@ nav select {
 	border-left: 0;
 	border-bottom: 6px solid transparent;
 	border-top: 6px solid transparent;
-	border-right: 6px solid #2ECC71; /* right triangle color dropdown */
+	border-right: 6px solid #7eb001; /* right triangle color dropdown */
 }
 #menu ul li:first-child a:hover:after {
 	border-bottom-color: #95a5a6;  /* top triangle color focus */
@@ -918,7 +918,7 @@ ul.cycle-slideshow {
 	color:#414141;
 }
 #portfolioNav a:hover, #portfolioNav a.current {
-	color:#2ECC71;
+	color:#7eb001;
 	text-decoration:none;
 }
 .portfolioFilter {
@@ -1029,7 +1029,7 @@ ul.cycle-slideshow {
 	color: #ecf0f1;
 }
 #copyright {
-	background: #2ECC71;
+	background: #7eb001;
 	overflow: hidden;
 }
 #copyright .wrapper {
@@ -1084,7 +1084,7 @@ ul.cycle-slideshow {
 	line-height: 18px;
 }
 .link-show-code {
-	background-color: #2ECC71;
+	background-color: #7eb001;
 	border-radius: 10px;
 	color: #fff;
 	font-size: 12px;
