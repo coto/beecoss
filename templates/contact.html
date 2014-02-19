@@ -1,0 +1,258 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact - Beecoss</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="keywords" content="">
+<meta name="description" content="">
+<meta name="author" content="">
+<!-- CSS STYLES -->
+<link rel="stylesheet" type="text/css" href="/css/kube.css" />
+<link rel="stylesheet" type="text/css" href="/css/uikit.css" />
+<link rel="stylesheet" type="text/css" href="/css/master.css" />
+<link rel="stylesheet" type="text/css" href="/css/prettyPhoto.css"/>
+<link rel="stylesheet" type="text/css" href="/css/icons.css">
+<link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300' rel='stylesheet' type='text/css'>
+<!-- FAVICONS -->
+<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+<!-- JavaScript library to detect HTML5 and CSS3 features in the user's browser -->
+<script src="/js/modernizr.custom.js"></script>
+</head>
+<body>
+
+<!-- ===================================== 
+	LOGO AND MENU
+===================================== -->
+<header id="header" class="group">
+  <div id="logo"><a href="/"> <img src="/img/logo.png" alt="Beecoss" /> </a></div>
+  <!-- start navigation -->
+  <nav id="menuwrap">
+    <ul id="menu">
+      <li><a href="/">Home</a></li>
+      <!-- -->
+      <li><a href="/coto">Biography</a></li>
+      <!-- end dropdown level 1 -->
+      <li> <a href="http://blog.beecoss.com">Blog</a></li>
+      <!-- end dropdown level 1 -->
+      <li> <a href="#">Professional</a>
+        <ul class="menu-sub">
+          <li><a href="/projects/my-projects">My Project</a></li>
+          <li><a href="/projects/code-snippets">Code Snippets</a></li>
+        </ul>
+      </li>
+      <!-- / -->
+      <li class="current"><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- end navigation --> 
+</header>
+
+<!-- ===================================== 
+	SUBTITLE
+===================================== -->
+<section id="maintitle">
+  <div class="wrapper">
+    <h2>Get in touch</h2>
+    <h3>Filling out the below form to send me an email.
+        If you need to talk to me on the phone or send me something by snail mail, I'll gladly email you instructions on how to reach me.</h3>
+  </div>
+</section>
+
+<!-- ===================================== 
+	TITLE AND BREADCRUMB
+===================================== -->
+<div id="title" class="group">
+  <div class="wrapper">
+    <h1>Contact me</h1>
+    <!-- BREADCRUMB -->
+    <nav class="breadcrumbs mobile-hide">
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><span>Contact</span></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- ===================================== 
+	CONTENT
+===================================== -->
+<div class="wrapper"> 
+  
+  <!-- GOOGLE MAP (coordinates and data found at bottom of this page)-->
+  <!--div class="map-container" data-uk-scrollspy="{cls:'uk-animation-slide-top', repeat: true}">
+    <div id="map-canvas"></div>
+  </div-->
+  
+  <!-- OPTIONAL TEXT -->
+  <div class="units-row">
+    <div class="unit-66">
+      <h3>Please complete the form below for general information</h3>
+      <p>I read everything sent here, but if you ask me a question about technical doubts or using any project I have built,
+          it's likely that I won't have time to answer it, and will instead refer you to
+          <a href="https://groups.google.com/forum/#!forum/gae-boilerplate" target="_blank">Google App Engine Forum Group</a>,
+          <a href="https://groups.google.com/forum/#!forum/jquery-es" target="_blank">jQuery Español Forum</a>,
+          or <a href="http://www.stackoverflow.com" target="_blank">StackOverFlow</a>.</p>
+      
+      <!-- FORM -->
+      <form method="post" action="send-email.php" name="contact" id="contact" class="forms forms-inline">
+        <!-- name and email -->
+        <div class="units-row-end">
+          <label class="unit-50"> Full name <span class="req">*</span>
+            <input type="text" name="fullname" id="fullname" class="width-100"  />
+          </label>
+          <label class="unit-50"> E-mail <span class="req">*</span>
+            <input type="email" name="email" id="email" class="width-100" />
+          </label>
+        </div>
+        <!-- phone and subject -->
+        <div class="units-row-end">
+          <label class="unit-50"> Phone <span class="req">*</span>
+            <input type="text" name="phone" id="phone" class="width-100" />
+            <legend>Include area code</legend>
+          </label>
+          <label class="unit-50"> Subject
+            <input type="text" name="subject" id="subject" class="width-100"  />
+          </label>
+        </div>
+        <!-- message -->
+        <label> Message <span class="req">*</span>
+          <textarea name="message" id="message" rows="5" class="width-100"></textarea>
+        </label>
+        <!-- submit button -->
+        <input type="submit" name="submit" id="submit" class="btn btn-big btn-color" value="Send Form">
+        <div id="mess"> </div>
+      </form>
+    </div>
+    
+    <!-- ===================================== 
+	SIDEBAR
+===================================== -->
+    <div class="unit-33">
+      <div class="uk-panel uk-panel-box">
+        <h3 class="uk-panel-title">Confidential information</h3>
+        <p>If you need to send me confidential information, I maintain a public key, just for advanced users, in PGP format.</p>
+        <p>This key is available on most public keyservers as <a href="http://pgp.mit.edu/pks/lookup?op=vindex&search=0x715FA96A2D224F86" target="_blank">0x715FA96A2D224F86</a> .
+        </p>
+        <hr class="dotted">
+        <h4>Follow me</h4>
+        <!-- SOCIAL NETWORKS -->
+        <div class="social">  <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Twitter" href="http://www.twitter.com/coto" target="_blank"><span class="icon-twitter2"></span></a> <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Linkedin" href="http://cl.linkedin.com/in/rodrigoaugosto/" target="_blank"><span class="icon-linkedin"></span></a> <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Google +" href="https://plus.google.com/115559728179813066497/" target="_blank"><span class="icon-google-plus3"></span></a> </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===================================== 
+	FOOTER
+===================================== -->
+<footer id="footer">
+  <div class="wrapper">
+    <div class="units-row-end"> 
+      <!-- ABOUT US -->
+      <div class="unit-33">
+        <h3>About us</h3>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu mauris id velit cursus malesuada. Vestibulum vel urna vitae risus sagittis consectetur ut sed ante.</p>
+        <p>Nam luctus nunc nec molestie egestas  ex ea commodo consequat nulla lobortis turpis. </p>
+      </div>
+      
+      <!-- CONTACT INFO -->
+      <div class="unit-33">
+        <h3>Contact info</h3>
+        <h4> Headquarters information:</h4>
+        <ul class="contact-info">
+          <li> <i class="icon-phone"></i> +52 (555) 123 4567</li>
+          <li> <i class="icon-mail2"></i> info@yourdomain.com</li>
+          <li> <i class="icon-office"></i>95 Ninth Avenue 6th and 9th Floors New York, NY 10012 </li>
+        </ul>
+      </div>
+      
+      <!-- GET IN TOUCH -->
+      <div class="unit-33">
+        <h3>Get in touch</h3>
+        <p class="first-letter">We would love to hear about your project. Please get in touch with us.</p>
+        <div class="push-down-20"> <a class="btn btn-color" href="contact.html">Contact us today</a> </div>
+        <div class="social">
+          <h4>Follow us:</h4>
+          <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Facebook"><span class="icon-facebook2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Pinterest"><span class="icon-pinterest2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Twitter"><span class="icon-twitter2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Linkedin"><span class="icon-linkedin"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Google Plus"><span class="icon-google-plus3"></span></a> </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===================================== 
+	COPYRIGHT
+===================================== -->
+<div id="copyright" class="group">
+  <div class="wrapper"> Copyright &copy; 2014 Company Name.  
+    
+    <!-- FOOTER NAVIGATION -->
+    <nav class="nav-g">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="elements.html">Elements</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
+</div>
+
+<!-- GOOGLE MAP SETTINGS --> 
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script> 
+<script>
+	function initialize() {
+	var myLatlng = new google.maps.LatLng(-33.411667,-70.550000);
+  	var mapOptions = {
+    zoom: 12,
+    center: myLatlng
+  	};
+
+  	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+
+  	var contentString = '<div id="content">'+
+      '<h1>Gareth Architecture</h1>'+
+      '<div id="bodyContent">'+
+      '<p><b>Address:</b> 95 Ninth Avenue 6th ' +
+      'and 9th Floors New York, NY 10012. <br> '+
+      '<b>Phone</b>: +52 (555) 123 4567 </p>'+
+      '</div>'+
+      '</div>';
+
+ 	var infowindow = new google.maps.InfoWindow({
+      content: contentString
+  	});
+
+	var marker = new google.maps.Marker({
+      position: myLatlng,
+      map: map,
+      title: 'Gareth Architecture'
+  	});
+  	google.maps.event.addListener(marker, 'click', function() {
+    infowindow.open(map,marker);
+  	});
+	}
+
+	google.maps.event.addDomListener(window, 'load', initialize);
+	</script> 
+
+<!-- start java --> 
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.validate.js"></script>
+<script src="/js/validation.js"></script>
+<script src="/js/jquery.cycle2.min.js"></script>
+<script src="/js/jquery.cycle2.extensions.min.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/isotope.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/uikit.js"></script>
+<!-- / end java -->
+
+</body>
+</html>

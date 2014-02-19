@@ -702,8 +702,8 @@ nav select {
 #menu li:hover > a {
 	color: #999; /* hover color link */
 }
-#menuwrap .current > a {
-	color: #999;
+#menuwrap .current  {
+	border-bottom: 5px solid #7EB001;
 }
 *html #menu li a:hover { /* IE6 only */
 	color: #12979C;
