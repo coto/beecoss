@@ -70,11 +70,11 @@ handlers:
 
 - url: /css/
   mime_type: text/css
-  static_dir: bp_content/themes/default/static/css
+  static_dir: bp_content/themes/beecoss_2014/static/css
 
 - url: /js
   mime_type: text/javascript
-  static_dir: bp_content/themes/default/static/js
+  static_dir: bp_content/themes/beecoss_2014/static/js
 
 - url: /img/(\w*)/(.*\.(gif|png|jpg|jpeg))
   static_files: bp_content/themes/\1/static/img/\2
