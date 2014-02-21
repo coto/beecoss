@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2014-01-10 01:09-0300\n"
+"POT-Creation-Date: 2014-02-21 14:40-0300\n"
 "PO-Revision-Date: 2012-07-19 12:53-0400\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: fr_FR <LL@li.org>\n"
@@ -67,6 +67,9 @@ msgstr "Changer l'adresse mail"
 msgid "Change your password"
 msgstr "Changer votre mot de passe"
 
+msgid "Confirm Delete Account"
+msgstr ""
+
 msgid "Confirm Password"
 msgstr "Confirmer le mot de passe"
 
@@ -86,8 +89,19 @@ msgstr "Contact"
 msgid "Country"
 msgstr "Pays"
 
+msgid "Created"
+msgstr ""
+
+#, fuzzy
+#| msgid "to resend the email."
+msgid "Current Email"
+msgstr "pour renvoyer l'e-mail."
+
 msgid "Current Password"
 msgstr "Mot de Passe Actuel"
+
+msgid "Delete Account"
+msgstr ""
 
 msgid "Don't have an account?"
 msgstr "Vous n'avez pas de compte?"
@@ -250,9 +264,6 @@ msgstr "Vous inscrire"
 msgid "Social account on %s not found for this user."
 msgstr "Compte social non trouvé sur %s pour cet utilisateur."
 
-msgid "Sorry you are not logged in."
-msgstr "Désolé vous n'êtes pas connecté"
-
 msgid "Sorry, Some error occurred."
 msgstr "Désolé, une erreur est survenue."
 
@@ -287,6 +298,11 @@ msgstr ""
 #, python-format
 msgid "The account %s is already in use."
 msgstr "Le compte %s est déjà en cours d'utilisation."
+
+#, fuzzy
+#| msgid "Your email has been successfully updated."
+msgid "The account has been successfully deleted."
+msgstr "Votre email a été mis à jour avec succès."
 
 #, python-format
 msgid "The email %s is already registered."
@@ -347,6 +363,9 @@ msgstr "Erreur inattendue de création de l'utilisateur %s"
 
 msgid "Update Profile"
 msgstr "Mise à jour du profil"
+
+msgid "Updated"
+msgstr ""
 
 msgid "User Details"
 msgstr "Détails de l'utilisateur"
@@ -428,6 +447,9 @@ msgstr "Votre message a été envoyé correctement."
 
 msgid "Your new username is <strong>{}</strong>"
 msgstr "Votre nouveau nom d'utilisateur est <strong>{}</strong>"
+
+msgid "Your session has expired."
+msgstr ""
 
 msgid ""
 "Your username or password is incorrect. Please try again (make sure your "

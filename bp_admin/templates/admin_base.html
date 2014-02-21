@@ -20,7 +20,6 @@
                     <ul class="nav">
                         <li {% if path == uri_for('admin-users-geochart') %}class="active"{% endif %}><a href="{{ uri_for('admin-users-geochart') }}">{% trans %}Users Geolocation{% endtrans %}</a></li>
                         <li {% if path == uri_for('admin-users-list') %}class="active"{% endif %}><a href="{{ uri_for('admin-users-list') }}">{% trans %}User List{% endtrans %}</a></li>
-                        <li {% if path == uri_for('admin-theme') %}class="active"{% endif %}><a href="{{ uri_for('admin-theme') }}">{% trans %}Theme{% endtrans %}</a></li>
                     </ul>
                     <ul class="nav pull-right">
                         <li><a href="/">{% trans %}Visit Site{% endtrans %}</a></li>
