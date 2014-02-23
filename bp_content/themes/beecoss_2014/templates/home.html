@@ -1,166 +1,200 @@
-
 {% extends base_layout %}
 
 {% block title %}
-        {% trans %}Beecoss{% endtrans %} - {{app_name}}
+    {% trans %}Beecoss{% endtrans %} - {{ app_name }}
 {% endblock %}
 {% block header_title %}
-        {% trans %}Beecoss{% endtrans %}
+    {% trans %}Beecoss{% endtrans %}
 {% endblock %}
 
 {% block content %}
-<!-- =====================================
-	CAROUSEL
-===================================== -->
-<div class="carousel">
-  <div class="wrapper">
-    <div class="units-row-end">
-      <div class="items"> <a href="#" class="prev"></a> <a href="#" class="next"></a>
-        <div class="unit-3w3"> <a href="#">
-          <div class="circle-image"> <img src="/img/beecoss_2014/startechconf.png" alt="" border="0" /> </div>
-          <h3>StarTechConf</h3>
-          <p>The most important Conference about Software Developemnt in Chile .</p>
-          </a> </div>
-        <div class="unit-3w3"> <a href="#">
-          <div class="circle-image"> <img src="/img/beecoss_2014/pic6.jpg" alt="" border="0" /> </div>
-          <h3>Qompazz</h3>
-          <p>Elite Software for Financial Companies really safe and with an amazing user experience</p>
-          </a> </div>
-        <div class="unit-3w3"> <a href="#">
-          <div class="circle-image"> <img src="/img/beecoss_2014/pic7.jpg" alt="" border="0" /> </div>
-          <h3>Server Easy Install</h3>
-          <p>Template provides consistent experience from phones and tablets to desktops.</p>
-          </a> </div>
-        <div class="unit-3w3"> <a href="#">
-          <div class="circle-image"> <img src="/img/beecoss_2014/jquery-fontsize.png" alt="" border="0" /> </div>
-          <h3>jQuery FontSize</h3>
-          <p>Template provides consistent experience from phones and tablets to desktops.</p>
-          </a> </div>
-        <div class="unit-3w3"> <a href="#">
-          <div class="circle-image"> <img src="/img/beecoss_2014/pic6.jpg" alt="" border="0" /> </div>
-          <h3>Trac Theme</h3>
-          <p>Template provides consistent experience from phones and tablets to desktops.</p>
-          </a> </div>
-        <div class="unit-3w3"> <a href="#">
-          <div class="circle-image"> <img src="/img/beecoss_2014/gae-boilerplate.png" alt="" border="0" /> </div>
-          <h3>Google App Engine Boilerplate</h3>
-          <p>Begin your Python Project with this amazing framework doing things in the right way.</p>
-          </a> </div>
-      </div>
-    </div>
-  </div>
-</div>
+    <!-- =====================================
+        CAROUSEL
+    ===================================== -->
+    <div class="carousel">
+        <div class="wrapper">
+            <div class="units-row-end">
+                <div class="items"><a href="#" class="prev"></a> <a href="#" class="next"></a>
 
-<!-- =====================================
-	2 COLUMNS WELCOME
-===================================== -->
-<section class="shapes">
-  <div class="wrapper">
-    <div class="units-row">
+                    <div class="unit-3w3"><a href="#">
+                        <div class="circle-image"><img src="/img/beecoss_2014/startechconf.png" alt="" border="0"/>
+                        </div>
+                        <h3>StarTechConf</h3>
 
-      <!-- HASSLE FREE TEMPLATE -->
-      <div class="unit-50 text-centered" data-uk-scrollspy="{cls:'uk-animation-slide-left', repeat: true}"> <img src="/img/beecoss_2014/pic0.png" alt="" class="noborder push-down-30">
-        <h2>Hassle free template</h2>
-        <p>Built with simplicity in mind and unique design features spiced up with preset CSS classes to make awesome things.</p>
-        <a href="#">
-        <button class="btn-asy btn-1 btn-1a">Read more</button>
-        </a> </div>
+                        <p>The most important Conference about Software Developemnt in Chile .</p>
+                    </a></div>
+                    <div class="unit-3w3"><a href="#">
+                        <div class="circle-image"><img src="/img/beecoss_2014/pic6.jpg" alt="" border="0"/></div>
+                        <h3>Qompazz</h3>
 
-      <!-- BULLETPROOF FRAMEWORK -->
-      <div class="unit-50 text-centered" data-uk-scrollspy="{cls:'uk-animation-slide-right', repeat: true}"> <img src="/img/beecoss_2014/pic1.png" alt=""  class="noborder push-down-30"/>
-        <h2>Bulletproof Framework</h2>
-        <p>Build your look on the web, not Twitter's. Responsive revolutionary flexible grid, minimalistic and sufficient for everything. </p>
-        <a href="#">
-        <button class="btn-asy btn-1 btn-1a">Read more</button>
-        </a> </div>
-    </div>
-  </div>
-</section>
+                        <p>Elite Software for Financial Companies really safe and with an amazing user experience</p>
+                    </a></div>
+                    <div class="unit-3w3"><a href="#">
+                        <div class="circle-image"><img src="/img/beecoss_2014/pic7.jpg" alt="" border="0"/></div>
+                        <h3>Server Easy Install</h3>
 
-<!-- =====================================
-	SLIDER
-===================================== -->
-<div class="wrapper">
-  <div class="slider">
-    <div class="slides">
-    <img src="/img/beecoss_2014/slide-1.jpg" alt="Bulletproof framework" />
-    <img src="/img/beecoss_2014/slide-2.jpg" alt="Built with simplicity in mind" />
-    <img src="/img/beecoss_2014/slide-3.jpg" alt="Revolutionary flexible grid" />
-    <img src="/img/beecoss_2014/slide-4.jpg" alt="Inteligent PHP form processor" />
+                        <p>Template provides consistent experience from phones and tablets to desktops.</p>
+                    </a></div>
+                    <div class="unit-3w3"><a href="#">
+                        <div class="circle-image"><img src="/img/beecoss_2014/jquery-fontsize.png" alt="" border="0"/>
+                        </div>
+                        <h3>jQuery FontSize</h3>
+
+                        <p>Template provides consistent experience from phones and tablets to desktops.</p>
+                    </a></div>
+                    <div class="unit-3w3"><a href="#">
+                        <div class="circle-image"><img src="/img/beecoss_2014/pic6.jpg" alt="" border="0"/></div>
+                        <h3>Trac Theme</h3>
+
+                        <p>Template provides consistent experience from phones and tablets to desktops.</p>
+                    </a></div>
+                    <div class="unit-3w3"><a href="#">
+                        <div class="circle-image"><img src="/img/beecoss_2014/gae-boilerplate.png" alt="" border="0"/>
+                        </div>
+                        <h3>Google App Engine Boilerplate</h3>
+
+                        <p>Begin your Python Project with this amazing framework doing things in the right way.</p>
+                    </a></div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- empty element for caption -->
-    <div class="caption"></div>
-    <div class="overlay"> <a href="#" class="prev"></a> <a href="#" class="next"></a> </div>
-  </div>
-</div>
+    <!-- =====================================
+        2 COLUMNS WELCOME
+    ===================================== -->
+    <section class="shapes">
+        <div class="wrapper">
+            <div class="units-row">
 
-<!-- =====================================
-	3 COLUMNS BELOW SLIDER
-===================================== -->
-<section class="bg-gray">
-  <div class="wrapper">
-    <div class="units-row-end">
+                <!-- HASSLE FREE TEMPLATE -->
+                <div class="unit-50 text-centered" data-uk-scrollspy="{cls:'uk-animation-slide-left', repeat: true}">
+                    <img src="/img/beecoss_2014/pic0.png" alt="" class="noborder push-down-30">
 
-      <!-- COLUMN ONE -->
-      <div class="unit-33 text-centered">
-        <h3>What Makes Us Different</h3>
-        <a href="about-us.html">
-        <div class="content-item"> <img src="/img/beecoss_2014/pic2.jpg" alt="" />
-          <div class="overlay"></div>
-          <div class="corner-overlay-content">+</div>
-          <div class="overlay-content">
-            <h3>Learn more</h3>
-            <p> Vivamus posuere lacus nibh, vitae lacinia neque interdum vel.</p>
-          </div>
+                    <h2>Hassle free template</h2>
+
+                    <p>Built with simplicity in mind and unique design features spiced up with preset CSS classes to
+                        make awesome things.</p>
+                    <a href="#">
+                        <button class="btn-asy btn-1 btn-1a">Read more</button>
+                    </a></div>
+
+                <!-- BULLETPROOF FRAMEWORK -->
+                <div class="unit-50 text-centered" data-uk-scrollspy="{cls:'uk-animation-slide-right', repeat: true}">
+                    <img src="/img/beecoss_2014/pic1.png" alt="" class="noborder push-down-30"/>
+
+                    <h2>Bulletproof Framework</h2>
+
+                    <p>Build your look on the web, not Twitter's. Responsive revolutionary flexible grid, minimalistic
+                        and sufficient for everything. </p>
+                    <a href="#">
+                        <button class="btn-asy btn-1 btn-1a">Read more</button>
+                    </a></div>
+            </div>
         </div>
-        </a>
-        <h3 class="text-uppercase">Inteligent PHP form processor</h3>
-        <p>Our inteligent PHP form processor automatically detects fields in forms, so if you add, delete or edit fields in forms you won't need to config anything in PHP vestibulum faucibus facilisis ligula, dictum malesuada. </p>
-        <hr class="dotted">
+    </section>
 
-        <!-- start nested columns for icons -->
-        <div class="units-row">
-          <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5c">
-            <div class="unit-33"><a href="#set-5" class="hi-icon icon-bullhorn">Bullhorn</a></div>
-            <div class="unit-33"><a href="#set-5" class="hi-icon icon-signup">Signup</a></div>
-            <div class="unit-33"><a href="#set-5" class="hi-icon icon-earth">Earth</a></div>
-          </div>
-        </div>
-        <!-- / end nested columns for icons -->
-        <h3>Discover exclusive services designed for our customers</h3>
-      </div>
+    <!-- =====================================
+        SLIDER
+    ===================================== -->
+    <div class="wrapper">
+        <div class="slider">
+            <div class="slides">
+                <img src="/img/beecoss_2014/slide-1.jpg" alt="Bulletproof framework"/>
+                <img src="/img/beecoss_2014/slide-2.jpg" alt="Built with simplicity in mind"/>
+                <img src="/img/beecoss_2014/slide-3.jpg" alt="Revolutionary flexible grid"/>
+                <img src="/img/beecoss_2014/slide-4.jpg" alt="Inteligent PHP form processor"/>
+            </div>
 
-      <!-- COLUMN TWO -->
-      <div class="unit-33 text-centered">
-        <div class="bg-white unit-padding push-down-35"> <img src="/img/beecoss_2014/pic3.png" class="noborder push-down-15" alt="" data-uk-scrollspy="{cls:'uk-animation-slide-bottom', repeat: true}"/>
-          <h3>Absolute freedom with no imposed styling.</h3>
-          <p class="zero">Donec viverra, nibh id tempus luctus, est nulla eleifend eros, et cursus erat metus eu dui. Nulla lobortis turpis nec lorem porta consectetur. </p>
+            <!-- empty element for caption -->
+            <div class="caption"></div>
+            <div class="overlay"><a href="#" class="prev"></a> <a href="#" class="next"></a></div>
         </div>
-        <p class="subtitle">Each of our templates are made of innovation, craftsmanship and research, because we wish to offer unique  quality products.</p>
-      </div>
-
-      <!-- COLUMN THREE -->
-      <div class="unit-33 text-centered">
-        <h3>What we can do for you</h3>
-        <a href="about-us.html">
-        <div class="content-item"> <img src="/img/beecoss_2014/pic4.jpg" alt="" />
-          <div class="overlay"></div>
-          <div class="corner-overlay-content">+</div>
-          <div class="overlay-content">
-            <h3>Learn more</h3>
-            <p>Praesent varius neque nulla, eget consectetur quam placerat quis.</p>
-          </div>
-        </div>
-        </a>
-        <h3 class="text-uppercase">A wide range of design services</h3>
-        <p>Customer´s needs are our first priority, and respect any requests or recommendations. </p>
-        <hr class="dotted">
-        <a href="#"> <img src="/img/beecoss_2014/world-map.png" alt="" class="noborder push-down-15" /> </a>
-        <h3>Search for a local authorized distributor in your area</h3>
-      </div>
     </div>
-  </div>
-</section>
+
+    <!-- =====================================
+        3 COLUMNS BELOW SLIDER
+    ===================================== -->
+    <section class="bg-gray">
+        <div class="wrapper">
+            <div class="units-row-end">
+
+                <!-- COLUMN ONE -->
+                <div class="unit-33 text-centered">
+                    <h3>What Makes Us Different</h3>
+                    <a href="about-us.html">
+                        <div class="content-item"><img src="/img/beecoss_2014/pic2.jpg" alt=""/>
+
+                            <div class="overlay"></div>
+                            <div class="corner-overlay-content">+</div>
+                            <div class="overlay-content">
+                                <h3>Learn more</h3>
+
+                                <p> Vivamus posuere lacus nibh, vitae lacinia neque interdum vel.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <h3 class="text-uppercase">Inteligent PHP form processor</h3>
+
+                    <p>Our inteligent PHP form processor automatically detects fields in forms, so if you add, delete or
+                        edit fields in forms you won't need to config anything in PHP vestibulum faucibus facilisis
+                        ligula, dictum malesuada. </p>
+                    <hr class="dotted">
+
+                    <!-- start nested columns for icons -->
+                    <div class="units-row">
+                        <div class="hi-icon-wrap hi-icon-effect-5 hi-icon-effect-5c">
+                            <div class="unit-33"><a href="#set-5" class="hi-icon icon-bullhorn">Bullhorn</a></div>
+                            <div class="unit-33"><a href="#set-5" class="hi-icon icon-signup">Signup</a></div>
+                            <div class="unit-33"><a href="#set-5" class="hi-icon icon-earth">Earth</a></div>
+                        </div>
+                    </div>
+                    <!-- / end nested columns for icons -->
+                    <h3>Discover exclusive services designed for our customers</h3>
+                </div>
+
+                <!-- COLUMN TWO -->
+                <div class="unit-33 text-centered">
+                    <div class="bg-white unit-padding push-down-35"><img src="/img/beecoss_2014/pic3.png"
+                                                                         class="noborder push-down-15" alt=""
+                                                                         data-uk-scrollspy="{cls:'uk-animation-slide-bottom', repeat: true}"/>
+
+                        <h3>Absolute freedom with no imposed styling.</h3>
+
+                        <p class="zero">Donec viverra, nibh id tempus luctus, est nulla eleifend eros, et cursus erat
+                            metus eu dui. Nulla lobortis turpis nec lorem porta consectetur. </p>
+                    </div>
+                    <p class="subtitle">Each of our templates are made of innovation, craftsmanship and research,
+                        because we wish to offer unique quality products.</p>
+                </div>
+
+                <!-- COLUMN THREE -->
+                <div class="unit-33 text-centered">
+                    <h3>What we can do for you</h3>
+                    <a href="about-us.html">
+                        <div class="content-item"><img src="/img/beecoss_2014/pic4.jpg" alt=""/>
+
+                            <div class="overlay"></div>
+                            <div class="corner-overlay-content">+</div>
+                            <div class="overlay-content">
+                                <h3>Learn more</h3>
+
+                                <p>Praesent varius neque nulla, eget consectetur quam placerat quis.</p>
+                            </div>
+                        </div>
+                    </a>
+
+                    <h3 class="text-uppercase">A wide range of design services</h3>
+
+                    <p>Customer´s needs are our first priority, and respect any requests or recommendations. </p>
+                    <hr class="dotted">
+                    <a href="#"> <img src="/img/beecoss_2014/world-map.png" alt="" class="noborder push-down-15"/> </a>
+
+                    <h3>Search for a local authorized distributor in your area</h3>
+                </div>
+            </div>
+        </div>
+    </section>
 
 {% endblock %}

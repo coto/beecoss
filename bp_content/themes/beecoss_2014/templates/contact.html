@@ -1,154 +1,179 @@
-
 {% extends base_layout %}
 
 {% block title %}
-        {% trans %}Contact{% endtrans %} - {{app_name}}
+    {% trans %}Contact{% endtrans %} - {{ app_name }}
 {% endblock %}
 {% block header_title %}
-        {% trans %}Contact{% endtrans %}
+    {% trans %}Contact{% endtrans %}
 {% endblock %}
 
 {% block content %}
 
-<!-- ===================================== 
-	SUBTITLE
-===================================== -->
-<section id="maintitle">
-  <div class="wrapper">
-    <h2>Get in touch</h2>
-    <h3>Filling out the below form to send me an email.
-        If you need to talk to me on the phone or send me something by snail mail, I'll gladly email you instructions on how to reach me.</h3>
-  </div>
-</section>
+    <!-- =====================================
+        SUBTITLE
+    ===================================== -->
+    <section id="maintitle">
+        <div class="wrapper">
+            <h2>Get in touch</h2>
 
-<!-- ===================================== 
-	TITLE AND BREADCRUMB
-===================================== -->
-<div id="title" class="group">
-  <div class="wrapper">
-    <h1>Contact me</h1>
-    <!-- BREADCRUMB -->
-    <nav class="breadcrumbs mobile-hide">
-      <ul>
-        <li><a href="/">Home</a></li>
-        <li><span>Contact</span></li>
-      </ul>
-    </nav>
-  </div>
-</div>
+            <h3>Filling out the below form to send me an email.
+                If you need to talk to me on the phone or send me something by snail mail, I'll gladly email you
+                instructions on how to reach me.</h3>
+        </div>
+    </section>
 
-<!-- ===================================== 
-	CONTENT
-===================================== -->
-<div class="wrapper"> 
-  
-  <!-- GOOGLE MAP (coordinates and data found at bottom of this page)-->
-  <!--div class="map-container" data-uk-scrollspy="{cls:'uk-animation-slide-top', repeat: true}">
-    <div id="map-canvas"></div>
-  </div-->
-  
-  <!-- OPTIONAL TEXT -->
-  <div class="units-row">
-    <div class="unit-66">
-      <h3>Please complete the form below for general information</h3>
-      <p>I read everything sent here, but if you ask me a question about technical doubts or using any project I have built,
-          it's likely that I won't have time to answer it, and will instead refer you to
-          <a href="https://groups.google.com/forum/#!forum/gae-boilerplate" target="_blank">Google App Engine Forum Group</a>,
-          <a href="https://groups.google.com/forum/#!forum/jquery-es" target="_blank">jQuery Español Forum</a>,
-          or <a href="http://www.stackoverflow.com" target="_blank">StackOverFlow</a>.</p>
-      
-      <!-- FORM -->
-      <form method="post" action="send-email.php" name="contact" id="contact" class="forms forms-inline">
-        <!-- name and email -->
-        <div class="units-row-end">
-          <label class="unit-50"> Full name <span class="req">*</span>
-            <input type="text" name="fullname" id="fullname" class="width-100"  />
-          </label>
-          <label class="unit-50"> E-mail <span class="req">*</span>
-            <input type="email" name="email" id="email" class="width-100" />
-          </label>
+    <!-- =====================================
+        TITLE AND BREADCRUMB
+    ===================================== -->
+    <div id="title" class="group">
+        <div class="wrapper">
+            <h1>Contact me</h1>
+            <!-- BREADCRUMB -->
+            <nav class="breadcrumbs mobile-hide">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><span>Contact</span></li>
+                </ul>
+            </nav>
         </div>
-        <!-- phone and subject -->
-        <div class="units-row-end">
-          <label class="unit-50"> Phone <span class="req">*</span>
-            <input type="text" name="phone" id="phone" class="width-100" />
-            <legend>Include area code</legend>
-          </label>
-          <label class="unit-50"> Subject
-            <input type="text" name="subject" id="subject" class="width-100"  />
-          </label>
+    </div>
+
+    <!-- =====================================
+        CONTENT
+    ===================================== -->
+    <div class="wrapper">
+
+        <!-- GOOGLE MAP (coordinates and data found at bottom of this page)-->
+        <!--div class="map-container" data-uk-scrollspy="{cls:'uk-animation-slide-top', repeat: true}">
+          <div id="map-canvas"></div>
+        </div-->
+
+        <!-- OPTIONAL TEXT -->
+        <div class="units-row">
+            <div class="unit-66">
+                <h3>Please complete the form below for general information</h3>
+
+                <p>I read everything sent here, but if you ask me a question about technical doubts or using any project
+                    I have built,
+                    it's likely that I won't have time to answer it, and will instead refer you to
+                    <a href="https://groups.google.com/forum/#!forum/gae-boilerplate" target="_blank">Google App Engine
+                        Forum Group</a>,
+                    <a href="https://groups.google.com/forum/#!forum/jquery-es" target="_blank">jQuery Español Forum</a>,
+                    or <a href="http://www.stackoverflow.com" target="_blank">StackOverFlow</a>.</p>
+
+                <!-- FORM -->
+                <form method="post" action="{{ url|safe }}" name="contact" id="contact" class="forms forms-inline">
+                    <!-- name and email -->
+                    <input type="hidden" name="exception" value="{{ exception|e }}">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+
+                    {{ macros.field(form.name, label=_("Name"), placeholder=_("Enter your")+" "+_("Name"), class="input-xlarge focused required") }}
+                    {{ macros.field(form.email, label=_("Email"), placeholder=_("Enter your")+" "+_("Email"), class="input-xlarge focused required email", type="email") }}
+                    {{ macros.field(form.message, label=_("Message"), class="input-xlarge required", cols="40", rows="8") }}
+
+                    <div class="units-row-end">
+                        <label class="unit-50"> Full name <span class="req">*</span>
+                            <input type="text" name="fullname" id="fullname" class="width-100"/>
+                        </label>
+                        <label class="unit-50"> E-mail <span class="req">*</span>
+                            <input type="email" name="email" id="email" class="width-100"/>
+                        </label>
+                    </div>
+                    <!-- phone and subject -->
+                    <div class="units-row-end">
+                        <label class="unit-50"> Phone <span class="req">*</span>
+                            <input type="text" name="phone" id="phone" class="width-100"/>
+                            <legend>Include area code</legend>
+                        </label>
+                        <label class="unit-50"> Subject
+                            <input type="text" name="subject" id="subject" class="width-100"/>
+                        </label>
+                    </div>
+                    <!-- message -->
+                    <label> Message <span class="req">*</span>
+                        <textarea name="message" id="message" rows="5" class="width-100"></textarea>
+                    </label>
+                    <!-- submit button -->
+                    <input type="submit" name="submit" id="submit" class="btn btn-big btn-color" value="Send Form">
+
+                    <div id="mess"></div>
+                </form>
+            </div>
+
+            <!-- =====================================
+            SIDEBAR
+        ===================================== -->
+            <div class="unit-33">
+                <div class="uk-panel uk-panel-box">
+                    <h3 class="uk-panel-title">Confidential information</h3>
+
+                    <p>If you need to send me confidential information, I maintain a public key, just for advanced
+                        users, in PGP format.</p>
+
+                    <p>This key is available on most public keyservers as <a
+                            href="http://pgp.mit.edu/pks/lookup?op=vindex&search=0x715FA96A2D224F86" target="_blank">0x715FA96A2D224F86</a>
+                        .
+                    </p>
+                    <hr class="dotted">
+                    <h4>Follow me</h4>
+                    <!-- SOCIAL NETWORKS -->
+                    <div class="social"><a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Twitter"
+                                           href="http://www.twitter.com/coto" target="_blank"><span
+                            class="icon-twitter2"></span></a> <a class="color-gray" data-uk-tooltip="{pos:'top-left'}"
+                                                                 title="Linkedin"
+                                                                 href="http://cl.linkedin.com/in/rodrigoaugosto/"
+                                                                 target="_blank"><span class="icon-linkedin"></span></a>
+                        <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Google +"
+                           href="https://plus.google.com/115559728179813066497/" target="_blank"><span
+                                class="icon-google-plus3"></span></a></div>
+                </div>
+            </div>
         </div>
-        <!-- message -->
-        <label> Message <span class="req">*</span>
-          <textarea name="message" id="message" rows="5" class="width-100"></textarea>
-        </label>
-        <!-- submit button -->
-        <input type="submit" name="submit" id="submit" class="btn btn-big btn-color" value="Send Form">
-        <div id="mess"> </div>
-      </form>
     </div>
-    
-    <!-- ===================================== 
-	SIDEBAR
-===================================== -->
-    <div class="unit-33">
-      <div class="uk-panel uk-panel-box">
-        <h3 class="uk-panel-title">Confidential information</h3>
-        <p>If you need to send me confidential information, I maintain a public key, just for advanced users, in PGP format.</p>
-        <p>This key is available on most public keyservers as <a href="http://pgp.mit.edu/pks/lookup?op=vindex&search=0x715FA96A2D224F86" target="_blank">0x715FA96A2D224F86</a> .
-        </p>
-        <hr class="dotted">
-        <h4>Follow me</h4>
-        <!-- SOCIAL NETWORKS -->
-        <div class="social">  <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Twitter" href="http://www.twitter.com/coto" target="_blank"><span class="icon-twitter2"></span></a> <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Linkedin" href="http://cl.linkedin.com/in/rodrigoaugosto/" target="_blank"><span class="icon-linkedin"></span></a> <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Google +" href="https://plus.google.com/115559728179813066497/" target="_blank"><span class="icon-google-plus3"></span></a> </div>
-      </div>
-    </div>
-  </div>
-</div>
 
 {% endblock %}
 
 {% block mediaJS %}
-<!-- GOOGLE MAP SETTINGS --> 
-<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script> 
-<script>
-	function initialize() {
-	var myLatlng = new google.maps.LatLng(-33.411667,-70.550000);
-  	var mapOptions = {
-    zoom: 12,
-    center: myLatlng
-  	};
+    <!-- GOOGLE MAP SETTINGS -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <script>
+        function initialize() {
+            var myLatlng = new google.maps.LatLng(-33.411667, -70.550000);
+            var mapOptions = {
+                zoom: 12,
+                center: myLatlng
+            };
 
-  	var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+            var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
 
-  	var contentString = '<div id="content">'+
-      '<h1>Gareth Architecture</h1>'+
-      '<div id="bodyContent">'+
-      '<p><b>Address:</b> 95 Ninth Avenue 6th ' +
-      'and 9th Floors New York, NY 10012. <br> '+
-      '<b>Phone</b>: +52 (555) 123 4567 </p>'+
-      '</div>'+
-      '</div>';
+            var contentString = '<div id="content">' +
+                    '<h1>Gareth Architecture</h1>' +
+                    '<div id="bodyContent">' +
+                    '<p><b>Address:</b> 95 Ninth Avenue 6th ' +
+                    'and 9th Floors New York, NY 10012. <br> ' +
+                    '<b>Phone</b>: +52 (555) 123 4567 </p>' +
+                    '</div>' +
+                    '</div>';
 
- 	var infowindow = new google.maps.InfoWindow({
-      content: contentString
-  	});
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
 
-	var marker = new google.maps.Marker({
-      position: myLatlng,
-      map: map,
-      title: 'Gareth Architecture'
-  	});
-  	google.maps.event.addListener(marker, 'click', function() {
-    infowindow.open(map,marker);
-  	});
-	}
+            var marker = new google.maps.Marker({
+                position: myLatlng,
+                map: map,
+                title: 'Gareth Architecture'
+            });
+            google.maps.event.addListener(marker, 'click', function () {
+                infowindow.open(map, marker);
+            });
+        }
 
-	google.maps.event.addDomListener(window, 'load', initialize);
-</script>
+        google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
 
-<!-- start java --> 
-<script src="/js/jquery.validate.js"></script>
-<script src="/js/validation.js"></script>
-<!-- / end java -->
+    <!-- start java -->
+    <script src="/js/jquery.validate.js"></script>
+    <script src="/js/validation.js"></script>
+    <!-- / end java -->
 {% endblock %}
