@@ -4,15 +4,16 @@ Simple route: http://webapp-improved.appspot.com/guide/routing.html#simple-route
 RedirectRoute: http://webapp-improved.appspot.com/api/webapp2_extras/routes.html#webapp2_extras.routes.RedirectRoute
 """
 from webapp2_extras.routes import RedirectRoute
-from bp_content.themes.default.handlers import handlers
+from bp_content.themes.beecoss_2014.handlers import handlers
 
 secure_scheme = 'https'
 
 # Here go your routes, you can overwrite boilerplate routes (bp_includes/routes)
 
 _routes = [
-    RedirectRoute('/secure/', handlers.SecureRequestHandler, name='secure', strict_slash=True),
-    RedirectRoute('/settings/delete_account', handlers.DeleteAccountHandler, name='delete-account', strict_slash=True),
+    RedirectRoute('/coto/', handlers.BiographyHandler, name='biography', strict_slash=True),
+    RedirectRoute('/projects/my-projects', handlers.MyProjectsHandler, name='my-projects', strict_slash=True),
+    RedirectRoute('/projects/code-snippets', handlers.CodeSnippetsHandler, name='code-snippets', strict_slash=True),
 ]
 
 def get_routes():

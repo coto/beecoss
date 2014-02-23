@@ -1,218 +1,139 @@
-{% import "macros.html" as macros %}
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ locale_language_id }}"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="{{ locale_language_id }}"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="{{ locale_language_id }}"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="{{ locale_language_id }}"> <!--<![endif]-->
 <head>
+    <title>{% block title %}{{ app_name }}{% endblock %}</title>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <title>{% block title %}{{ app_name }}{% endblock %}</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="Coto Augosto">
     <meta name="generator" content="Google App Engine Boilerplate 3.0">
+    <!-- CSS STYLES -->
+    <link rel="stylesheet" type="text/css" href="/css/kube.css" />
+    <link rel="stylesheet" type="text/css" href="/css/uikit.css" />
+    <link rel="stylesheet" type="text/css" href="/css/master.css" />
+    <link rel="stylesheet" type="text/css" href="/css/prettyPhoto.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/icons.css">
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300' rel='stylesheet' type='text/css'>
+    <!-- FAVICONS -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
 
-    <!-- Mobile viewport optimized: h5bp.com/viewport -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="/{{ theme }}/favicon.ico">
-    {% if is_mobile %}
-        <link rel="apple-touch-icon" href="/{{ theme }}/apple-touch-icon.png">
-    {% endif %}
-    <link rel="stylesheet" href="/boilerplate/css/boilerplate.min.css">
-    <link rel="stylesheet" href="/css/style.css">
     {% block mediaCSS %}{% endblock %}
-
+    <!-- Analytics -->
     {{ google_analytics_code }}
-    <!-- All JavaScript at the bottom, except this Modernizr build.
-       Modernizr enables HTML5 elements & feature detects for optimal performance. -->
-    <script src="/boilerplate/js/libs/modernizr-2.7.1.min.js"></script>
+    <!-- JavaScript library to detect HTML5 and CSS3 features in the user's browser -->
+    <script src="/js/modernizr.custom.js"></script>
 </head>
 <body>
-<!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-       chromium.org/developers/how-tos/chrome-frame-getting-started -->
-<!--[if lt IE 8]>
-    	<p class=chromeframe>{% trans %}Your browser is <em>ancient!</em>{% endtrans %} 
-    	{% trans %}<a href="http://browsehappy.com/">Upgrade to a different browser</a>
-    	or <a href="http://www.google.com/chromeframe/?redirect=true">
-    	install Google Chrome Frame</a> to experience this site.{% endtrans %}</p>
-    <![endif]-->
+{% block header %}
+<!-- =====================================
+	LOGO AND MENU
+===================================== -->
+<header id="header" class="group">
+  <div id="logo"><a href="/"> <img src="/img/beecoss_2014/logo.png" alt="Beecoss" /> </a></div>
+  <!-- start navigation -->
+  <nav id="menuwrap">
+    <ul id="menu">
+      <li class="current"><a href="/">Home</a></li>
+      <!-- -->
+      <li><a href="/coto">Biography</a></li>
+      <!-- end dropdown level 1 -->
+      <li> <a href="http://blog.beecoss.com">Blog</a></li>
+      <!-- end dropdown level 1 -->
+      <li> <a href="#">Professional</a>
+        <ul class="menu-sub">
+          <li><a href="/projects/my-projects">My Project</a></li>
+          <li><a href="/projects/code-snippets">Code Snippets</a></li>
+        </ul>
+      </li>
+      <!-- / -->
+      <li><a href="/contact">Contact</a></li>
+    </ul>
+  </nav>
+  <!-- end navigation -->
+</header>
+{% endblock %}
 
-<div id="page">
-    {% block navbar %}
-        <div class="navbar navbar-fixed-top">
-            <div class="navbar-inner">
-                <div class="container">
-                    <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-                        <span class="icon-chevron-down icon"></span>
-                    </button>
-                    <a class="brand" href="/">{{ app_name }}</a>
-                    <div class="nav-collapse collapse">
-                        <ul class="nav pull-right">
-                            <li><a href="https://github.com/coto/gae-boilerplate" target="_blank">
-                                <span class="icon-inbox"></span> {% trans %}Source Code{% endtrans %}</a>
-                            </li>
-                            {% if locale_iso %}
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        <span class="icon-globe"></span>
-                                        {% trans %}Language{% endtrans %} : {{ locale_language }} <b class="caret"></b>
-                                    </a>
-                                    <ul class="dropdown-menu">
-                                        {% for l in locales %}
-                                            {% if locale_iso != l %}
-                                                <li><a href="{{ path_for_language }}&hl={{ l }}">{{ locales[l] }}</a></li>
-                                            {% endif %}
-                                        {% endfor %}
-                                    </ul>
-                                </li>
-                            {% endif %}
-                            {% if user_id %}
-                                <li class="divider-vertical"></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">@{{ username }}<b class="caret"></b></a>
-                                    <ul class="dropdown-menu">
-                                        <li><a href="{{ uri_for("edit-profile") }}">{% trans %}Edit Profile{% endtrans %}</a></li>
-                                        <li class="divider"></li>
-                                        <li><a href="{{ logout_url }}">{% trans %}Logout{% endtrans %}</a></li>
-                                    </ul>
-                                </li>
-                            {% elif path != "/" and path != "/login/" %}
-                                <li class="divider-vertical"></li>
-                                <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                        {% trans %}Login{% endtrans %} <b class="caret"></b>
-                                    </a>
+{% block content %}{% endblock %}
 
-                                    <div class="dropdown-menu well">
-                                        <form id="form_login_user" action="{{ uri_for("login") }}" method="post"
-                                              class="auth-at-dropdown">
-                                            <fieldset>
-                                                <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
+{% block footer %}
+<!-- =====================================
+	FOOTER
+===================================== -->
+<footer id="footer">
+  <div class="wrapper">
+    <div class="units-row-end">
+      <!-- ABOUT US -->
+      <div class="unit-33">
+        <h3>About us</h3>
+        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu mauris id velit cursus malesuada. Vestibulum vel urna vitae risus sagittis consectetur ut sed ante.</p>
+        <p>Nam luctus nunc nec molestie egestas  ex ea commodo consequat nulla lobortis turpis. </p>
+      </div>
 
-                                                <div class="control-group">
-                                                    <label class="control-label" for="l_username">
-                                                        {% trans %}Username or Email{% endtrans %}:
-                                                    </label>
-                                                    <div class="controls">
-                                                        <input class="input-xlarge focused required" id="l_username"
-                                                               name="username" type="text" value="">
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    <label class="control-label" for="l_password">
-                                                        {% trans %}Password{% endtrans %}:
-                                                    </label>
-                                                    <div class="controls">
-                                                        <input class="input-xlarge focused required" id="l_password"
-                                                               name="password" type="password" value="">
-                                                    </div>
-                                                </div>
-                                                <div class="control-group row-fluid">
-                                                    <label class="checkbox span7">
-                                                        <input type="checkbox" name="remember_me" id="remember_me"
-                                                               value="on">
-                                                        {% trans %}Remember me?{% endtrans %}
-                                                    </label>
+      <!-- CONTACT INFO -->
+      <div class="unit-33">
+        <h3>Contact info</h3>
+        <h4> Headquarters information:</h4>
+        <ul class="contact-info">
+          <li> <i class="icon-phone"></i> +52 (555) 123 4567</li>
+          <li> <i class="icon-mail2"></i> info@yourdomain.com</li>
+          <li> <i class="icon-office"></i>95 Ninth Avenue 6th and 9th Floors New York, NY 10012 </li>
+        </ul>
+      </div>
 
-                                                    <div class="span5">
-                                                        <button type="submit" class="btn btn-primary btn-small btn-login">
-                                                            {% trans %}Login{% endtrans %}</button>
-                                                    </div>
-                                                </div>
-                                                <div class="control-group">
-                                                    <a href="{{ uri_for("password-reset") }}">
-                                                        {% trans %}Forgot your password?{% endtrans %}</a>
-                                                </div>
-                                                {{ macros.federated_login(provider_info, provider_uris, enable_federated_login) }}
-                                            </fieldset>
-                                        </form>
-                                    </div>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                    <!-- /.nav-collapse -->
-                </div>
-                <!-- /container -->
-            </div>
-            <!-- /navbar-inner -->
-        </div><!-- /navbar -->
-    {% endblock %}
-
-    <div id="content" class="container xled">
-        {% block header %}
-            <header class="navbar" id="overview">
-                {% block header_title_lead %}
-                    <h1>{% block header_title %}{{ app_name }}{% endblock %}</h1>
-                    <p class="lead">
-                        {% trans %}Congratulations on your Google App Engine Boilerplate powered page.{% endtrans %}
-                        <br><a href="http://github.com/coto/gae-boilerplate/blob/master/README.md" target="_blank">
-                        {% trans %}Learn why this Boilerplate Rocks{% endtrans %}</a> {% trans %}or just{% endtrans %}
-                        <a href="http://github.com/coto/gae-boilerplate/" target="_blank">
-                            {% trans %}download the Source Code{% endtrans %}</a>
-                        {% trans %}to help you to create your application.{% endtrans %}
-                    </p>
-                {% endblock %}
-                {% block subnavbar %}
-                    <div class="subnav">
-                        <ul>
-                            <li{% if path == uri_for("contact") %} class="active"{% endif %}>
-                                <a href="{{ uri_for("contact") }}">{% trans %}Contact{% endtrans %}</a>
-                            </li>
-                            {% if not user_id %}
-                                <li{% if path == uri_for("register") %} class="active"{% endif %}>
-                                    <a href="{{ uri_for("register") }}">{% trans %}Sign Up{% endtrans %}</a>
-                                </li>
-                                <li{% if path == uri_for("password-reset") %} class="active"{% endif %}>
-                                    <a href="{{ uri_for("password-reset") }}">{% trans %}Forgot your password?{% endtrans %}</a>
-                                </li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                {% endblock %}
-            </header>
-        {% endblock %}
-
-        {% if messages|safe %}
-            {% for message in messages %}
-                <p class="alert alert-{{ message[1]|safe }}">
-                    <a class="close" data-dismiss="alert">×</a>
-                    {{ message[0]|safe }}
-                </p>
-            {% endfor %}
-        {% endif %}
-        {% block content %}{% endblock %}
-
-        {% block footer %}
-            <footer>
-                {% trans %}Google App Engine Boilerplate is released under the{% endtrans %}
-                <a href="http://www.gnu.org/licenses/gpl-3.0.html" target="_blank">LGPL</a>
-            </footer>
-        {% endblock %}
+      <!-- GET IN TOUCH -->
+      <div class="unit-33">
+        <h3>Get in touch</h3>
+        <p class="first-letter">We would love to hear about your project. Please get in touch with us.</p>
+        <div class="push-down-20"> <a class="btn btn-color" href="contact.html">Contact us today</a> </div>
+        <div class="social">
+          <h4>Follow us:</h4>
+          <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Facebook"><span class="icon-facebook2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Pinterest"><span class="icon-pinterest2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Twitter"><span class="icon-twitter2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Linkedin"><span class="icon-linkedin"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Google Plus"><span class="icon-google-plus3"></span></a> </div>
+      </div>
     </div>
-    <!-- /content -->
+  </div>
+</footer>
+{% endblock %}
+
+{% block copyright %}
+<!-- =====================================
+	COPYRIGHT
+===================================== -->
+<div id="copyright" class="group">
+  <div class="wrapper"> Copyright &copy; 2014 Company Name.
+
+    <!-- FOOTER NAVIGATION -->
+    <nav class="nav-g">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="elements.html">Elements</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact Us</a></li>
+      </ul>
+    </nav>
+  </div>
 </div>
-<!-- /page -->
+{% endblock %}
 
-<!-- JavaScript at the bottom for fast page loading -->
-<!-- Grab Google CDN's jQuery, with a protocol relative URL; fall back to local if offline -->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="/boilerplate/js/libs/jquery.min.js"><\/script>')</script>
-<script src="/boilerplate/js/libs/bootstrap.min.js"></script>
-
-<!-- scripts concatenated and minified via build script -->
-<script src="/boilerplate/js/plugins.js"></script>
-<script src="/boilerplate/js/script.js"></script>
-<script src="/js/script.js"></script>
-{% if locale_language_id != "en" %}
-    {% if locale_iso.language == "pt" and locale_iso.territory == "BR" %}
-        <script src="/boilerplate/js/libs/jquery_validation/localization/messages_{{ locale_iso.language }}_{{ locale_iso.territory }}.js"></script>
-    {% else %}
-        <script src="/boilerplate/js/libs/jquery_validation/localization/messages_{{ locale_language_id }}.js"></script>
-    {% endif %}
-{% endif %}
+<!-- start JavaScript -->
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.cycle2.min.js"></script>
+<script src="/js/jquery.prettyPhoto.js"></script>
+<script src="/js/jquery.cycle2.extensions.min.js"></script>
+<script src="/js/isotope.js"></script>
+<script src="/js/custom.js"></script>
+<script src="/js/uikit.js"></script>
 {% block mediaJS %}{% endblock %}
-<!-- end scripts -->
+<!-- / end JavaScript -->
+
 </body>
 </html>
