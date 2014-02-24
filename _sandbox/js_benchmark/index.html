@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
+<head>
+    <title>Benchmark - Javascript prototype versus closure execution speed</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="/beecoss_2014/apple-touch-icon.png"/>
+    <link rel="apple-touch-icon-precomposed" href="/beecoss_2014/apple-touch-icon.png"/>
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47489500-1', 'auto', {'allowLinker': true});
+        ga('require', 'linker');
+        ga('linker:autoLink', ['beecoss.com', 'blog.beecoss.com', 'appengine.beecoss.com']);
+        ga('send', 'pageview');
+    </script>
+    <script type="text/javascript">
+        /*
+         * Author: Rodrigo Augosto C. (coto) <contact@beecoss.com>
+         * Twitter: http://twitter.com/coto
+         * URL: http://protoboard.cl
+         * Created: Nov 30, 2010
+         */
+
+        // Prototype implementation
+        function PixelP(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+        PixelP.prototype.getX = function () {
+            return this.x;
+        }
+        PixelP.prototype.getY = function () {
+            return this.y;
+        }
+        PixelP.prototype.setX = function (value) {
+            this.x = value;
+        }
+        PixelP.prototype.setY = function (value) {
+            this.y = value;
+        }
+
+        // Closure implementation
+        function Pixel(x, y) {
+            this.x = x;
+            this.y = y;
+            this.getX = function () {
+                return this.x;
+            }
+            this.getY = function () {
+                return this.y;
+            }
+            this.setX = function (value) {
+                this.x = value;
+            }
+            this.setY = function (value) {
+                this.y = value;
+            }
+        }
+
+        const CYCLES = 2000000;
+        document.write("Benchmark with " + CYCLES + " of intences");
+
+        function TestPerformance() {
+            // Testing Instance
+            var prototypeStartDateTime = new Date();
+            for (var i = 0; i < CYCLES; i++) {
+                var x = new PixelP(i, i);
+            }
+            var prototypeEndDateTime = new Date();
+
+
+            var closureStartDateTime = new Date();
+            for (var i = 0; i < CYCLES; i++) {
+                var x = new Pixel(i, i);
+            }
+            var closureEndDateTime = new Date();
+
+            var closureTime = closureEndDateTime.getTime() - closureStartDateTime.getTime();
+            var prototypeTime = prototypeEndDateTime.getTime() - prototypeStartDateTime.getTime();
+            console.log("Instance Benchmark");
+            document.write("<h2>Instance Benchmark</h2>");
+            console.log("Closure time: " + closureTime + ", Prototype time: " + prototypeTime);
+            document.write("Closure time: " + closureTime + "<br> Prototype time: " + prototypeTime + "<hr/>");
+
+
+            // Testing Execution
+            var prototypeExecStartDateTime, prototypeExecEndDateTime
+
+            function getTimePrototype() {
+                var cl2 = new PixelP(1, 1000);
+                prototypeExecStartDateTime = new Date();
+                for (var i = 0; i < CYCLES; i++) {
+                    cl2.setX('hola');
+                }
+                prototypeExecEndDateTime = new Date();
+            }
+
+            var closureExecStartDateTime, closureExecEndDateTime
+
+            function getTimeClosure() {
+                var cl1 = new Pixel(1, 1000);
+                closureExecStartDateTime = new Date();
+                for (var i = 0; i < CYCLES; i++) {
+                    cl1.setX('hola');
+                }
+                closureExecEndDateTime = new Date();
+            }
+
+            getTimePrototype();
+            getTimeClosure();
+
+            var closureExecTime = closureExecEndDateTime.getTime() - closureExecStartDateTime.getTime();
+            var prototypeExecTime = prototypeExecEndDateTime.getTime() - prototypeExecStartDateTime.getTime();
+            console.log("Execution Benchmark");
+            document.write("<h2>Execution Benchmark</h2>");
+            console.log("Closure time: " + closureExecTime + ", Prototype time: " + prototypeExecTime);
+            document.write("Closure time: " + closureExecTime + "<br/> Prototype time: " + prototypeExecTime + "<hr/>");
+        }
+
+        TestPerformance();
+    </script>
+</head>
+<body>
+<h1>Becnhmark - Javascript prototype versus closure execution speed</h1>
+</body>
+</html>
