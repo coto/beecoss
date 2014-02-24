@@ -1,9 +1,9 @@
-
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="{{ locale_language_id }}"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8" lang="{{ locale_language_id }}"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9" lang="{{ locale_language_id }}"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="{{ locale_language_id }}"> <!--<![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js" lang="{{ locale_language_id }}"> <!--<![endif]-->
 <head>
     <title>{% block title %}{{ app_name }}{% endblock %}</title>
     <meta charset="utf-8">
@@ -14,17 +14,17 @@
     <meta name="author" content="Coto Augosto">
     <meta name="generator" content="Google App Engine Boilerplate 3.0">
     <!-- CSS STYLES -->
-    <link rel="stylesheet" type="text/css" href="/css/kube.css" />
-    <link rel="stylesheet" type="text/css" href="/css/uikit.css" />
-    <link rel="stylesheet" type="text/css" href="/css/master.css" />
+    <link rel="stylesheet" type="text/css" href="/css/kube.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/uikit.css"/>
+    <link rel="stylesheet" type="text/css" href="/css/master.css"/>
     <link rel="stylesheet" type="text/css" href="/css/prettyPhoto.css"/>
     <link rel="stylesheet" type="text/css" href="/css/icons.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300' rel='stylesheet' type='text/css'>
     <!-- FAVICONS -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-touch-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-touch-icon-114x114.png">
+    <link rel="shortcut icon" href="/{{ theme }}/favicon.ico" type="image/x-icon"/>
+    <link rel="apple-touch-icon" href="/{{ theme }}/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/{{ theme }}/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/{{ theme }}/apple-touch-icon-114x114.png">
 
     {% block mediaCSS %}{% endblock %}
     <!-- Analytics -->
@@ -34,94 +34,108 @@
 </head>
 <body>
 {% block header %}
-<!-- =====================================
-	LOGO AND MENU
-===================================== -->
-<header id="header" class="group">
-  <div id="logo"><a href="/"> <img src="/img/beecoss_2014/logo.png" alt="Beecoss" /> </a></div>
-  <!-- start navigation -->
-  <nav id="menuwrap">
-    <ul id="menu">
-      <li class="current"><a href="/">Home</a></li>
-      <!-- -->
-      <li><a href="/coto">Biography</a></li>
-      <!-- end dropdown level 1 -->
-      <li> <a href="http://blog.beecoss.com">Blog</a></li>
-      <!-- end dropdown level 1 -->
-      <li> <a href="#">Professional</a>
-        <ul class="menu-sub">
-          <li><a href="/projects/my-projects">My Project</a></li>
-          <li><a href="/projects/code-snippets">Code Snippets</a></li>
-        </ul>
-      </li>
-      <!-- / -->
-      <li><a href="/contact">Contact</a></li>
-    </ul>
-  </nav>
-  <!-- end navigation -->
-</header>
+    <!-- =====================================
+        LOGO AND MENU
+    ===================================== -->
+    <header id="header" class="group">
+        <div id="logo"><a href="/"> <img src="/img/beecoss_2014/logo.png" alt="Beecoss"/> </a></div>
+        <!-- start navigation -->
+        <nav id="menuwrap">
+            <ul id="menu">
+                <li class="current"><a href="/">Home</a></li>
+                <!-- -->
+                <li><a href="/coto">Biography</a></li>
+                <!-- end dropdown level 1 -->
+                <li><a href="http://blog.beecoss.com">Blog</a></li>
+                <!-- end dropdown level 1 -->
+                <li><a href="#">Professional</a>
+                    <ul class="menu-sub">
+                        <li><a href="/projects/my-projects">My Project</a></li>
+                        <li><a href="/projects/code-snippets">Code Snippets</a></li>
+                    </ul>
+                </li>
+                <!-- / -->
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+        <!-- end navigation -->
+    </header>
 {% endblock %}
 
 {% block content %}{% endblock %}
 
 {% block footer %}
-<!-- =====================================
-	FOOTER
-===================================== -->
-<footer id="footer">
-  <div class="wrapper">
-    <div class="units-row-end">
-      <!-- ABOUT US -->
-      <div class="unit-33">
-        <h3>About us</h3>
-        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu mauris id velit cursus malesuada. Vestibulum vel urna vitae risus sagittis consectetur ut sed ante.</p>
-        <p>Nam luctus nunc nec molestie egestas  ex ea commodo consequat nulla lobortis turpis. </p>
-      </div>
+    <!-- =====================================
+        FOOTER
+    ===================================== -->
+    <footer id="footer">
+        <div class="wrapper">
+            <div class="units-row-end">
+                <!-- ABOUT US -->
+                <div class="unit-33">
+                    <h3>About us</h3>
 
-      <!-- CONTACT INFO -->
-      <div class="unit-33">
-        <h3>Contact info</h3>
-        <h4> Headquarters information:</h4>
-        <ul class="contact-info">
-          <li> <i class="icon-phone"></i> +52 (555) 123 4567</li>
-          <li> <i class="icon-mail2"></i> info@yourdomain.com</li>
-          <li> <i class="icon-office"></i>95 Ninth Avenue 6th and 9th Floors New York, NY 10012 </li>
-        </ul>
-      </div>
+                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Eu mauris id velit cursus malesuada.
+                        Vestibulum vel urna vitae risus sagittis consectetur ut sed ante.</p>
 
-      <!-- GET IN TOUCH -->
-      <div class="unit-33">
-        <h3>Get in touch</h3>
-        <p class="first-letter">We would love to hear about your project. Please get in touch with us.</p>
-        <div class="push-down-20"> <a class="btn btn-color" href="contact.html">Contact us today</a> </div>
-        <div class="social">
-          <h4>Follow us:</h4>
-          <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Facebook"><span class="icon-facebook2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Pinterest"><span class="icon-pinterest2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Twitter"><span class="icon-twitter2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Linkedin"><span class="icon-linkedin"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Google Plus"><span class="icon-google-plus3"></span></a> </div>
-      </div>
-    </div>
-  </div>
-</footer>
+                    <p>Nam luctus nunc nec molestie egestas ex ea commodo consequat nulla lobortis turpis. </p>
+                </div>
+
+                <!-- CONTACT INFO -->
+                <div class="unit-33">
+                    <h3>Contact info</h3>
+                    <h4> Headquarters information:</h4>
+                    <ul class="contact-info">
+                        <li><i class="icon-phone"></i> +52 (555) 123 4567</li>
+                        <li><i class="icon-mail2"></i> info@yourdomain.com</li>
+                        <li><i class="icon-office"></i>95 Ninth Avenue 6th and 9th Floors New York, NY 10012</li>
+                    </ul>
+                </div>
+
+                <!-- GET IN TOUCH -->
+                <div class="unit-33">
+                    <h3>Get in touch</h3>
+
+                    <p class="first-letter">We would love to hear about your project. Please get in touch with us.</p>
+
+                    <div class="push-down-20"><a class="btn btn-color" href="contact.html">Contact us today</a></div>
+                    <div class="social">
+                        <h4>Follow us:</h4>
+                        <a href="#" data-uk-tooltip="{pos:'top-left'}" title="Facebook"><span
+                                class="icon-facebook2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}"
+                                                                      title="Pinterest"><span
+                            class="icon-pinterest2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}"
+                                                                   title="Twitter"><span
+                            class="icon-twitter2"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}"
+                                                                 title="Linkedin"><span
+                            class="icon-linkedin"></span></a> <a href="#" data-uk-tooltip="{pos:'top-left'}"
+                                                                 title="Google Plus"><span
+                            class="icon-google-plus3"></span></a></div>
+                </div>
+            </div>
+        </div>
+    </footer>
 {% endblock %}
 
 {% block copyright %}
-<!-- =====================================
-	COPYRIGHT
-===================================== -->
-<div id="copyright" class="group">
-  <div class="wrapper"> Copyright &copy; 2014 Company Name.
+    <!-- =====================================
+        COPYRIGHT
+    ===================================== -->
+    <div id="copyright" class="group">
+        <div class="wrapper"> Copyright &copy; 2014 Company Name.
 
-    <!-- FOOTER NAVIGATION -->
-    <nav class="nav-g">
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="elements.html">Elements</a></li>
-        <li><a href="about-us.html">About Us</a></li>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="contact.html">Contact Us</a></li>
-      </ul>
-    </nav>
-  </div>
-</div>
+            <!-- FOOTER NAVIGATION -->
+            <nav class="nav-g">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="elements.html">Elements</a></li>
+                    <li><a href="about-us.html">About Us</a></li>
+                    <li><a href="services.html">Services</a></li>
+                    <li><a href="contact.html">Contact Us</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
 {% endblock %}
 
 <!-- start JavaScript -->
