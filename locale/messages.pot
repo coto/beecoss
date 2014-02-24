@@ -30,9 +30,6 @@ msgstr ""
 msgid "Associate account with"
 msgstr ""
 
-msgid "Beecoss"
-msgstr ""
-
 msgid "Cancel"
 msgstr ""
 
