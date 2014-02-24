@@ -1,10 +1,14 @@
 /*!
  * jQuery fontSize v1.0
- * http://protoboard.cl/
+ * http://beecoss.com/
  *
- * Copyright 2011, Rodrigo Augosto (@coto)
+ * Copyright 2011, Coto Augosto (@coto)
  * Dual licensed under the MIT or GPL Version 2 licenses.
  *
+ * Author: Coto Augosto C.
+ * Twitter: http://twitter.com/coto
+ * URL: http://beecoss.com
+ * Contact: http://beecoss.com/contact/
  * Date: Mon Mar 22 01:01:29 2011 -0500
  */
 
