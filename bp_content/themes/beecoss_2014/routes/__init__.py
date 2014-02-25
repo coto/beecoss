@@ -12,8 +12,9 @@ secure_scheme = 'https'
 
 _routes = [
     RedirectRoute('/coto/', handlers.BiographyHandler, name='biography', strict_slash=True),
-    RedirectRoute('/projects/my-projects', handlers.MyProjectsHandler, name='my-projects', strict_slash=True),
-    RedirectRoute('/projects/code-snippets', handlers.CodeSnippetsHandler, name='code-snippets', strict_slash=True),
+    RedirectRoute('/contact/', handlers.ContactHandler, name='contact', strict_slash=True),
+    RedirectRoute('/projects/my-projects/', handlers.MyProjectsHandler, name='my-projects', strict_slash=True),
+    RedirectRoute('/projects/code-snippets/', handlers.CodeSnippetsHandler, name='code-snippets', strict_slash=True),
 ]
 
 def get_routes():

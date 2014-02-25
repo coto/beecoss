@@ -42,20 +42,20 @@
         <!-- start navigation -->
         <nav id="menuwrap">
             <ul id="menu">
-                <li class="current"><a href="/">Home</a></li>
+                <li {% if path == "/" %}class="current"{% endif %}><a href="/">Home</a></li>
                 <!-- -->
-                <li><a href="/coto">Biography</a></li>
+                <li {% if path == "/coto/" %}class="current"{% endif %}><a href="/coto">Biography</a></li>
                 <!-- end dropdown level 1 -->
                 <li><a href="http://blog.beecoss.com">Blog</a></li>
                 <!-- end dropdown level 1 -->
-                <li><a href="#">Professional</a>
+                <li {% if path == "/projects/my-projects/" or path == "/projects/code-snippets/" %}class="current"{% endif %}><a href="#">Professional</a>
                     <ul class="menu-sub">
-                        <li><a href="/projects/my-projects">My Project</a></li>
-                        <li><a href="/projects/code-snippets">Code Snippets</a></li>
+                        <li><a href="/projects/my-projects/">My Project</a></li>
+                        <li><a href="/projects/code-snippets/">Code Snippets</a></li>
                     </ul>
                 </li>
                 <!-- / -->
-                <li><a href="/contact">Contact</a></li>
+                <li {% if path == "/contact/" %}class="current"{% endif %}><a href="/contact/">Contact</a></li>
             </ul>
         </nav>
         <!-- end navigation -->
