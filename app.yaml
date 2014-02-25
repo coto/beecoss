@@ -84,7 +84,7 @@ handlers:
   script: main.app
   login: admin
 
-- url: /sandbox_files
+- url: /sandbox
   static_dir: _sandbox
 
 - url: /keynotes
