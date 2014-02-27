@@ -11,6 +11,16 @@
 from bp_includes.lib.basehandler import BaseHandler
 
 
+class SandboxRedirectHandler(BaseHandler):
+    """
+    Handler to redirect url from sandbox_files/ to sandbox/
+    """
+    def get(self, **kwargs):
+        import re
+        new_url = re.sub('sandbox_files', 'sandbox', str(self.request.path))
+        self.redirect(new_url)
+
+
 class BiographyHandler(BaseHandler):
     """
     My Biography

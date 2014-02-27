@@ -15,6 +15,7 @@ _routes = [
     RedirectRoute('/contact/', handlers.ContactHandler, name='contact', strict_slash=True),
     RedirectRoute('/projects/my-projects/', handlers.MyProjectsHandler, name='my-projects', strict_slash=True),
     RedirectRoute('/projects/code-snippets/', handlers.CodeSnippetsHandler, name='code-snippets', strict_slash=True),
+    RedirectRoute('/sandbox_files/<project:.*>', handlers.SandboxRedirectHandler, name='sandbox-redirect', strict_slash=True),
 ]
 
 def get_routes():
