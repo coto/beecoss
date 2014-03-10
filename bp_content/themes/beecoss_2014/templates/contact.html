@@ -1,14 +1,10 @@
 {% extends base_layout %}
-
+{% import "macros.html" as macros %}
 {% block title %}
     {% trans %}Contact{% endtrans %} - {{ app_name }}
 {% endblock %}
-{% block header_title %}
-    {% trans %}Contact{% endtrans %}
-{% endblock %}
 
 {% block content %}
-
     <!-- =====================================
         SUBTITLE
     ===================================== -->
@@ -67,36 +63,23 @@
                     <input type="hidden" name="exception" value="{{ exception|e }}">
                     <input type="hidden" name="_csrf_token" value="{{ csrf_token() }}">
 
-                    {{ macros.field(form.name, label=_("Name"), placeholder=_("Enter your")+" "+_("Name"), class="input-xlarge focused required") }}
-                    {{ macros.field(form.email, label=_("Email"), placeholder=_("Enter your")+" "+_("Email"), class="input-xlarge focused required email", type="email") }}
-                    {{ macros.field(form.message, label=_("Message"), class="input-xlarge required", cols="40", rows="8") }}
+                    <div class="units-row-end">
+                        {{ macros.contactfield(form.name, label=_("Name"), label_class="unit-50", legend="", placeholder=_("Enter your")+" "+_("Name"), class="width-100 required") }}
+                        {{ macros.contactfield(form.email, label=_("Email"), label_class="unit-50", legend="", placeholder=_("Enter your")+" "+_("Email"), class="width-100 required email", type="email") }}
+                    </div>
 
                     <div class="units-row-end">
-                        <label class="unit-50"> Full name <span class="req">*</span>
-                            <input type="text" name="fullname" id="fullname" class="width-100"/>
-                        </label>
-                        <label class="unit-50"> E-mail <span class="req">*</span>
-                            <input type="email" name="email" id="email" class="width-100"/>
-                        </label>
+                        {{ macros.contactfield(form.phone, label=_("Phone"), label_class="unit-50", legend="Include area code", placeholder=_("Enter your")+" "+_("Phone"), class="width-100") }}
+                        {{ macros.contactfield(form.subject, label=_("Subject"), label_class="unit-50", legend="", placeholder=_("Enter your")+" "+_("Subject"), class="width-100") }}
                     </div>
-                    <!-- phone and subject -->
+
                     <div class="units-row-end">
-                        <label class="unit-50"> Phone <span class="req">*</span>
-                            <input type="text" name="phone" id="phone" class="width-100"/>
-                            <legend>Include area code</legend>
-                        </label>
-                        <label class="unit-50"> Subject
-                            <input type="text" name="subject" id="subject" class="width-100"/>
-                        </label>
+                        {{ macros.contactfield(form.message, label=_("Message"), label_class="", legend="", class="width-100 required", rows="5", style="color: black;") }}
                     </div>
-                    <!-- message -->
-                    <label> Message <span class="req">*</span>
-                        <textarea name="message" id="message" rows="5" class="width-100"></textarea>
-                    </label>
+
                     <!-- submit button -->
                     <input type="submit" name="submit" id="submit" class="btn btn-big btn-color" value="Send Form">
 
-                    <div id="mess"></div>
                 </form>
             </div>
 
@@ -110,22 +93,23 @@
                     <p>If you need to send me confidential information, I maintain a public key, just for advanced
                         users, in PGP format.</p>
 
-                    <p>This key is available on most public keyservers as <a
-                            href="http://pgp.mit.edu/pks/lookup?op=vindex&search=0x715FA96A2D224F86" target="_blank">0x715FA96A2D224F86</a>
-                        .
+                    <p>This key is available on most public keyservers as
+                        <a href="http://pgp.mit.edu/pks/lookup?op=vindex&search=0x715FA96A2D224F86" target="_blank">0x715FA96A2D224F86</a>.
                     </p>
                     <hr class="dotted">
                     <h4>Follow me</h4>
                     <!-- SOCIAL NETWORKS -->
-                    <div class="social"><a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Twitter"
-                                           href="http://www.twitter.com/coto" target="_blank"><span
-                            class="icon-twitter2"></span></a> <a class="color-gray" data-uk-tooltip="{pos:'top-left'}"
-                                                                 title="Linkedin"
-                                                                 href="http://cl.linkedin.com/in/rodrigoaugosto/"
-                                                                 target="_blank"><span class="icon-linkedin"></span></a>
-                        <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Google +"
-                           href="https://plus.google.com/115559728179813066497/" target="_blank"><span
-                                class="icon-google-plus3"></span></a></div>
+                    <div class="social">
+                        <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Twitter" href="http://www.twitter.com/coto" target="_blank">
+                            <span class="icon-twitter2"></span>
+                        </a>
+                        <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Linkedin" href="http://cl.linkedin.com/in/rodrigoaugosto/" target="_blank">
+                            <span class="icon-linkedin"></span>
+                        </a>
+                        <a class="color-gray" data-uk-tooltip="{pos:'top-left'}" title="Google +" href="https://plus.google.com/+CotoAugosto/" target="_blank">
+                            <span class="icon-google-plus3"></span>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,7 +119,7 @@
 
 {% block mediaJS %}
     <!-- GOOGLE MAP SETTINGS -->
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
+    <!--script src="https://maps.googleapis.com/maps/api/js?v=3.exp&amp;sensor=false"></script>
     <script>
         function initialize() {
             var myLatlng = new google.maps.LatLng(-33.411667, -70.550000);
@@ -170,10 +154,30 @@
         }
 
         google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+    </script-->
 
-    <!-- start java -->
     <script src="/js/jquery.validate.js"></script>
-    <script src="/js/validation.js"></script>
-    <!-- / end java -->
+
+    <script>
+        /* Warnings while validating form */
+        $(document).ready(function () {
+
+            $("#contact").validate({
+                rules: {
+                    fullname: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    }
+                },
+                messages: {
+                    fullname: "Your full name is required ",
+                    email: " Your email address is required or invalid"
+                }
+            });
+        });
+
+    </script>
 {% endblock %}

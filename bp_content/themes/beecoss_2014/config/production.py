@@ -3,6 +3,10 @@ config = {
     # This config file will be detected in production environment and values defined here will overwrite those in config.py
     'environment': "production",
 
+    # contact page email settings
+    'contact_sender': "rodrigo.augosto@gmail.com",
+    'contact_recipient': "rodrigo.augosto@gmail.com",
+
     # application name
     'app_name': "Beecoss",
 
@@ -11,7 +15,7 @@ config = {
 
     # fellas' list
     'developers': (
-        ('GAE Developer', 'gae-developer2014@beecoss.com'),
+        ('GAE Developer', 'rodrigo.augosto@gmail.com'),
     ),
 
     # It is just an example to fill out this value

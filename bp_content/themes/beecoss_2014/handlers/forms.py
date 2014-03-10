@@ -42,12 +42,10 @@ class ContactForm(EmailMixin):
                                         validators.regexp(utils.NAME_LASTNAME_REGEXP, message=_(
                                                     "Name invalid. Use only letters and numbers."))])
 
-    phone = fields.TextField(_('Phone'), [validators.Required(),
-                                        validators.Length(max=FIELD_MAXLENGTH, message=_(
+    phone = fields.TextField(_('Phone'), [validators.Length(max=FIELD_MAXLENGTH, message=_(
                                                     "Field cannot be longer than %(max)d characters."))])
 
-    subject = fields.TextField(_('Subject'), [validators.Required(),
-                                        validators.Length(max=FIELD_MAXLENGTH, message=_(
+    subject = fields.TextField(_('Subject'), [validators.Length(max=FIELD_MAXLENGTH, message=_(
                                                     "Field cannot be longer than %(max)d characters."))])
 
     message = fields.TextAreaField(_('Message'), [validators.Required(), validators.Length(max=65536)])
