@@ -68,37 +68,38 @@ handlers:
   static_files: bp_includes/static/img/\1
   upload: bp_includes/static/img/(.*\.(gif|png|jpg))
 
-- url: /css/
+- url: /(\w*)/css/(.*\.css)$
   mime_type: text/css
-  static_dir: bp_content/themes/beecoss_2014/static/css
+  static_files: bp_content/themes/\1/static/css/\2
+  upload: bp_content/themes/(\w*)/static/css/(.*\.css)$
 
-- url: /fonts/(.*\.eot)
-  mime_type: application/vnd.ms-fontobject
-  static_files: bp_content/themes/beecoss_2014/static/fonts/\1
-  upload: bp_content/themes/beecoss_2014/static/fonts/(.*\.eot)
-
-- url: /fonts/(.*\.otf)
-  mime_type: font/opentype
-  static_files: bp_content/themes/beecoss_2014/static/fonts/\1
-  upload: bp_content/themes/beecoss_2014/static/fonts/(.*\.otf)
-
-- url: /js
+- url: /(\w*)/js/(.*\.js)$
   mime_type: text/javascript
-  static_dir: bp_content/themes/beecoss_2014/static/js
+  static_files: bp_content/themes/\1/static/js/\2
+  upload: bp_content/themes/(\w*)/static/js/(.*\.js)$
 
 - url: /img/(\w*)/(.*\.(gif|png|jpg|jpeg))
   static_files: bp_content/themes/\1/static/img/\2
   upload: bp_content/themes/(\w*)/static/img/(.*\.(gif|png|jpg|jpeg))
 
+- url: /(\w*)/fonts/(.*\.eot)$
+  mime_type: application/vnd.ms-fontobject
+  static_files: bp_content/themes/\1/static/fonts/\2
+  upload: bp_content/themes/(\w*)/static/fonts/(.*\.eot)
+
+- url: /(\w*)/fonts/(.*\.otf)$
+  mime_type: font/opentype
+  static_files: bp_content/themes/\1/static/fonts/\2
+  upload: bp_content/themes/(\w*)/static/fonts/(.*\.otf)
+
+- url: /(\w*)/fonts/(.*\.ttf)$
+  mime_type: application/x-font-ttf
+  static_files: bp_content/themes/\1/static/fonts/\2
+  upload: bp_content/themes/(\w*)/static/fonts/(.*\.ttf)
+
 - url: /taskqueue-send-email.*
   script: main.app
   login: admin
-
-- url: /sandbox
-  static_dir: _sandbox
-
-- url: /keynotes
-  static_dir: _keynotes
 
 - url: /.*
   script: main.app

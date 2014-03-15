@@ -14,11 +14,11 @@
     <meta name="author" content="Coto Augosto">
     <meta name="generator" content="Google App Engine Boilerplate 3.0">
     <!-- CSS STYLES -->
-    <link rel="stylesheet" type="text/css" href="/css/kube.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/uikit.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/master.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/prettyPhoto.css"/>
-    <link rel="stylesheet" type="text/css" href="/css/icons.css">
+    <link rel="stylesheet" type="text/css" href="/{{ theme }}/css/kube.css"/>
+    <link rel="stylesheet" type="text/css" href="/{{ theme }}/css/uikit.css"/>
+    <link rel="stylesheet" type="text/css" href="/{{ theme }}/css/master.css"/>
+    <link rel="stylesheet" type="text/css" href="/{{ theme }}/css/prettyPhoto.css"/>
+    <link rel="stylesheet" type="text/css" href="/{{ theme }}/css/icons.css">
     <link href='http://fonts.googleapis.com/css?family=Roboto+Condensed:700,400,300' rel='stylesheet' type='text/css'>
     <!-- FAVICONS -->
     <link rel="shortcut icon" href="/{{ theme }}/favicon.ico" type="image/x-icon"/>
@@ -30,7 +30,7 @@
     <!-- Analytics -->
     {{ google_analytics_code }}
     <!-- JavaScript library to detect HTML5 and CSS3 features in the user's browser -->
-    <script src="/js/modernizr.custom.js"></script>
+    <script src="/{{ theme }}/js/modernizr.custom.js"></script>
 </head>
 <body>
 {% block header %}
@@ -150,13 +150,13 @@
 {% endblock %}
 
 <!-- start JavaScript -->
-<script src="/js/jquery.min.js"></script>
-<script src="/js/jquery.cycle2.min.js"></script>
-<script src="/js/jquery.prettyPhoto.js"></script>
-<script src="/js/jquery.cycle2.extensions.min.js"></script>
-<script src="/js/isotope.js"></script>
-<script src="/js/custom.js"></script>
-<script src="/js/uikit.js"></script>
+<script src="/{{ theme }}/js/jquery.min.js"></script>
+<script src="/{{ theme }}/js/jquery.cycle2.min.js"></script>
+<script src="/{{ theme }}/js/jquery.prettyPhoto.js"></script>
+<script src="/{{ theme }}/js/jquery.cycle2.extensions.min.js"></script>
+<script src="/{{ theme }}/js/isotope.js"></script>
+<script src="/{{ theme }}/js/custom.js"></script>
+<script src="/{{ theme }}/js/uikit.js"></script>
 {% block mediaJS %}{% endblock %}
 <!-- / end JavaScript -->
 
