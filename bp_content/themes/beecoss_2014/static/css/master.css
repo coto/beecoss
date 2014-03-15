@@ -651,10 +651,10 @@ input.error, textarea.error {
 	opacity: 1.0;
 }
 .carousel .items .prev {
-	background: url(/img/beecoss_2014/left-nav.png) no-repeat;
+	background: url(/beecoss_2014/img/left-nav.png) no-repeat;
 }
 .carousel .items .next {
-	background: url(/img/beecoss_2014/right-nav.png) no-repeat;
+	background: url(/beecoss_2014/img/right-nav.png) no-repeat;
 	right: 0;
 }
 /* 6. Navigation
@@ -849,10 +849,10 @@ nav select {
 	opacity: 1.0;
 }
 .slider .prev {
-	background: url(/img/beecoss_2014/left-nav.png) no-repeat;
+	background: url(/beecoss_2014/img/left-nav.png) no-repeat;
 }
 .slider .next {
-	background: url(/img/beecoss_2014/right-nav.png) no-repeat;
+	background: url(/beecoss_2014/img/right-nav.png) no-repeat;
 	right: 0;
 }
 ul.cycle-slideshow {
