@@ -35,6 +35,19 @@ builtins:
 - remote_api: on #/_ah/remote_api/
 
 handlers:
+# %%%%%% Init BeecosS %%%%%%
+- url: /sandbox/fontsize.*/(.*)
+  static_files: _sandbox/fontsize/\1
+  upload: _sandbox/fontsize/(.*)
+
+- url: /sandbox/(.*)
+  static_files: _sandbox/\1
+  upload: _sandbox/(.*)
+
+- url: /keynotes/(.*)
+  static_files: _keynotes/\1
+  upload: _keynotes/(.*)
+# %%%%%% End Beecoss %%%%%%%
 - url: /admin.*
   script: main.app
   login: admin
