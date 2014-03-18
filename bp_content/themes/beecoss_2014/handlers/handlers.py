@@ -16,6 +16,20 @@ import forms as forms
 import bp_includes.lib.i18n as i18n
 
 
+class RedirectHandler(BaseHandler):
+    def get(self, **kwargs):
+        import re
+        if 'sandbox_files' in self.request.path:
+            new_url = re.sub('sandbox_files', 'sandbox', str(self.request.path))
+            self.redirect(new_url)
+        elif 'blog' in self.request.path:
+            self.redirect("http://blog.beecoss.com{}".format(kwargs.get('param')))
+        elif 'fontsize' in self.request.path:
+            self.redirect("/sandbox/fontsize/sample.html")
+        else:
+            raise Exception("RedirectHandler pattern not found")
+
+
 class ContactHandler(BaseHandler):
     """
     Handler for Contact Form
@@ -123,16 +137,6 @@ class ContactHandler(BaseHandler):
         return forms.ContactForm(self)
 
 
-class SandboxRedirectHandler(BaseHandler):
-    """
-    Handler to redirect url from sandbox_files/ to sandbox/
-    """
-    def get(self, **kwargs):
-        import re
-        new_url = re.sub('sandbox_files', 'sandbox', str(self.request.path))
-        self.redirect(new_url)
-
-
 class BiographyHandler(BaseHandler):
     """
     My Biography
@@ -141,6 +145,7 @@ class BiographyHandler(BaseHandler):
     def get(self, **kwargs):
         params = {}
         return self.render_template('biography.html', **params)
+
 
 class MyProjectsHandler(BaseHandler):
     """

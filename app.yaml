@@ -36,10 +36,6 @@ builtins:
 
 handlers:
 # %%%%%% Init BeecosS %%%%%%
-- url: /sandbox/fontsize.*/(.*)
-  static_files: _sandbox/fontsize/\1
-  upload: _sandbox/fontsize/(.*)
-
 - url: /sandbox/(.*)
   static_files: _sandbox/\1
   upload: _sandbox/(.*)

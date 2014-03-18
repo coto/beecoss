@@ -11,11 +11,16 @@ secure_scheme = 'https'
 # Here go your routes, you can overwrite boilerplate routes (bp_includes/routes)
 
 _routes = [
+    # Redirection for old urls
+    RedirectRoute('/blog<param:.*>', handlers.RedirectHandler, name='redirect', strict_slash=True),
+    RedirectRoute('/sandbox_files/<param:.*>', handlers.RedirectHandler, name='sandbox-redirect', strict_slash=True),
+    RedirectRoute('/sandbox<param:.*>/fontsizer/<param2:.*>', handlers.RedirectHandler, name='fontsizer-redirect', strict_slash=True),
+
+    # Web Hanlders
     RedirectRoute('/coto/', handlers.BiographyHandler, name='biography', strict_slash=True),
     RedirectRoute('/contact/', handlers.ContactHandler, name='contact', strict_slash=True),
     RedirectRoute('/projects/my-projects/', handlers.MyProjectsHandler, name='my-projects', strict_slash=True),
     RedirectRoute('/projects/code-snippets/', handlers.CodeSnippetsHandler, name='code-snippets', strict_slash=True),
-    RedirectRoute('/sandbox_files/<project:.*>', handlers.SandboxRedirectHandler, name='sandbox-redirect', strict_slash=True),
 ]
 
 def get_routes():
