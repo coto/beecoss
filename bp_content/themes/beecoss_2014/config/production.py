@@ -11,7 +11,7 @@ config = {
     'app_name': "Beecoss",
 
     # ----> ADD MORE CONFIGURATION OPTIONS HERE <----
-    'send_mail_developer': True,
+    'send_mail_developer': False,
 
     # fellas' list
     'developers': (
