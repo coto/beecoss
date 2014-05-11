@@ -18,6 +18,10 @@ config = {
         ('GAE Developer', 'rodrigo.augosto@gmail.com'),
     ),
 
+    # get your own recaptcha keys by registering at http://www.google.com/recaptcha/
+    'captcha_public_key': "6Ldi0u4SAAAAAC8pjDop1aDdmeiVrUOU2M4i23tT",
+    'captcha_private_key': "6Ldi0u4SAAAAAPzk1gaFDRQgry7XW4VBvNCqCHuJ",
+
     # It is just an example to fill out this value
     'google_analytics_code': """
             <script>
