@@ -76,6 +76,14 @@
                         {{ macros.contactfield(form.message, label=_("Message"), label_class="", legend="", class="width-100 required", rows="5", style="color: black;") }}
                     </div>
 
+                    {% if captchahtml %}
+                    <div class="units-row-end">
+                        <div class="controls" id="captcha">
+                            {{captchahtml | safe}}
+                        </div>
+                    </div>
+                    {% endif %}
+
                     <!-- submit button -->
                     <input type="submit" name="submit" id="submit" class="btn btn-big btn-color" value="Send Form">
 
